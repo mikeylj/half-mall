@@ -1,0 +1,101 @@
+
+.col-sm-3{float: left;width: 100%;}
+.col-sm-2{float: left;}
+.btn{margin-bottom:.1rem;width: 35%;height: .35rem;line-height: .35rem;font-size:.16rem;color: #fff;background-color:#f30;border: none;border-radius:.05rem;}
+.btn-2{margin-left: .1rem;}
+.btn-1{background-color:#999;}
+.col{margin:.1rem 0rem .2rem 0rem;}
+.tanzi{ padding:.05rem;width: 70%;font-size:.16rem;padding-left:.1rem;border-radius:.05rem;}
+.shou{position:absolute;left:0rem;top:-.15rem;overflow: hidden; float: left;color: #fff;font-size: .5rem;height: 1.1rem;line-height: 1.1rem;margin:.1rem;}
+#custom{margin-left:-108%;transition:margin-left 2s;-moz-transition:margin-left 2s; /* Firefox 4 */-webkit-transition:margin-left 2s; /* Safari and Chrome */-o-transition:margin-left 2s; /* Opera */ padding-left:.3rem; text-align: center;font-size:.16rem;width:100%;background-color:rgba(0,0,0,0.6);position:fixed;bottom: 0rem;z-index: 999;}
+.tanchulai{width:.7rem;text-align:right;left:-.6rem;font-size:.3rem;color: #fff;position: fixed;bottom: 0px;z-index: 999;background: rgba(0,0,0,0.6);padding-right: .1rem;  padding: .2rem;border-radius:50%;}
+.screen {width: 100%;position: absolute;top: 0px;right: 0px; z-index: 999;}
+.s_close {
+    z-index: 2;
+    position: absolute;
+    text-decoration: none;
+    width: 40px;
+    height: .4rem;
+    border-radius: 20px;
+    text-align: center;
+    color: #fff;
+    background: #000;
+    line-height: .4rem;
+    display: none;
+}
+.mask {
+    position: relative;
+    width: 100%;
+    height: .4rem;
+    filter: alpha(opacity:1);
+    z-index: 1;
+}
+.barrage {
+   	z-index: 999 !important;
+    width: 100%;
+    z-index: 999;position: fixed; top: 0px;
+}
+
+.mask div {
+    position: absolute;
+    font-weight: bold;
+    white-space: nowrap;
+    line-height: .2rem;
+    z-index: .2rem;
+}
+.send {
+    z-index: 1;
+    width: 100%;
+    height: .4rem;
+    background: #cccccc;
+    position: absolute;
+    bottom: 0px;
+    text-align: center;
+}
+#textStyle{
+    position:absolute;
+    font-size:24px;
+    color:#fff;
+    position: absolute;
+}
+.tishi{
+	background: rgba(0,0,0,0.6);
+	font-size: .16rem;
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	
+}
+.tishi div{
+	background-color:#fff;
+	height: 1.5rem;
+	position: absolute;
+	top: 50%;
+	width: 90%;
+	left: 50%;
+	margin-left: -45%;
+	margin-top:-25%;
+	text-align: center;
+	border-radius:.05rem;
+}
+.tishi p{
+	height: .4rem;
+	line-height: .3rem;
+	font-size: .2rem;
+	width:80%;
+	margin:0px auto;
+}
+.tishi a{
+	height: .4rem;
+	line-height: .4rem;
+	width: 50%;
+	background: #f30;
+	color: #fff;
+	display: block;
+	margin:0 auto;
+	margin-top: .5rem;
+	border-radius:.1rem;
+	font-size: .2rem;
+}

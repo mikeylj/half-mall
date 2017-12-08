@@ -1,0 +1,245 @@
+.hua_wu{
+	width: 100%;
+	overflow-y:hidden;
+}
+.hua_wu_ul{
+	width: 200%;
+}
+.hua_wu_ul li{
+	width: 14%;
+	float: left;
+	padding:.05rem;
+	padding-bottom:0rem;
+}
+.hua_wu_ul li img{
+	width:100%;
+	height:100%;
+}
+.jia_duo{
+	font-size: .14rem; 
+	height:.3rem;
+	line-height: .3rem;
+}
+.jia_duo span{
+	color: #f30;
+}
+@media only screen and (min-width: 320px) {
+    .hua_wu_ul li{height: .65rem;}
+}
+@media only screen and (min-width: 321px) and (max-width: 370px) {
+	.hua_wu_ul li{height: .75rem;} 
+}
+@media only screen and (min-width: 371px) and (max-width: 375px) {
+	.hua_wu_ul li{height: .85rem;}
+}
+@media only screen and (min-width: 376px) and (max-width: 414px) {
+	.hua_wu_ul li{height: 1rem;}
+}
+
+/*最新揭晓*/
+.mannounced {
+	background-color: #fff;
+}
+.mannounced-title {
+  /*position: relative;*/
+  display: block;
+  height: .4rem;
+  line-height: .4rem;
+  padding: 0 .1rem;
+  width: 100%;
+  font-size: .16rem;
+  border-top: 1px solid #DCDCDC;
+  border-bottom: 1px solid #DCDCDC;
+  margin-top: .08rem;
+  color: #323232;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+.mannounced-title span {
+	float: right;
+}
+.mannounced-c {
+	overflow: hidden;
+	width: 100%;
+}
+.mannounced-list {
+	float: left;
+  	width: 33.33%;
+  	line-height: 0;
+  	overflow: hidden;
+  	border-left: 1px solid #DCDCDC;
+  	box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+.mannounced-list a {
+	display: inline-block;
+  	height: 100%;
+  	width: 100%;
+  	line-height: 1.25em;
+  	padding: .12rem 10%;
+  	box-sizing: border-box;
+  	-webkit-box-sizing: border-box;
+  	color: #323232;
+}
+.mannounced-l-img {
+	width: 100%;
+}
+.mannounced-lt-title {
+  font-size: .1rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: .1rem 0;
+}
+.mannounced-lt-time {
+  text-align: center;
+  padding: .03rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  background-color: #db3652;
+  color: #fff;
+  border-radius: .1rem;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+/*专区*/
+.mArea {
+	background-color: #fff;
+}
+.mArea-title {
+  overflow: hidden;
+  height: .44rem;
+  line-height: .44rem;
+  width: 100%;
+  font-size: .16rem;
+  border-bottom: 1px solid #f0f0f0;
+  border-top: 1px solid #f0f0f0;
+  margin-top: .08rem;
+}
+.mArea-title-item {
+	position:relative;
+	display: block;
+	float: left;
+	width: 50%;
+	height: .41rem;
+	line-height: .41rem;
+	text-align: center;
+	color: #323232;
+	border-bottom: 3px solid #fff;
+}
+.mArea-title-item:last-child:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: .31rem;
+  width: .01rem;
+  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  background-color: #ccc;
+  z-index: 9;
+}
+
+.mA-TI-select {
+	border-bottom: 3px solid #db3652;
+  color: #db3652;
+}
+/* .mArea-cW {
+  overflow: hidden;
+}
+.mArea-cl {
+  float: left;
+  width: 50%;
+  border-right: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+.mArea-cl a {
+  display: block;
+    padding: .15rem 17%;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+.mArea-cl-txt {
+  font-size: .14rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: #333333;
+  text-align: center;
+  padding: .12rem 0 .02rem 0;
+} */
+.mArea-cul {
+  padding-bottom: .34rem;
+}
+.mArea-cli {
+  position: relative;
+  margin: 0 .1rem;
+  padding: .08rem 0;
+  border-bottom: .01rem solid #e5e5e5;
+}
+.mArea-cli-img {
+  position: absolute;
+  top: .09rem;
+  left: 0;
+  height: .3rem;
+  width: .3rem;
+  border-radius: .05rem;
+  overflow: hidden;
+  background-color: red;
+}
+.mArea-cli-img img {
+  width: 100%;
+}
+.mArea-cli-right {
+  padding-left: .4rem;
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+.mArea-clir-top {
+  font-size: .13rem;
+  overflow: hidden;
+  color: #666;
+}
+.mArea-clir-top span:first-child {
+  float: left;
+  color: #65bbeb;
+}
+.mArea-clir-top span:last-child {
+  float: right;
+}
+.mArea-clir-bottom {
+  font-size: .12rem;
+  color: #333;
+}
+.ftFixd {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  height: .32rem;
+  line-height: .32rem;
+  text-align: center;
+  background-color: #db3652;
+  font-size: .13rem;
+  color: #fff;
+}
+.ma2{
+	height:.3rem;
+	width: 100%;
+	position: relative;
+}
+.ma_p{
+	font-size:.14rem;
+	position: absolute;
+	left: 0px;
+	z-index: 9999;
+	height: .3rem;
+	line-height: .3rem;
+	background-color:#db3652;
+	color: #fff;
+	padding: 0px .1rem;
+}

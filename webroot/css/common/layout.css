@@ -1,0 +1,63 @@
+/* 
+Last Updated: 2015-04-08
+Author: yu Guo
+*/
+/*main*/
+html,
+body {
+  min-width: 320px;
+  font-size: 100px;
+  color: #333333;
+  background-color: #f6f6f6;
+  min-height:100%;
+}
+a {
+  text-decoration: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+input,
+select,
+a {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+input,
+label {
+  vertical-align: middle;
+}
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+select {
+  -webkit-appearance: none;
+  appearance: none;
+}
+/*placeholder默认颜色样式*/
+::-webkit-input-placeholder,
+:-moz-placeholder,
+::-moz-placeholder,
+:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #dddddd;
+}
+/*float*/
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+/*padding*/
+.pd-lr {
+  padding: 0 5%;
+}
+/*color*/
+.link {
+  color: #3399cc;
+}
