@@ -38,7 +38,7 @@ Swoole\Network\Server::start(function ()
 //    $webim = Server($config);
 //    $webim->loadSetting(__DIR__ . "/swoole.ini"); //加载配置文件
 
-    $config = Swoole::getInstance()->config['webim'];
+    $config = Swoole::getInstance()->config['ssc'];
     $store_server_ssc   = new WebIM\ServerSSC($config);
     //3000ms后执行此函数
     swoole_timer_tick(1000, array($store_server_ssc, "run"));

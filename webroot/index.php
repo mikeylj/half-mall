@@ -7,9 +7,11 @@ define('ROOT_PATH', dirname(__DIR__));
  * shell: composer update
  */
 require dirname(__DIR__) . '/vendor/autoload.php';
+require ROOT_PATH . "/src/Storage.php";
 /**
  * Swoole框架自动载入器初始化
  */
 Swoole\Loader::vendorInit();
 Swoole::$php->config->setPath(ROOT_PATH . '/configs');
+
 Swoole::$php->runMVC();

@@ -112,11 +112,36 @@ class Storage
 
         return array_reverse($data);
     }
+    //写入Redis
+    function writeRedis($key, $value){
+        if (is_array($value))
+            $this->redis->set(self::PREFIX . $key, json_encode($value));
+        else
+            $this->redis->set(self::PREFIX . $key, $value);
+    }
+    //从Redis取得内容
+    function getRedis($key, $bArr = false){
+        $value = $this->redis->get(self::PREFIX . $key);
+        if ($bArr)
+            return json_decode($value, true);
+        else
+            return $value;
+    }
+    //时时彩入库
     function addSSC($periods, $value, $time){
-        table(self::PREFIX.'_ssc')->put(array(
+        $_arr   = array(
             'periods' => $periods,
             'value' => $value,
             'time' => $time
-        ));
+        );
+        table(self::PREFIX.'_ssc')->put($_arr);
+
+        $this->redis->hSet(self::PREFIX . ':CQSSC', $periods, json_encode($_arr));
+    }
+    //取得一页时时彩
+    function getSSC($page = 1, $pagesize = 20){
+        $pager  = null;
+        $list = table(self::PREFIX.'_ssc')->gets(array('page'  => $page, 'pagesize' => $pagesize), $pager);
+        return [$list, $pager];
     }
 }

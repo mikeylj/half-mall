@@ -6,7 +6,21 @@
  * Time: 上午10:57
  */
 
-$_ssc_time  = array(
+$config['ssc'] = array(
+    //聊天记录存储的目录
+    'log_file' => ROOT_PATH . '/log/ssc.log',
+    'storage'   =>  array(
+        'history_num' => 100,
+    )
+);
+$config['ssc_web'] = array(
+    //聊天记录存储的目录
+    'log_file' => ROOT_PATH . '/log/ssc_web.log',
+    'storage'   =>  array(
+        'history_num' => 100,
+    )
+);
+$config['ssc']['times']  = array(
     '00:00:00',
     '00:05:00',
     '00:10:00',
@@ -129,3 +143,5 @@ $_ssc_time  = array(
     '23:50:00',
     '23:55:00'
 );
+
+return $config;
