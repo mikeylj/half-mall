@@ -344,6 +344,7 @@ class ServerSSC{
 
     private function _getBjSSC(){
         $url = sprintf($this->BJSSC_URL, urlencode(date("Y-m-d")));
+        echo $url . "\n";
         $strJson = $this->_getHtml($url);
         if (!$strJson)
             return false;
