@@ -43,5 +43,25 @@ class Store extends \Swoole\Controller
         $this->assign('next_open_time', $_next_open_time);
         $this->display('store/ssc.php');
     }
+    function account(){
+        $this->display('store/account.php');
+    }
 
+    function buyrecord(){
+        $this->display('store/buyrecord.php');
+    }
+    function goods(){
+        $this->display('store/goods.php');
+
+    }
+    function introduction(){
+        $this->display('store/introduction.php');
+    }
+    function rank(){
+        $this->display('store/rank.php');
+
+    }
+    function rule(){
+        $this->display('store/rule.php');
+    }
 }
