@@ -26,7 +26,7 @@ class Store extends \Swoole\Controller
     {
         $openid = rand(1000000000000, 999999999999);
         $user   = $this->storage->getSSCUser($openid);
-        if (!$user && isset($user[0])){
+        if (!$user || !isset($user[0])){
             $_SESSION['openid']    = $openid;
             $_SESSION['username']  = '天天_' . rand(0, 9);
             $_SESSION['pic']       = 'http://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83erNaYn0tEWiac65GIlqdR7T2un2KKxq5uULRibWzvgCIVl2UmyXpxibrdummQTibnNRrAaXxutRNk5fyw/0';
