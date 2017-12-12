@@ -1145,7 +1145,7 @@
 	position: fixed;
 	bottom: 0;
 	left: 0;
-	height: .35rem;
+	height: .78rem;
 	line-height: .35rem;
 	width: 100%;
 	background-color: #999999;
@@ -1155,14 +1155,14 @@
 .buyList-footer ul {
 	/*overflow: hidden;*/
 }
-.buyList-footer ul li {
+.buyList-footer li {
 	position: relative;
 	/*float: left;*/
 	display: inline-block;
 	width: 32%;
 	text-align: center;
 }
-.buyList-footer ul li span {
+.buyList-footer li span {
 	position: absolute;
 	top: -.08rem;
 	left: 50%;

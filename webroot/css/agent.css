@@ -1,0 +1,350 @@
+/*----------代理人-------------*/
+.agent-header {
+	font-size: .14rem;
+}
+.agent-header img {
+	width: 100%;
+}
+.agent-con {
+	padding: 0 .1rem;
+}
+.agent-con p {
+	font-size: .15rem;
+	color: #333;
+	line-height: .2rem;
+	padding-bottom: .2rem;
+}
+.agent-con span {
+	color: #2aae74;
+}
+.agent-footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 1.8rem;
+	padding-top: .88rem;
+	background: url(../images/agent_footer.png) no-repeat center center;
+	background-size: cover;
+	-webkit-background-size: cover;
+}
+.agent-footer-list {
+	padding-bottom: .14rem;
+}
+
+/*----------------我的下线-------------------*/
+.Offline,.Offline1 {
+	display: block;
+	padding: 0 .1rem;
+	font-size: .14rem;
+}
+.Offline tbody,.Offline1 tbody {
+	display: block;
+}
+.Offline-title {
+	display: block;
+	width: 100%;
+	height: .38rem;
+	line-height: .38rem;
+	border-bottom: .01rem solid #2aae74;
+	font-size: .14rem;
+	color: #2aae74;
+	overflow: hidden;
+}
+.Offline-title th {
+	float: left;
+	width: 20%;
+	padding: 0;
+	border: none;
+}
+.Offline-title th:first-child {
+	width: 40%;
+}
+.txt-left {
+	text-align: left;
+}
+.txt-right {
+	text-align: right;
+}
+.txt-center {
+	text-align: center;
+}
+.Offline-con {
+	display: block;
+	height: .22rem;
+	line-height: .22rem;
+	padding-top: .16rem;
+	font-size: .14rem;
+	color: #2aae74;
+	overflow: hidden;
+}
+.Offline-con td{
+	float: left;
+	width: 20%;
+	padding: 0;
+	border: none;
+}
+.Offline-con td:first-child {
+	width: 40%;
+}
+.Offline-con-active {
+	width: .6rem;
+	height: .22rem;
+	margin: 0 auto;
+	border-radius: .05rem;
+	line-height: .22rem;
+	text-align: center;
+	background-color: #999999;
+	color: #fff;
+}
+.ofca-curr {
+	background-color: #2aae74;
+}
+
+/*---------------------排行榜----------------------*/
+.panklist-header {
+	padding: .1rem 0;
+	font-size: .14rem;
+}
+.panklist-header img {
+	display: block;
+	width: 80%;
+	margin: 0 auto;
+}
+.panklist-table {
+	display: block;
+	padding: 0 0 .43rem;
+	font-size: .14rem;
+}
+.panklist-table tbody {
+	display: block;
+}
+.panklist-t-title {
+	display: block;
+	width: 100%;
+	height: .38rem;
+	font-size: .13rem;
+	color: #2aae74;
+	border-bottom: .01rem solid #2aae74;
+	overflow: hidden;
+}
+.panklist-t-title th {
+	float: left;
+	width: 20%;
+	text-align: center;
+	padding: 0;
+	border: none;
+}
+.panklist-t-con {
+	display: block;
+	width: 100%;
+	height: .38rem;
+	line-height: .38rem;
+	font-size: .14rem;
+	color: #2aae74;
+	border-bottom: .01rem solid #e3e6ac;
+	overflow: hidden;
+}
+.panklist-t-con td {
+	float: left;
+	width: 20%;
+	text-align: center;
+	padding: 0;
+	border: none;
+	overflow: hidden;
+}
+.pl-tc-num {
+	font-size: .26rem;
+}
+.pl-tc-firsr img {
+	width: .28rem;
+	vertical-align: middle;
+}
+.panklist-footer {
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	height: .42rem;
+	line-height: .42rem;
+	background-color: #cfa929;
+}
+.pkl-foot-ul {
+	width: 100%;
+	overflow: hidden;
+}
+.pkl-foot-ul li {
+	position: relative;
+	float: left;
+	width: 33.3%;
+	text-align: center;
+	font-size: .14rem;
+	color: #fff;
+}
+.pkl-foot-li:after {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	content: "";
+	display: block;
+	width: .01rem;
+	height: .3rem;
+	transform: translate(0 , -50%);
+	-webkit-transform: translate(0 , -50%);
+	background-color: #fff;
+
+}	
+
+/*-------------------邀请好友--------------------*/
+.invitation-info {
+	width: 1.6rem;
+	height: .34rem;
+	margin: .25rem 0 .18rem 0;
+	padding-top: .04rem;
+	border-radius: 0 .5rem .5rem 0;
+	background-color: #fff;
+	overflow: hidden;
+}
+.invitation-info-photo {
+	float: left;
+	display: block;
+	width: .3rem;
+	height: .3rem;
+	margin: 0 .04rem;
+	background-color: pink;	
+}
+.invitation-info-txt {
+	float: left;
+	font-size: .12rem;
+	color: #000000;
+}
+.invitation-money {
+	display: block;
+	width: 90%;
+	margin: 0 auto;
+}
+.invitation-ewm {
+	position: relative;
+	width: 2rem;
+	height: 2rem;
+	margin: .24rem auto 0;
+	background: url(../images/interval_ewmbg.png) no-repeat center center;
+	background-size: 100% auto;
+}
+.invitation-ewm-center {
+	position: absolute;
+	width: 1.52rem;
+	height: 1.52rem;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	background-color: pink;
+}
+.invitation-ewm-center img {
+	width: 100%;
+}
+.invitation-ewm-tip {
+	padding-top: .2rem;
+	font-size: .13rem;
+	color: #fff;
+	text-align: center;
+}
+.invitation-footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
+.invitation-footer img {
+	width: 100%;
+}
+/*--------------------新代理人-----------------*/
+.nagent-header {
+
+}
+.nagent-header img {
+	width: 100%;
+}
+
+.nagent-con {
+	padding: .1rem;
+	background-color: #2aae74;
+}
+.nagent-con-box {
+	padding: .1rem;
+	background-color: #fdeadc;
+	font-size: .12rem;
+}
+.ng-cb-title {
+	width: 1.45rem;
+	margin: -.23rem auto 0;
+}
+.ng-cb-title img {
+	width: 100%;
+}
+.ng-cb-txt {
+	margin-top: .16rem;
+	padding: .05rem;
+	background-color: #faddcb;
+}
+.ng-cb-txt-big {
+	font-size: .14rem;
+	color: #70453e;
+}
+.ng-cb-ul li {
+	padding-top: .16rem;
+}
+.ng-cbli-title {
+	position: relative;
+	/*width: 100%;*/
+	height: .26rem;
+	padding: 0 .1rem;
+	line-height: .26rem;
+	background-color: #70453e;
+	font-size: .14rem;
+	color: #faddcb;
+}
+.ng-cbli-title span {
+	position: absolute;
+	top: 50%;
+	right: .1rem;
+	display: block;
+	width: .14rem;
+	height: .14rem;
+	transform: translate(0,-50%);
+	-webkit-transform: translate(0,-50%);
+	background: url(../images/na-rarrow.png) no-repeat right center;
+	background-size: .08rem .14rem;
+}
+.ng-cblt-curr span {
+	background: url(../images/na-barrow.png) no-repeat center center;
+	background-size: .14rem .08rem;
+	
+}
+.ng-cbli-txt {
+	padding: .05rem;
+	background-color: #faddcb;
+}
+.ng-cb-txt-st {
+	font-weight: bold;
+	font-size: .14rem;
+	color: #3b2207;
+	padding: .1rem 0 .05rem 0;
+}
+.ng-cb-txt-sim {
+	font-size: .13rem;
+	color: #3b2207;
+	/*padding-bottom: .1rem;*/
+	padding: .05rem 0;
+}
+.ng-cb-txt-img {
+	width: 100%;
+}
+.ng-cb-btn {
+	padding: .1rem 0 .3rem 0;
+}
+.ng-cb-btn li {
+	padding-top: .1rem;
+}
+.ng-cb-txt-bcolor {
+	color: #2aae74;
+	text-align: center;
+}

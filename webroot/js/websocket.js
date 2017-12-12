@@ -3,7 +3,13 @@ function initWebSocket(fn,user,url) {
 	if (window.WebSocket) {
 		var websocket = new WebSocket(encodeURI('ws://'+url));
 		websocket.onopen = function() {
-			websocket.send('Join' + user);
+            msg = new Object();
+            msg.cmd = 'login';
+            msg.name = user.name;
+            msg.avatar = user.avatar;
+            websocket.send($.toJSON(msg));
+
+			// websocket.send('Join' + user);
 		}
 		websocket.onerror = function() {
 		}

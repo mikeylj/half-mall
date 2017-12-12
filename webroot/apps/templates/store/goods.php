@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="/css/person.css">
     <link rel="stylesheet" href="/css/fuxuan.css">
     <link rel="stylesheet" href="/css/dropload.min.css">
+    <link rel="stylesheet" href="/css/menu.css">
+
     <style>
         .fuc{
             position: fixed;
@@ -77,17 +79,17 @@
 <script src="/js/jquery-1.11.1.min.js"></script>
 <script src="/js/util.js"></script>
 <script src="/js/snatchBuyNew.js"></script>
-<script src="/js/sdk/webim.js"></script>
-<script src="/js/sdk/strophe.js"></script>
-<script src="/js/sdk/easemob.im-1.1.js"></script>
-<script src="/js/sdk/easemob.im-1.1.shim.js"></script><!--兼容老版本sdk需引入此文件-->
-<script src="/js/sdk/easemob.im.config.js"></script>
+<!--<script src="/js/sdk/webim.js"></script>-->
+<!--<script src="/js/sdk/strophe.js"></script>-->
+<!--<script src="/js/sdk/easemob.im-1.1.js"></script>-->
+<!--<script src="/js/sdk/easemob.im-1.1.shim.js"></script><!--兼容老版本sdk需引入此文件-->-->
+<!--<script src="/js/sdk/easemob.im.config.js"></script>-->
 <!-- 个人中心 首页 start-->
-<div class="mod-commonBtn">
-    <a class="mod-shishiBtn" href="/jump/toSsc?srcFrom=SRDB-TEST-001"></a>
-    <a class="mod-perCenterBtn" href="/account/index?srcFrom=SRDB-TEST-001"></a>
-    <a class="mod-homePageBtn" href="/srdb_index/index?srcFrom=SRDB-TEST-001"></a>
-</div>
+<!--<div class="mod-commonBtn">-->
+<!--    <a class="mod-shishiBtn" href="/jump/toSsc?srcFrom=SRDB-TEST-001"></a>-->
+<!--    <a class="mod-perCenterBtn" href="/account/index?srcFrom=SRDB-TEST-001"></a>-->
+<!--    <a class="mod-homePageBtn" href="/srdb_index/index?srcFrom=SRDB-TEST-001"></a>-->
+<!--</div>-->
 <!-- 个人中心 首页 end-->
 
 <!--支付宝支付-->
@@ -110,24 +112,24 @@
     <div class="inner">
         <!-- 头部banner -->
         <header class="area-banner">
-            <img src="/images/ZSHK100.png" alt="">
+            <img src="<?php echo $goods['big_image'];?>" alt="">
         </header>
         <!-- 进行中 -->
         <input id="resultNo" type="hidden" value="73"/>
-        <input id="goodId" type="hidden" value="8"/>
+        <input id="goodId" type="hidden" value="<?php echo $goods['id']?>"/>
         <div class="area-progress">
             <div class="area-pras-t">
                 <div class="area-pt-icon">进行中</div>
-                <h2 class="area-pt-txt">100元加油卡</h2>
+                <h2 class="area-pt-txt"><?php echo $goods['name'];?></h2>
             </div>
             <div class="area-winning">
                 <ul class="area-winningItem">
                     <li class="area-win-list">战神榜</li>
-                    <li class="area-win-algorithms"><a href="/srdb_good/toRuleFtl?srcFrom=SRDB-TEST-001&userId=174398">购买规则</a></li>
+                    <li class="area-win-algorithms"><a href="/store/rule">购买规则</a></li>
                 </ul>
                 <div class="area-wNL">
                     <ul class="area-wNLItem">
-                        <a href="/account/record?userId=91629&srcFrom=SRDB-TEST-001">
+                        <a href="">
                             <li class="area-wNLIlist">
                                 <div class="area-wnllImg">
                                     <img src="http://wx.qlogo.cn/mmopen/vi_32/DVxgsQUfMS3f7d1oDWk55Dpv8ShUwibQl3ibc0kH1iacT73dEarDavBxVEliaAXX5pnqF19hURrUsibYZ0ZYngTtbNw/0" alt="">
@@ -144,7 +146,7 @@
                                 </div>
                             </li>
                         </a>
-                        <a href="/account/record?userId=179786&srcFrom=SRDB-TEST-001">
+                        <a href="">
                             <li class="area-wNLIlist">
                                 <div class="area-wnllImg">
                                     <img src="http://wx.qlogo.cn/mmopen/vi_32/BNuWgnLWtRXe9Lf35BUNlxYZRWauMYeZApYPmib4ibmABKF90FPGo50fCRFMUSST4gOLy2NOJmHvfRibia3CfVbtJw/0" alt="">
@@ -161,7 +163,7 @@
                                 </div>
                             </li>
                         </a>
-                        <a href="/account/record?userId=169060&srcFrom=SRDB-TEST-001">
+                        <a href="">
                             <li class="area-wNLIlist">
                                 <div class="area-wnllImg">
                                     <img src="http://www.zzgwsc.com/headImageUrl/2017-11-24/17112423290748580.png" alt="">
@@ -178,7 +180,7 @@
                                 </div>
                             </li>
                         </a>
-                        <a href="/account/record?userId=74110&srcFrom=SRDB-TEST-001">
+                        <a href="">
                             <li class="area-wNLIlist">
                                 <div class="area-wnllImg">
                                     <img src="http://www.zzgwsc.com/headImageUrl/2017-10-15/17101513003919026.png" alt="">
@@ -212,7 +214,7 @@
                                 </div>
                             </li>
                         </a>
-                        <a href="/account/record?userId=128644&srcFrom=SRDB-TEST-001">
+                        <a href="">
                             <li class="area-wNLIlist">
                                 <div class="area-wnllImg">
                                     <img src="http://wx.qlogo.cn/mmopen/vi_32/Ljzwqyst2y507Bmzv5Uib032RkoFBm8PvouibhLZumqoSCLwaDnpBNB3tIP9j9UykCOs4LCyDpuOLeSKLESfCM8Q/0" alt="">
@@ -229,7 +231,7 @@
                                 </div>
                             </li>
                         </a>
-                        <a href="/account/record?userId=166117&srcFrom=SRDB-TEST-001">
+                        <a href="">
                             <li class="area-wNLIlist">
                                 <div class="area-wnllImg">
                                     <img src="http://www.zzgwsc.com/headImageUrl/2017-11-08/17110800434056613.png" alt="">
@@ -246,7 +248,7 @@
                                 </div>
                             </li>
                         </a>
-                        <a href="/account/record?userId=165261&srcFrom=SRDB-TEST-001">
+                        <a href="">
                             <li class="area-wNLIlist">
                                 <div class="area-wnllImg">
                                     <img src="http://www.zzgwsc.com/headImageUrl/2017-11-12/17111221251555913.png" alt="">
@@ -263,7 +265,7 @@
                                 </div>
                             </li>
                         </a>
-                        <a href="/account/record?userId=55259&srcFrom=SRDB-TEST-001">
+                        <a href="">
                             <li class="area-wNLIlist">
                                 <div class="area-wnllImg">
                                     <img src="http://wx.qlogo.cn/mmopen/6wvUaJ4PjUbBIgblvE907htEoMyTSJkQPrFAvPlPWtX7th3cFCFKrI86xSJkTxuAb50QgJ36E5R9dYDdoibDMa7cGlVd91Fps/" alt="">
@@ -280,7 +282,7 @@
                                 </div>
                             </li>
                         </a>
-                        <a href="/account/record?userId=150212&srcFrom=SRDB-TEST-001">
+                        <a href="">
                             <li class="area-wNLIlist">
                                 <div class="area-wnllImg">
                                     <img src="http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKmj2hibqrMD5R9y7I0n6v4qSCwcYwqiaNU82K2JX6zp3icLws6sqvg8aEhkYra4vO672c5pPnNbZ6wA/0" alt="">
@@ -297,7 +299,7 @@
                                 </div>
                             </li>
                         </a>
-                        <a href="/account/record?userId=26&srcFrom=SRDB-TEST-001">
+                        <a href="">
                             <li class="area-wNLIlist">
                                 <div class="area-wnllImg">
                                     <img src="http://wx.qlogo.cn/mmopen/bNqVZcia7iaBx2v5HmQm8JxoWhdHljY3UtjDWhLRyZaDtxVtHONdwibABNd4mxt7ktF0eAPbmu95R8bVicUMREEyc2ibDR3V2YZ1a2dEZ1x4uriaY/0" alt="">
@@ -314,7 +316,7 @@
                                 </div>
                             </li>
                         </a>
-                        <a href="/account/record?userId=51203&srcFrom=SRDB-TEST-001">
+                        <a href="">
                             <li class="area-wNLIlist">
                                 <div class="area-wnllImg">
                                     <img src="http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJUYHWnZz9BGfZeJmHo22qrMAJAaicsNqwA7CRDIvuVHR1914bFs2icocDsZ8pI4ibWyc3ukRJAkBXicw/0" alt="">
@@ -331,7 +333,7 @@
                                 </div>
                             </li>
                         </a>
-                        <a href="/account/record?userId=165862&srcFrom=SRDB-TEST-001">
+                        <a href="">
                             <li class="area-wNLIlist">
                                 <div class="area-wnllImg">
                                     <img src="http://wx.qlogo.cn/mmopen/vi_32/n10YaOC5Gpe8qmx79icrPfxmvPHhRJrCZ9jwicjaWfztdullY8oj4NeA4MDAicJeoMLu3vzxasbMFjmRx55eWUQlQ/0" alt="">
@@ -348,7 +350,7 @@
                                 </div>
                             </li>
                         </a>
-                        <a href="/account/record?userId=177839&srcFrom=SRDB-TEST-001">
+                        <a href="">
                             <li class="area-wNLIlist">
                                 <div class="area-wnllImg">
                                     <img src="http://www.zzgwsc.com/headImageUrl/2017-10-11/17101118105166045.png" alt="">
@@ -365,7 +367,7 @@
                                 </div>
                             </li>
                         </a>
-                        <a href="/account/record?userId=62&srcFrom=SRDB-TEST-001">
+                        <a href="">
                             <li class="area-wNLIlist">
                                 <div class="area-wnllImg">
                                     <img src="http://wx.qlogo.cn/mmopen/6wvUaJ4PjUb2ZR1eqMJ9WiaLm1Z6zX7iaKS3jEdlyIngshHibysOlrRviaGbYdIdEsKyOqLR50PSWg2pEAgedHiaNtQ5R4WJ7SicMK/0" alt="">
@@ -382,7 +384,7 @@
                                 </div>
                             </li>
                         </a>
-                        <a href="/account/record?userId=128644&srcFrom=SRDB-TEST-001">
+                        <a href="">
                             <li class="area-wNLIlist">
                                 <div class="area-wnllImg">
                                     <img src="http://wx.qlogo.cn/mmopen/vi_32/Ljzwqyst2y507Bmzv5Uib032RkoFBm8PvouibhLZumqoSCLwaDnpBNB3tIP9j9UykCOs4LCyDpuOLeSKLESfCM8Q/0" alt="">
@@ -399,7 +401,7 @@
                                 </div>
                             </li>
                         </a>
-                        <a href="/account/record?userId=114490&srcFrom=SRDB-TEST-001">
+                        <a href="">
                             <li class="area-wNLIlist">
                                 <div class="area-wnllImg">
                                     <img src="http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIllOQsNSuLe0icbvhWFrsAq7paWJHJHsAzKedUJJZ8RXhBic7nS8TQMNcjr1fwyAwfHqJlTHBVqKLQ/0" alt="">
@@ -416,7 +418,7 @@
                                 </div>
                             </li>
                         </a>
-                        <a href="/account/record?userId=134626&srcFrom=SRDB-TEST-001">
+                        <a href="">
                             <li class="area-wNLIlist">
                                 <div class="area-wnllImg">
                                     <img src="http://wx.qlogo.cn/mmopen/vi_32/QYibzxIXVY5qFQrFxq5gA0oHAxpDgKhG5ibQPUZ9TlunRbM2cOaTAGph8yrRrpE4ArIAHpC0hk5zXCpudgBev68g/0" alt="">
@@ -433,7 +435,7 @@
                                 </div>
                             </li>
                         </a>
-                        <a href="/account/record?userId=160205&srcFrom=SRDB-TEST-001">
+                        <a href="">
                             <li class="area-wNLIlist">
                                 <div class="area-wnllImg">
                                     <img src="http://www.zzgwsc.com/headImageUrl/2017-11-25/171125110840415.png" alt="">
@@ -450,7 +452,7 @@
                                 </div>
                             </li>
                         </a>
-                        <a href="/account/record?userId=103526&srcFrom=SRDB-TEST-001">
+                        <a href="">
                             <li class="area-wNLIlist">
                                 <div class="area-wnllImg">
                                     <img src="http://wx.qlogo.cn/mmopen/vi_32/s9wWLIB6vWgCdqkyYrFOIJMAhXHzyyjI8gr6ibpcfbXia274zP2HWUftg9xmKQx4EJFU0x4ic57JicFQSdO0qHytXA/0" alt="">
@@ -474,41 +476,46 @@
                 <div style="float:left; width:48%;">
                     <span style="color: white;">上期幸运号段:</span>
                     <span style="display: inline-block;">
+<!--                        type3s.png
+type3b.png
+type4s.png
+
+-->
 	            			<img src="/images/type4b.png" style="width:.6rem; vertical-align: middle;">
 	   					</span>
                 </div>
                 <div class="mannounced-lt-time" style="float: right; width:52%; text-align:left; color:#fff; ">
-                    <p  class="fnTimeCountDown" data-end="2017/12/8 17:20:00">
+                    <p  class="fnTimeCountDown" data-end="<?php echo $next_open_time;?>">
                         <span style="color: white;">开战时间：</span><span class="mini" style="color: white;"></span><span style="color: white;">分</span><span class="sec" style="color: white;"></span><span style="color: white;">秒</span><span class="hm" style="color: white;"></span>
                     </p>
                 </div>
             </div>
         </div>
-        <!-- 本页导航 -->
-        <ul class="area-sNav">
-            <li class="area-sNl">
-                <a class="ar-sNl-w" href="/srdb_good/rankingList?srcFrom=SRDB-TEST-001&goodId=8">
-                    <p class="ar-sNl-w-txt">战神排行榜</p>
-                    <span class="ar-sNl-w-arrow"></span>
-                </a>
-            </li>
-            <li class="area-sNl">
-                <a class="ar-sNl-w" href="/chat_hall/lotteryResult?srcFrom=SRDB-TEST-001&goodId=8">
-                    <p class="ar-sNl-w-txt ar-jieIcon">历史交战记录</p>
-                    <span class="ar-sNl-w-arrow"></span>
-                </a>
-            </li>
-            <li class="area-sNl">
-                <a class="ar-sNl-w">
-                    <p class="ar-sNl-w-txt ar-joinIcon">近期参战记录</p>
-                    <span class="ar-sNl-w-arrow"></span>
-                </a>
-            </li>
-        </ul>
+<!--        <!-- 本页导航 -->
+<!--        <ul class="area-sNav">-->
+<!--            <li class="area-sNl">-->
+<!--                <a class="ar-sNl-w" href="/srdb_good/rankingList?srcFrom=SRDB-TEST-001&goodId=8">-->
+<!--                    <p class="ar-sNl-w-txt">战神排行榜</p>-->
+<!--                    <span class="ar-sNl-w-arrow"></span>-->
+<!--                </a>-->
+<!--            </li>-->
+<!--            <li class="area-sNl">-->
+<!--                <a class="ar-sNl-w" href="/chat_hall/lotteryResult?srcFrom=SRDB-TEST-001&goodId=8">-->
+<!--                    <p class="ar-sNl-w-txt ar-jieIcon">历史交战记录</p>-->
+<!--                    <span class="ar-sNl-w-arrow"></span>-->
+<!--                </a>-->
+<!--            </li>-->
+<!--            <li class="area-sNl">-->
+<!--                <a class="ar-sNl-w">-->
+<!--                    <p class="ar-sNl-w-txt ar-joinIcon">近期参战记录</p>-->
+<!--                    <span class="ar-sNl-w-arrow"></span>-->
+<!--                </a>-->
+<!--            </li>-->
+<!--        </ul>-->
 
         <!-- 参与记录的列表 -->
         <ul class="area-partlist" style="padding-bottom:.42rem;">
-            <a href="/account/record?userId=97883&srcFrom=SRDB-TEST-001">
+            <a href="">
                 <li class="area-pL-Item">
                     <div class="area-pLI-img">
                         <img src="http://wx.qlogo.cn/mmopen/vi_32/r6JxpG3pB7l7kcRREz0FFqDO1YCrwGtDqy81jAAexddpcXiadJBolErRskfLgQibrupw9sribWyFxZAktyWGEVSzQ/0" >
@@ -525,24 +532,7 @@
                     </div>
                 </li>
             </a>
-            <a href="/account/record?userId=169768&srcFrom=SRDB-TEST-001">
-                <li class="area-pL-Item">
-                    <div class="area-pLI-img">
-                        <img src="/0" >
-                    </div>
-                    <div class="area-pLI-txt">
-                        <div>
-                            <p class="area-pLITxtT"><span>淡淡的雨季</span></p>
-                            <p class="area-pLITxtBTime">2017-12-08 17:15:02</p>
-                        </div>
-                        <div class="area-pLITxtB">
-                            <p class="area-pLITxtB-pTime">刚刚参与了<span>20</span>单;---</p>
-                            <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[河南省开封市]61.158.149.203</p>
-                        </div>
-                    </div>
-                </li>
-            </a>
-            <a href="/account/record?userId=90&srcFrom=SRDB-TEST-001">
+            <a href="">
                 <li class="area-pL-Item">
                     <div class="area-pLI-img">
                         <img src="http://wx.qlogo.cn/mmopen/cPCyHQyGWMF65ZUjvqABicrGLnQ1dPdSLI4quLczAjHBXU5THVblMcGsedgQwEnORA1knESfU6hNNib1HOG3YJB5HIU1AYsOmz/0" >
@@ -559,7 +549,7 @@
                     </div>
                 </li>
             </a>
-            <a href="/account/record?userId=96&srcFrom=SRDB-TEST-001">
+            <a href="">
                 <li class="area-pL-Item">
                     <div class="area-pLI-img">
                         <img src="http://wx.qlogo.cn/mmopen/cPCyHQyGWMGW3Mu3iaPWc4S8ZUhHSW7hBqFh6GgXLlQonGfHehu2ibzwAvEdEIiapZcx8gDibMJbmwWJlFLWyHqDWwKjlh7FqbZv/0" >
@@ -576,7 +566,7 @@
                     </div>
                 </li>
             </a>
-            <a href="/account/record?userId=176464&srcFrom=SRDB-TEST-001">
+            <a href="">
                 <li class="area-pL-Item">
                     <div class="area-pLI-img">
                         <img src="http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLARmiaaNmegW9Cul7MjK1EcFArGpNqwtJ2IEwWskaWxqtYWpA52OxGwOlGWibEIRMT6oWicwEDEb6icw/0" >
@@ -593,7 +583,7 @@
                     </div>
                 </li>
             </a>
-            <a href="/account/record?userId=92&srcFrom=SRDB-TEST-001">
+            <a href="">
                 <li class="area-pL-Item">
                     <div class="area-pLI-img">
                         <img src="http://wx.qlogo.cn/mmopen/Q3auHgzwzM7FicWl5Aa1cdPeZyGnmc26of8BymaPRo8vg3BJCckwo2KET103QUHnOzvanuXjPWXv6tk0ibK6PD0icPR2Hz2LCU7oeM9EnYibWC0/0" >
@@ -610,7 +600,7 @@
                     </div>
                 </li>
             </a>
-            <a href="/account/record?userId=179893&srcFrom=SRDB-TEST-001">
+            <a href="">
                 <li class="area-pL-Item">
                     <div class="area-pLI-img">
                         <img src="http://www.zzgwsc.com/headImageUrl/2017-11-23/17112315074071385.png" >
@@ -627,7 +617,7 @@
                     </div>
                 </li>
             </a>
-            <a href="/account/record?userId=91629&srcFrom=SRDB-TEST-001">
+            <a href="">
                 <li class="area-pL-Item">
                     <div class="area-pLI-img">
                         <img src="http://wx.qlogo.cn/mmopen/vi_32/DVxgsQUfMS3f7d1oDWk55Dpv8ShUwibQl3ibc0kH1iacT73dEarDavBxVEliaAXX5pnqF19hURrUsibYZ0ZYngTtbNw/0" >
@@ -644,7 +634,7 @@
                     </div>
                 </li>
             </a>
-            <a href="/account/record?userId=179725&srcFrom=SRDB-TEST-001">
+            <a href="">
                 <li class="area-pL-Item">
                     <div class="area-pLI-img">
                         <img src="http://www.zzgwsc.com/headImageUrl/2017-11-08/17110817222946895.png" >
@@ -661,7 +651,7 @@
                     </div>
                 </li>
             </a>
-            <a href="/account/record?userId=55251&srcFrom=SRDB-TEST-001">
+            <a href="">
                 <li class="area-pL-Item">
                     <div class="area-pLI-img">
                         <img src="http://wx.qlogo.cn/mmopen/gHtet1U8y2KYGZAicBu9E4vJrlm6LHXbiaU09FBHyabttLp2Biaia8ID6YiaLdCytUZttkFn4nuIJdCZJTVbgIYtEckboscQ7hEia3/" >
@@ -678,7 +668,7 @@
                     </div>
                 </li>
             </a>
-            <a href="/account/record?userId=91629&srcFrom=SRDB-TEST-001">
+            <a href="">
                 <li class="area-pL-Item">
                     <div class="area-pLI-img">
                         <img src="http://wx.qlogo.cn/mmopen/vi_32/DVxgsQUfMS3f7d1oDWk55Dpv8ShUwibQl3ibc0kH1iacT73dEarDavBxVEliaAXX5pnqF19hURrUsibYZ0ZYngTtbNw/0" >
@@ -695,7 +685,7 @@
                     </div>
                 </li>
             </a>
-            <a href="/account/record?userId=150212&srcFrom=SRDB-TEST-001">
+            <a href="">
                 <li class="area-pL-Item">
                     <div class="area-pLI-img">
                         <img src="http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKmj2hibqrMD5R9y7I0n6v4qSCwcYwqiaNU82K2JX6zp3icLws6sqvg8aEhkYra4vO672c5pPnNbZ6wA/0" >
@@ -729,7 +719,7 @@
                     </div>
                 </li>
             </a>
-            <a href="/account/record?userId=55272&srcFrom=SRDB-TEST-001">
+            <a href="">
                 <li class="area-pL-Item">
                     <div class="area-pLI-img">
                         <img src="http://wx.qlogo.cn/mmopen/cPCyHQyGWMHVcHCQk9U90vKwcvK1poLYEOhC2oZQHDOwxsz2DgLiaVHzehBxYplaYBp427v59kPN6udlFr6o56N2vlST2BeUV/" >
@@ -746,7 +736,7 @@
                     </div>
                 </li>
             </a>
-            <a href="/account/record?userId=169060&srcFrom=SRDB-TEST-001">
+            <a href="">
                 <li class="area-pL-Item">
                     <div class="area-pLI-img">
                         <img src="http://www.zzgwsc.com/headImageUrl/2017-11-24/17112423290748580.png" >
@@ -763,7 +753,7 @@
                     </div>
                 </li>
             </a>
-            <a href="/account/record?userId=55252&srcFrom=SRDB-TEST-001">
+            <a href="">
                 <li class="area-pL-Item">
                     <div class="area-pLI-img">
                         <img src="http://wx.qlogo.cn/mmopen/UPe93KGaRQLzAt8z1vhACXgFd1kVXzmFcNyIhVmqK6s9CpW4Z6GAfRhr9lvoicLOzF00BModgW17805UAzeicic9RqNtSNqyhwP/" >
@@ -780,7 +770,7 @@
                     </div>
                 </li>
             </a>
-            <a href="/account/record?userId=55246&srcFrom=SRDB-TEST-001">
+            <a href="">
                 <li class="area-pL-Item">
                     <div class="area-pLI-img">
                         <img src="http://wx.qlogo.cn/mmopen/gHtet1U8y2KYGZAicBu9E4iaCasnvQFNiaywmDDJyvNialoeiaQGYBxribSDPn10tzMFrOSYicHtapAoGYVLOItyc0uQZbbcZaVw7wy/" >
@@ -797,7 +787,7 @@
                     </div>
                 </li>
             </a>
-            <a href="/account/record?userId=177796&srcFrom=SRDB-TEST-001">
+            <a href="">
                 <li class="area-pL-Item">
                     <div class="area-pLI-img">
                         <img src="http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIsWXJj9xYnYaicT1icIicqAlTcUJnSjnsPibu6gRxulLBKpP6viaf9NwtjEVlQf10W1CXPTXlgp2I9rGA/0" >
@@ -814,7 +804,7 @@
                     </div>
                 </li>
             </a>
-            <a href="/account/record?userId=55259&srcFrom=SRDB-TEST-001">
+            <a href="">
                 <li class="area-pL-Item">
                     <div class="area-pLI-img">
                         <img src="http://wx.qlogo.cn/mmopen/6wvUaJ4PjUbBIgblvE907htEoMyTSJkQPrFAvPlPWtX7th3cFCFKrI86xSJkTxuAb50QgJ36E5R9dYDdoibDMa7cGlVd91Fps/" >
@@ -831,7 +821,7 @@
                     </div>
                 </li>
             </a>
-            <a href="/account/record?userId=74110&srcFrom=SRDB-TEST-001">
+            <a href="">
                 <li class="area-pL-Item">
                     <div class="area-pLI-img">
                         <img src="http://www.zzgwsc.com/headImageUrl/2017-10-15/17101513003919026.png" >
@@ -848,6 +838,7 @@
                     </div>
                 </li>
             </a>
+            <div style="height: 0.42rem"></div>
         </ul>
     </div>
 </div>
@@ -861,6 +852,10 @@
             <a class="a-flten-btn" href="javascript:;" onclick="addFastSnatch(1)">买大(56~110)</a>
         </li>
     </ul>
+
+    <?php
+    require_once (dirname(__DIR__) . "/menu.php");
+    ?>
 </footer>
 
 <!--点击购买弹出框-->
@@ -918,13 +913,13 @@
             </div>
             <div class="yihk" style="text-align: center;">
             </div>
-            <div class="yihk" style="text-align: center;">
-                <a style="width:85%;" class="zhif" href="javascript:;" onclick="pay(this,'JD')">
-                    <div style="position: relative;">
-                        <img src="/images/jdtp.png"/>&nbsp;&nbsp;&nbsp;&nbsp;京东支付
-                    </div>
-                </a>
-            </div>
+<!--            <div class="yihk" style="text-align: center;">-->
+<!--                <a style="width:85%;" class="zhif" href="javascript:;" onclick="pay(this,'JD')">-->
+<!--                    <div style="position: relative;">-->
+<!--                        <img src="/images/jdtp.png"/>&nbsp;&nbsp;&nbsp;&nbsp;京东支付-->
+<!--                    </div>-->
+<!--                </a>-->
+<!--            </div>-->
         </div>
     </div>
 </div>
@@ -974,7 +969,7 @@
     });
     function xfjl(){
         var xfjl = $(".qian").html();
-        var xfjlz = Number(xfjl*0.01).toFixed(2);
+        var xfjlz = 0;//Number(xfjl*0.01).toFixed(2);
         $(".xfjf").html(xfjlz);
     }
     function ddx(){
@@ -1040,7 +1035,7 @@
         $(".mod-iB-BtnNum12").html(zhi);
         var am = accMul(zhi,55);
         $(".qian").html(am);
-        var jfjl=accMul(am,0.01);
+        var jfjl=0;  //accMul(am,0.01);
         $(".jfjl").html(jfjl)
         var hxzf=am;
         if($('input:checkbox:checked').val()){
@@ -1095,10 +1090,10 @@
 
     $(function(){
         initSnatch();
-        initHX();
-        if("0" == $("#isRegister").val()){
-            regist($("#nickName").val());
-        }
+//        initHX();
+//        if("0" == $("#isRegister").val()){
+//            regist($("#nickName").val());
+//        }
         $(".fnTimeCountDown").eq(0).fnTimeCountDown(ftcdTime);
         // 中间部分自动滑动效果
     });
@@ -1136,7 +1131,7 @@
         $.ajaxSetup({
             async: false
         });
-        $.post('/paySwitch/getPayChannelSwitch', {
+        $.post('/store/getPayChannelSwitch', {
             type:payWay
         }, function(response) {
             if(response==1){
@@ -1163,8 +1158,8 @@
                 if($('input:checkbox:checked').val()){
                     isCheck=1;
                 }
-                $.post('/srdb_purchase/barcodePay',
-                    {amount:totalAmount,channelType:'SRDB-TEST-001',goodId:8,purchaseCounts:purchaseCounts,sectionNo:sectionNo,userId:'174398',payWay:payWay,useBalance:isCheck,balance:balance},
+                $.post('/recharge/barcodePay',
+                    {amount:totalAmount,channelType:'SRDB-TEST-001',goodId:<?php echo $goods['id']?>,purchaseCounts:purchaseCounts,sectionNo:sectionNo,userId:'<?php echo $userid;?>',payWay:payWay,useBalance:isCheck,balance:balance},
                     function(response) {
                         if(response.code == 1){
                             $(".fuc1").html('<p>'+response.message+'</p>');
@@ -1209,7 +1204,7 @@
                                 $(".fuc1").show();
                                 $(".fx").hide();
                             }else{
-                                window.location.href='/srdb_good/zjy?srcFrom=SRDB-TEST-001&url='+response.message+"&goodId=8";
+                                window.location.href='/recharge/zjy?srcFrom=SRDB-TEST-001&url='+response.message+"&goodId=<?php echo $goods['id']?>";
                             }
 
                         }

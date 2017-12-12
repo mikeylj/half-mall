@@ -9,13 +9,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/person.css">
+    <link rel="stylesheet" href="/css/menu.css">
     <script type="text/javascript" src="/js/zepto.min.js"></script>
 </head>
 <body>
 <!-- 个人中心 首页 start-->
-<div class="mod-commonBtn">
-    <a class="mod-homePageBtn" href="/srdb_index/index?srcFrom=SRDB-TEST-001"></a>
-</div>
+<!--<div class="mod-commonBtn">-->
+<!--    <a class="mod-homePageBtn" href="/srdb_index/index?srcFrom=SRDB-TEST-001"></a>-->
+<!--</div>-->
 <!-- 个人中心 首页 end-->
 <section class="mod-popup yan" style="display: none;">
     <div style="width: 80%; text-align: center;" class="mod-popup-txt">
@@ -77,46 +78,50 @@
 </div>
 <ul class="person-menu">
     <li class="">
-        <a href="/account/record?srcFrom=SRDB-TEST-001">
+        <a href="/account/buyrecord">
             <p class="person-indiana">购买记录</p>
             <span class="person-mArrow"></span>
         </a>
     </li>
+<!--    <li class="">-->
+<!--        <a href="/">-->
+<!--            <p class="person-winning">兑换记录</p>-->
+<!--            <span class="person-mArrow"></span>-->
+<!--        </a>-->
+<!--    </li>-->
     <li class="">
-        <a href="/PswCheck/toPwLogin?srcFrom=SRDB-TEST-001">
-            <p class="person-winning">兑换记录</p>
-            <span class="person-mArrow"></span>
-        </a>
-    </li>
-    <li class="">
-        <a href="/srdb_good/rankingList?srcFrom=SRDB-TEST-001">
+        <a href="/store/rank">
             <p class="person-ranking">总排行榜</p>
             <span class="person-mArrow"></span>
         </a>
     </li>
     <li class="">
-        <a href="/srdb_index/playIntroduction?srcFrom=SRDB-TEST-001">
+        <a href="/store/introduction">
             <p class="person-set">玩法介绍</p>
             <span class="person-mArrow"></span>
         </a>
     </li>
-    <li class="yijianjishouw">
-        <a href="javascript:;" >
-            <p class="person-jishou">一键寄售</p>
-            <span class="person-mArrow"></span>
-        </a>
-    </li>
     <li class="">
-        <a href="javascript:;" onclick="unRegist()" class="zhuxiao">
-            <p class="person-sethhoqc">清除记录</p>
+        <a href="/store/ssc">
+            <p class="person-set">夺宝看盘</p>
             <span class="person-mArrow"></span>
         </a>
     </li>
+<!--    <li class="">-->
+<!--        <a href="javascript:;" onclick="unRegist()" class="zhuxiao">-->
+<!--            <p class="person-sethhoqc">清除记录</p>-->
+<!--            <span class="person-mArrow"></span>-->
+<!--        </a>-->
+<!--    </li>-->
 </ul>
 <form action="/account/jishou" method="post"  id="jishouform">
     <input type="hidden" id="srcFrom" value="SRDB-TEST-001" name="srcFrom" >
     <input type="hidden"  id="isFirstJs" value="0" name="isFirstJs" >
 </form>
+
+<?php
+require_once (dirname(__DIR__) . "/menu.php");
+?>
 </body>
 <script type="text/javascript">
 
@@ -125,9 +130,6 @@
             $(".shi").show();
         });
 
-        $(".person-jishou").click(function(){
-            window.location.href="/srdb_index/JSIntroduction?srcFrom=SRDB-TEST-001";
-        });
         $(".non").click(function(){
             var code = $("#sendCode").val();
             if (code == "") {

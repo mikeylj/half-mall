@@ -144,4 +144,64 @@ class Storage
         $list = table(self::PREFIX.'_ssc')->gets(array('page'  => $page, 'pagesize' => $pagesize), $pager);
         return [$list, $pager];
     }
+    //取得产品列表
+    function getGoodsList($status=1){
+        $list = table(self::PREFIX.'_goods')->gets(array('status' => $status, 'order' => 'orderby asc'));
+        return $list;
+    }
+    //取得产品
+    function getGoods($id){
+        $list = table(self::PREFIX.'_goods')->gets(array('status' => 1, 'id' => $id));
+        return $list;
+    }
+    function getGoodsListByIds($ids){
+        $list = table(self::PREFIX.'_goods')->gets(array('status' => 1, 'id' => $ids));
+        return $list;
+    }
+
+
+    //保存定单
+    function addOrder($user_id, $goods_id, $amount, $num, $payway, $sscperiods, $buytype){
+        $id     =  table(self::PREFIX.'_orders')->put(array(
+            'userid' => $user_id,
+            'goods_id' => $goods_id,
+            'amount' => $amount,
+            'num' => $num,
+            'payway'    => $payway,
+            'status'    => 0,
+            'sscstatus' => 0,
+            'sscperiods'    => $sscperiods,
+            'buytype'       => $buytype,
+        ));
+
+//        error_log( "1111111\n", 3, "/tmp/ssc.log");
+        return $id;
+    }
+    //增加用户
+    function addSSCUser($openid, $username, $pic){
+        $userid = table(self::PREFIX.'_users')->put(array(
+            'openid' => $openid,
+            'name' => $username,
+            'pic' => $pic
+        ));
+        return $userid;
+    }
+    //取得用户
+    function getSSCUser($openid){
+        $list = table(self::PREFIX.'_users')->gets(array('openid' => $openid));
+        return $list;
+    }
+    //取得定单信息
+    function getOrders($userid, $page = 1, $pagesize = 20, $orderby){
+        $pager  = null;
+        $list = table(self::PREFIX.'_orders')->gets(array('userid'  => $userid, 'page'  => $page, 'pagesize' => $pagesize, 'order' => $orderby), $pager);
+        return [$list, $pager];
+    }
+
+    function getGoodsSelect($fields = '*'){
+        return table(self::PREFIX.'_goods')->select($fields);
+    }
+    function getUserSelect($fields = '*'){
+        return table(self::PREFIX.'_users')->select($fields);
+    }
 }

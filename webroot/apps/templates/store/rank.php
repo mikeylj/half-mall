@@ -11,6 +11,8 @@
           content="width=device-width, initial-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/area.css">
+    <link rel="stylesheet" href="/css/menu.css">
+
     <style type="text/css">
         .pnt-list {
             height: .67rem;
@@ -98,19 +100,19 @@
 </head>
 <body>
 <!-- 导航  start-->
-<div class="mod-commonBtn">
-    <a class="mod-perCenterBtn"
-       href="/account/index?srcFrom=SRDB-TEST-001"></a> <a
-        class="mod-homePageBtn"
-        href="/srdb_index/index?srcFrom=SRDB-TEST-001"></a>
-</div>
+<!--<div class="mod-commonBtn">-->
+<!--    <a class="mod-perCenterBtn"-->
+<!--       href="/account/index?srcFrom=SRDB-TEST-001"></a> <a-->
+<!--        class="mod-homePageBtn"-->
+<!--        href="/srdb_index/index?srcFrom=SRDB-TEST-001"></a>-->
+<!--</div>-->
 <!-- 导航  end-->
 <input type="hidden" id="srcFrom" name="srcFrom" value='SRDB-TEST-001' />
 <input type="hidden" id="goodId" name="goodId" value='' />
 <ul class="panking-next">
 
     <li class="pnt-list"><a
-            href="/account/record?userId=167904&srcFrom=SRDB-TEST-001"
+            href=""
             style="display: box; display: -webkit-box; display: flex;">
             <span style="margin:0px .15rem;" class="pnt-l-num"><img style="width: .3rem;margin-top:.15rem ;margin-right: .1rem;" src="/images/pai_1.png"/></span>
             <div class="pnt-l-img dai1">
@@ -123,7 +125,7 @@
         </a></li>
 
     <li class="pnt-list"><a
-            href="/account/record?userId=179894&srcFrom=SRDB-TEST-001"
+            href=""
             style="display: box; display: -webkit-box; display: flex;">
             <span style="margin:0px .15rem;" class="pnt-l-num"><img style="width: .3rem;margin-top:.15rem ;margin-right: .1rem;" src="/images/pai_2.png"/></span>
             <div class="pnt-l-img dai2">
@@ -136,7 +138,7 @@
         </a></li>
 
     <li class="pnt-list"><a
-            href="/account/record?userId=179091&srcFrom=SRDB-TEST-001"
+            href=""
             style="display: box; display: -webkit-box; display: flex;">
             <span style="margin:0px .15rem;" class="pnt-l-num"><img style="width: .3rem;margin-top:.15rem ;margin-right: .1rem;" src="/images/pai_3.png"/></span>
             <div class="pnt-l-img dai3">
@@ -149,7 +151,7 @@
         </a></li>
 
     <li class="pnt-list"><a
-            href="/account/record?userId=158735&srcFrom=SRDB-TEST-001"
+            href=""
             style="display: box; display: -webkit-box; display: flex;"> <span
                 style="color: #000;margin: .14rem .22rem; font-size: .25rem " class="pnt-l-num">4</span>
             <div style="margin:.06rem .15rem;" class="pnt-l-img">
@@ -166,7 +168,7 @@
         </a></li>
 
     <li class="pnt-list"><a
-            href="/account/record?userId=179163&srcFrom=SRDB-TEST-001"
+            href=""
             style="display: box; display: -webkit-box; display: flex;"> <span
                 style="color: #000;margin: .14rem .22rem; font-size: .25rem " class="pnt-l-num">5</span>
             <div style="margin:.06rem .15rem;" class="pnt-l-img">
@@ -183,7 +185,7 @@
         </a></li>
 
     <li class="pnt-list"><a
-            href="/account/record?userId=162322&srcFrom=SRDB-TEST-001"
+            href=""
             style="display: box; display: -webkit-box; display: flex;"> <span
                 style="color: #000;margin: .14rem .22rem; font-size: .25rem " class="pnt-l-num">6</span>
             <div style="margin:.06rem .15rem;" class="pnt-l-img">
@@ -200,7 +202,7 @@
         </a></li>
 
     <li class="pnt-list"><a
-            href="/account/record?userId=179707&srcFrom=SRDB-TEST-001"
+            href=""
             style="display: box; display: -webkit-box; display: flex;"> <span
                 style="color: #000;margin: .14rem .22rem; font-size: .25rem " class="pnt-l-num">7</span>
             <div style="margin:.06rem .15rem;" class="pnt-l-img">
@@ -217,7 +219,7 @@
         </a></li>
 
     <li class="pnt-list"><a
-            href="/account/record?userId=179420&srcFrom=SRDB-TEST-001"
+            href=""
             style="display: box; display: -webkit-box; display: flex;"> <span
                 style="color: #000;margin: .14rem .22rem; font-size: .25rem " class="pnt-l-num">8</span>
             <div style="margin:.06rem .15rem;" class="pnt-l-img">
@@ -234,7 +236,7 @@
         </a></li>
 
     <li class="pnt-list"><a
-            href="/account/record?userId=179995&srcFrom=SRDB-TEST-001"
+            href=""
             style="display: box; display: -webkit-box; display: flex;"> <span
                 style="color: #000;margin: .14rem .22rem; font-size: .25rem " class="pnt-l-num">9</span>
             <div style="margin:.06rem .15rem;" class="pnt-l-img">
@@ -251,7 +253,7 @@
         </a></li>
 
     <li class="pnt-list"><a
-            href="/account/record?userId=120922&srcFrom=SRDB-TEST-001"
+            href=""
             style="display: box; display: -webkit-box; display: flex;"> <span
                 style="color: #000;margin: .14rem;font-size: .25rem;" class="pnt-l-num">10</span>
             <div style="margin:.06rem .15rem;" class="pnt-l-img">
@@ -268,7 +270,7 @@
         </a></li>
 
     <li class="pnt-list"><a
-            href="/account/record?userId=114490&srcFrom=SRDB-TEST-001"
+            href=""
             style="display: box; display: -webkit-box; display: flex;"> <span
                 style="color: #000;margin: .14rem;font-size: .25rem;" class="pnt-l-num">11</span>
             <div style="margin:.06rem .15rem;" class="pnt-l-img">
@@ -285,7 +287,7 @@
         </a></li>
 
     <li class="pnt-list"><a
-            href="/account/record?userId=173239&srcFrom=SRDB-TEST-001"
+            href=""
             style="display: box; display: -webkit-box; display: flex;"> <span
                 style="color: #000;margin: .14rem;font-size: .25rem;" class="pnt-l-num">12</span>
             <div style="margin:.06rem .15rem;" class="pnt-l-img">
@@ -302,7 +304,7 @@
         </a></li>
 
     <li class="pnt-list"><a
-            href="/account/record?userId=165615&srcFrom=SRDB-TEST-001"
+            href=""
             style="display: box; display: -webkit-box; display: flex;"> <span
                 style="color: #000;margin: .14rem;font-size: .25rem;" class="pnt-l-num">13</span>
             <div style="margin:.06rem .15rem;" class="pnt-l-img">
@@ -319,7 +321,7 @@
         </a></li>
 
     <li class="pnt-list"><a
-            href="/account/record?userId=83&srcFrom=SRDB-TEST-001"
+            href=""
             style="display: box; display: -webkit-box; display: flex;"> <span
                 style="color: #000;margin: .14rem;font-size: .25rem;" class="pnt-l-num">14</span>
             <div style="margin:.06rem .15rem;" class="pnt-l-img">
@@ -336,7 +338,7 @@
         </a></li>
 
     <li class="pnt-list"><a
-            href="/account/record?userId=81&srcFrom=SRDB-TEST-001"
+            href=""
             style="display: box; display: -webkit-box; display: flex;"> <span
                 style="color: #000;margin: .14rem;font-size: .25rem;" class="pnt-l-num">15</span>
             <div style="margin:.06rem .15rem;" class="pnt-l-img">
@@ -353,7 +355,7 @@
         </a></li>
 
     <li class="pnt-list"><a
-            href="/account/record?userId=179893&srcFrom=SRDB-TEST-001"
+            href=""
             style="display: box; display: -webkit-box; display: flex;"> <span
                 style="color: #000;margin: .14rem;font-size: .25rem;" class="pnt-l-num">16</span>
             <div style="margin:.06rem .15rem;" class="pnt-l-img">
@@ -370,7 +372,7 @@
         </a></li>
 
     <li class="pnt-list"><a
-            href="/account/record?userId=55271&srcFrom=SRDB-TEST-001"
+            href=""
             style="display: box; display: -webkit-box; display: flex;"> <span
                 style="color: #000;margin: .14rem;font-size: .25rem;" class="pnt-l-num">17</span>
             <div style="margin:.06rem .15rem;" class="pnt-l-img">
@@ -387,7 +389,7 @@
         </a></li>
 
     <li class="pnt-list"><a
-            href="/account/record?userId=23&srcFrom=SRDB-TEST-001"
+            href=""
             style="display: box; display: -webkit-box; display: flex;"> <span
                 style="color: #000;margin: .14rem;font-size: .25rem;" class="pnt-l-num">18</span>
             <div style="margin:.06rem .15rem;" class="pnt-l-img">
@@ -404,7 +406,7 @@
         </a></li>
 
     <li class="pnt-list"><a
-            href="/account/record?userId=128644&srcFrom=SRDB-TEST-001"
+            href=""
             style="display: box; display: -webkit-box; display: flex;"> <span
                 style="color: #000;margin: .14rem;font-size: .25rem;" class="pnt-l-num">19</span>
             <div style="margin:.06rem .15rem;" class="pnt-l-img">
@@ -421,7 +423,7 @@
         </a></li>
 
     <li class="pnt-list"><a
-            href="/account/record?userId=178396&srcFrom=SRDB-TEST-001"
+            href=""
             style="display: box; display: -webkit-box; display: flex;"> <span
                 style="color: #000;margin: .14rem;font-size: .25rem;" class="pnt-l-num">20</span>
             <div style="margin:.06rem .15rem;" class="pnt-l-img">
@@ -437,6 +439,9 @@
             </div>
         </a></li>
 </ul>
+<?php
+require_once (dirname(__DIR__) . "/menu.php");
+?>
 <script src="../../js/zepto.min.js"></script>
 <script type="text/javascript">
     //	导航切换

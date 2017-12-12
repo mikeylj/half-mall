@@ -144,14 +144,185 @@
     <div class="dao-d">
         <ul class="win-nav">
             <li class="dus duobpk"><p class="hw win-nav-cur">半价商城</p></li>
-            <a href="/yydbRecord/record?srcFrom=SRDB-TEST-001&userId=174398"><li class="dus duobpk1"><p class="hw1">一元商城</p></li></a>
+            <a href="/yydbRecord/record?srcFrom=SRDB-TEST-001&userId=179091"><li class="dus duobpk1"><p class="hw1">一元商城</p></li></a>
         </ul>
     </div>
     <div class="inner">
         <ul class="buyItem">
+            <li class="buyList" style="padding-bottom:0px; border-bottom:2px solid #f1f1f1;">
+                <div class="buyList-w"  >
+                    <div style="z-index: 990;" class="buyList-w-left">
+                        <a class="bl-w-l-img" href="javascript:void(0);">
+                            <img src="/images/ZSY50.png" alt="">
+                        </a>
+                        <p class="bl-w-l-txt cr">等待开战</p>
+                    </div>
+
+                    <a style="position: relative;z-index: 10;" class="buyList-w-right" href="/account/record/detail?id=5923361&userId=179091&srcFrom=SRDB-TEST-001">
+                        <h3>50元加油卡</h3>
+                        <p>本期参与：<span style="color: #3b84dd;">
+	        						来钱了
+	        					</span></p>
+                        <p style="top: -.03rem; width: .5rem;position: absolute; text-align: center; right: .05rem;color:#ff0033;border-radius:.04rem;background-color:#fff;border: 1px solid #FF0033;">查看</p>
+                        <p class=" ">购买时间：2017-12-11 17:50:02</p>
+                        <p class="bl-wr-duan">购买号段：<span class="cr">29-56</span><span class="bl-wr-ride cr"><img  src="/images/ride.png" alt=""></span><span class="cr">11</span><span class="cr">单</span></p>
+                    </a>
+                </div>
+            </li>
+
+
+
+
+            <li class="buyList" style="padding-bottom:0px; border-bottom:2px solid #f1f1f1;">
+                <div class="buyList-w" >
+                    <div style="z-index: 990;" class="buyList-w-left">
+                        <a class="bl-w-l-img" href="javascript:void(0);">
+                            <img src="/images/YX100.png" alt="">
+                        </a>
+                        <p class="bl-w-l-txt">已失败</p>
+                    </div>
+
+                    <a style="position: relative;z-index: 10;" class="buyList-w-right"  href="/account/record/detail?id=5922620&userId=179091&srcFrom=SRDB-TEST-001" >
+                        <h3>100元骏卡一卡通</h3>
+                        <p>本期参与：<span style="color: #3b84dd;">
+	        						来钱了
+	        					</span></p>
+                        <p style="top: -.03rem; width: .5rem;position: absolute; text-align: center; right: .05rem;color:#ff0033;border-radius:.04rem;background-color:#fff;border: 1px solid #FF0033;">查看</p>
+                        <p class=" ">参与时间：2017-12-11 16:49:55</p>
+                        <p class="bl-wr-duan">参与号段：<span class="cr">56-110</span><span class="bl-wr-ride cr"><img src="/images/ride.png" alt=""></span><span class="cr">7</span><span class="cr">单</span></p>
+                        <p class=" ">开战时间：2017-12-11 16:50:00</p>
+                        <p>获胜号码：<span class="cr">46</span></p>
+                    </a>
+                </div>
+            </li>
+
+
+
+            <li class="buyList" style="padding-bottom:0px; border-bottom:2px solid #f1f1f1;">
+                <div class="buyList-w buyList-w-win" >
+                    <div style="z-index: 990;" class="buyList-w-left">
+                        <a class="bl-w-l-img" href="javascript:void(0);">
+                            <img src="/images/ZSY50.png" alt="">
+                        </a>
+                        <p class="bl-w-l-txt">恭喜获胜</p>
+                    </div>
+                    <a style="overflow: hidden;  position: relative;z-index: 10; display:inline-block;width:100%;height: 1.65rem;" class="buyList-w-right" href="/account/record/detail?id=5919987&userId=179091&srcFrom=SRDB-TEST-001" >
+                        <div class="fangw" style="width:100%;width: 2rem;">
+                            <p class="leftx">双</p>
+                            <p class="rightx">人</p>
+                            <p class="leftx">夺</p>
+                            <p class="rightx">宝</p>
+                            <p class="leftx">双</p>
+                            <p class="rightx">人</p>
+                            <p class="leftx">夺</p>
+                            <p class="rightx">宝</p>
+                            <p class="leftx">双</p>
+                            <p class="rightx">人</p>
+                            <p class="leftx">夺</p>
+                            <p class="rightx">宝</p>
+                            <p class="leftx">双</p>
+                            <p class="rightx">人</p>
+                            <p class="leftx">夺</p>
+                            <p class="rightx">宝</p>
+                            <p class="leftx">双</p>
+                            <p class="rightx">人</p>
+                            <p class="rightx">宝</p>
+                            <p class="leftx">双</p>
+                            <p class="rightx">人</p>
+                        </div>
+                        <div class="widw"  style="position: absolute;top: 0rem;">
+                            <h3>50元加油卡</h3>
+                            <p>本期参与：<span style="color: #3b84dd;">
+		        						来钱了
+		        					</span></p>
+                            <p style="top: 0rem; width: .5rem;position: absolute; text-align: center; right: 1.11rem;color:#ff0033;border-radius:.04rem;background-color:#fff;border: 1px solid #FF0033;">查看</p>
+                            <p class=" ">参与时间：2017-12-11 13:19:41</p>
+                            <p class="bl-wr-duan">参与号段：<span class="cr">1-28</span><span class="bl-wr-ride cr"><img src="/images/ride.png" alt=""></span><span class="cr">14</span><span class="cr">单</span></p>
+                            <p class=" ">开战时间：2017-12-11 13:20:00</p>
+                            <p>获胜号码：<span class="cr">24</span></p>
+                        </div>
+                    </a>
+                </div>
+                <a style="z-index: 20;" class="buyList-getBtn"  href="/PswCheck/toPwLogin?srcFrom=SRDB-TEST-001">点击领取</a>
+            </li>
+
+
+            <li class="buyList" style="padding-bottom:0px; border-bottom:2px solid #f1f1f1;">
+                <div class="buyList-w buyList-w-win" >
+                    <div style="z-index: 990;" class="buyList-w-left">
+                        <a class="bl-w-l-img" href="javascript:void(0);">
+                            <img src="/images/YX100.png" alt="">
+                        </a>
+                        <p class="bl-w-l-txt">恭喜获胜</p>
+                    </div>
+                    <a style="overflow: hidden;  position: relative;z-index: 10; display:inline-block;width:100%;height: 1.65rem;" class="buyList-w-right" href="/account/record/detail?id=5915541&userId=179091&srcFrom=SRDB-TEST-001" >
+                        <div class="fangw" style="width:100%;width: 2rem;">
+                            <p class="leftx">双</p>
+                            <p class="rightx">人</p>
+                            <p class="leftx">夺</p>
+                            <p class="rightx">宝</p>
+                            <p class="leftx">双</p>
+                            <p class="rightx">人</p>
+                            <p class="leftx">夺</p>
+                            <p class="rightx">宝</p>
+                            <p class="leftx">双</p>
+                            <p class="rightx">人</p>
+                            <p class="leftx">夺</p>
+                            <p class="rightx">宝</p>
+                            <p class="leftx">双</p>
+                            <p class="rightx">人</p>
+                            <p class="leftx">夺</p>
+                            <p class="rightx">宝</p>
+                            <p class="leftx">双</p>
+                            <p class="rightx">人</p>
+                            <p class="rightx">宝</p>
+                            <p class="leftx">双</p>
+                            <p class="rightx">人</p>
+                        </div>
+                        <div class="widw"  style="position: absolute;top: 0rem;">
+                            <h3>100元骏卡一卡通</h3>
+                            <p>本期参与：<span style="color: #3b84dd;">
+		        						来钱了
+		        					</span></p>
+                            <p style="top: 0rem; width: .5rem;position: absolute; text-align: center; right: 1.11rem;color:#ff0033;border-radius:.04rem;background-color:#fff;border: 1px solid #FF0033;">查看</p>
+                            <p class=" ">参与时间：2017-12-10 23:44:53</p>
+                            <p class="bl-wr-duan">参与号段：<span class="cr">56-110</span><span class="bl-wr-ride cr"><img src="/images/ride.png" alt=""></span><span class="cr">30</span><span class="cr">单</span></p>
+                            <p class=" ">开战时间：2017-12-10 23:45:00</p>
+                            <p>获胜号码：<span class="cr">80</span></p>
+                        </div>
+                    </a>
+                </div>
+                <a style="z-index: 20;" class="buyList-getBtn"  href="/PswCheck/toPwLogin?srcFrom=SRDB-TEST-001">点击领取</a>
+            </li>
+
+
+            <li class="buyList" style="padding-bottom:0px; border-bottom:2px solid #f1f1f1;">
+                <div class="buyList-w" >
+                    <div style="z-index: 990;" class="buyList-w-left">
+                        <a class="bl-w-l-img" href="javascript:void(0);">
+                            <img src="/images/ZSY50.png" alt="">
+                        </a>
+                        <p class="bl-w-l-txt">已失败</p>
+                    </div>
+
+                    <a style="position: relative;z-index: 10;" class="buyList-w-right"  href="/account/record/detail?id=5915524&userId=179091&srcFrom=SRDB-TEST-001" >
+                        <h3>50元加油卡</h3>
+                        <p>本期参与：<span style="color: #3b84dd;">
+	        						来钱了
+	        					</span></p>
+                        <p style="top: -.03rem; width: .5rem;position: absolute; text-align: center; right: .05rem;color:#ff0033;border-radius:.04rem;background-color:#fff;border: 1px solid #FF0033;">查看</p>
+                        <p class=" ">参与时间：2017-12-10 23:44:20</p>
+                        <p class="bl-wr-duan">参与号段：<span class="cr">29-56</span><span class="bl-wr-ride cr"><img src="/images/ride.png" alt=""></span><span class="cr">30</span><span class="cr">单</span></p>
+                        <p class=" ">开战时间：2017-12-10 23:45:00</p>
+                        <p>获胜号码：<span class="cr">26</span></p>
+                    </a>
+                </div>
+            </li>
+
+
 
         </ul>
-        <p id = "mores" style="text-align: center; height:.4rem; line-height:.4rem; font-size:.14rem; "><a onclick="runs(174398)">点击加载更多...</a></p>
+        <p id = "mores" style="text-align: center; height:.4rem; line-height:.4rem; font-size:.14rem; "><a onclick="runs(179091)">点击加载更多...</a></p>
     </div>
 
 </div>
@@ -159,9 +330,9 @@
     <ul>
         <footer style="z-index: 999;" class="buyList-footer">
             <ul>
-                <li>当日参与:0 单</li>
-                <li>当日获胜:0 单</li>
-                <li>当日失败:0 单</li>
+                <li>当日参与:32 单</li>
+                <li>当日获胜:14 单</li>
+                <li>当日失败:7 单</li>
             </ul>
         </footer>
 
@@ -274,7 +445,7 @@
                 }
                 sum = sum+1;
                 $(".buyItem").append(appendStr);
-                $("#mores").html('<a onclick="runs(174398)">点击加载更多...</a>');
+                $("#mores").html('<a onclick="runs(179091)">点击加载更多...</a>');
             } else{
                 $("#mores").hide();
             }

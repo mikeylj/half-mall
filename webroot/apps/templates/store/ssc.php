@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/css/swiper.min.css">
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/person.css">
+    <link rel="stylesheet" href="/css/menu.css">
     <!-- 下拉加载样式 -->
     <link rel="stylesheet"
           href="/css/dropload.min.css">
@@ -335,7 +336,9 @@
             }
             ?>
         </ul>
-<!--        <a class="ssc-moreBtn" onClick="more()">查看更多>></a>-->
+        <div style="height: 0.5rem"></div>
+
+        <!--        <a class="ssc-moreBtn" onClick="more()">查看更多>></a>-->
         <!--按钮-->
     </div>
 </div>
@@ -508,6 +511,9 @@
         </ul>
     </div>
 </div>
+<?php
+require_once (dirname(__DIR__) . "/menu.php");
+?>
 <a style="display: none; z-index: 220;" href="javascript:;" class="zuo"><img
         src="/images/left.png" /></a>
 <input type="hidden" id="start" name="start" value="0" />
