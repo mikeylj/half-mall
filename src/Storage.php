@@ -128,15 +128,26 @@ class Storage
             return $value;
     }
     //时时彩入库
-    function addSSC($periods, $value, $time){
-        $_arr   = array(
-            'periods' => $periods,
-            'value' => $value,
-            'time' => $time
-        );
-        table(self::PREFIX.'_ssc')->put($_arr);
+    function addSSC($periods, $value, $time)
+    {
+        if (!$this->redis->hExists(self::PREFIX . ':CQSSC', $periods)) {
+            $_arr = array(
+                'periods' => $periods,
+                'value' => $value,
+                'time' => $time
+            );
+            $db_ssc_id = table(self::PREFIX . '_ssc')->put($_arr);
 
-        $this->redis->hSet(self::PREFIX . ':CQSSC', $periods, json_encode($_arr));
+            $redis_ssc_id = $this->redis->hSet(self::PREFIX . ':CQSSC', $periods, json_encode($_arr));
+            if (DEBUG == 'on'){
+                error_log("DB_SSC_ID:{$db_ssc_id}\n", 3, "/tmp/ssc.log");
+                error_log("REDIS_SSC_ID:{$redis_ssc_id}\n", 3, "/tmp/ssc.log");
+            }
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     //取得一页时时彩
     function getSSC($page = 1, $pagesize = 20){
@@ -161,17 +172,23 @@ class Storage
 
 
     //保存定单
-    function addOrder($user_id, $goods_id, $amount, $num, $payway, $sscperiods, $buytype){
+    function addOrder($user_id, $goods_id, $amount, $num, $payway, $sscperiods, $buytype, $ssctype){
         $id     =  table(self::PREFIX.'_orders')->put(array(
             'userid' => $user_id,
             'goods_id' => $goods_id,
             'amount' => $amount,
             'num' => $num,
+            'price' => ($amount / $num),
+            'points'    => 0,
+            'paytime'   => 0,
+            'ssc'       => '',
+            'ssctime'   => 0,
             'payway'    => $payway,
             'status'    => 0,
             'sscstatus' => 0,
             'sscperiods'    => $sscperiods,
             'buytype'       => $buytype,
+            'ssctype'      => $ssctype
         ));
 
 //        error_log( "1111111\n", 3, "/tmp/ssc.log");
@@ -203,5 +220,18 @@ class Storage
     }
     function getUserSelect($fields = '*'){
         return table(self::PREFIX.'_users')->select($fields);
+    }
+    function getOrderSelect($fields = '*'){
+        return table(self::PREFIX.'_orders')->select($fields);
+    }
+    //修改定单状态
+    function updateOrder($status, $ssc, $ssctime,  $sscstatus, $where){
+        table(self::PREFIX.'_orders')->sets(['status' => $status, 'ssc' => $ssc, 'sscstatus' => $sscstatus, 'ssctime' => $ssctime],
+        [
+            'where'   => [
+                $where
+            ]
+        ]
+        );
     }
 }

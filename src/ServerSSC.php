@@ -28,122 +28,123 @@ class ServerSSC{
     private $_curr_period       = -1;    //当前是第几期
 
 
-
-
-
-
-
-
-
-
-
-
-
-    private $SSC_START;
-    private $SSC_PERIOD_1;
-    private $SSC_PERIOD_2;
-    private $SSC_PERIOD_DURATION_1    = 600;
-    private $SSC_PERIOD_DURATION_2    = 300;
-
-    private $redis_client;
-    private $redis_connected    = false;
-
-    private $_openTime          = 0;
-
     public function __construct($config = array())
     {
         $this->_ssc_times   = $config['ssc']['times'];
         $this->storage = new Storage($config['ssc']['storage']);
-
-
-
-
-//        $this->SSC_START    = '10:00:00';
-//        $this->SSC_PERIOD_1 = array(
-//            'start' => '10:01:00',
-//            'end'   => '22:01:00',
-//        );
-//        $this->SSC_PERIOD_2 = array(
-//            'start' => '22:01:00',
-//            'end'   => '24:00:00',
-//        );
-//        $this->SSC_PERIOD_3 = array(
-//            'start' => '00:01:00',
-//            'end'   => '02:01:00',
-//        );
-//        $this->SSC_PERIOD_4 = array(
-//            'start' => '02:01:00',
-//            'end'   => '10:01:00',
-//        );
-//        $this->redis_client =  new \Redis();
-//        $conf   = array(
-//            '127.0.0.1',
-//            6379
-//        );
-//        try {
-//            $res = $this->redis_client->connect($conf[0], $conf[1], 3);
-//            $this->redis_connected  = true;
-//        } catch (RedisException $e) {
-//            // 失败重试
-//            try {
-//                $res = $this->redis_client->connect($conf[0], $conf[1], 3);
-//                $this->redis_connected  = true;
-//            } catch (RedisException $e) {
-//                return false;
-//            }
-//        }
-//
-//        $this->_websocket_server_config = array(
-//            'host'  => '127.0.0.1',
-//            'port'  => 9501
-//        );
-
-
-
-
-
-//        $this->redis_client->connect('127.0.0.1', 6379, function (swoole_redis $redis, $result) {
-//            if ($result === false) {
-//                echo "connect to redis server failed.\n";
-//                $this->redis_connected    = false;
-//            }
-//            else{
-//                $this->redis_connected    = true;
-//            }
-//        });
     }
 
     /****
      * 开奖
      */
-    public function _openSSC(){
+    public function _openSSC($_term, $ssc, $ssctime){
+        $_orderSelect = $this->storage->getOrderSelect('*');
+        $_orders = $_orderSelect->where(['sscperiods' => $_term])->fetchAll();
+        //'status' => 1, 'sscstatus' => 0
+        $_unPayed   = $_errorIDs  = $_successOrders = $_failedOrders = [];
+        if ($_orders){
+            //取得当前中奖余额
+            $_strSSC    = $this->storage->getRedis('CURRENT_SSC');
+            $arr = explode(',', $_strSSC);
+            $val = 0;
+            foreach ($arr as $v){
+                $val = $val * 10 + $v;
+            }
+            $_ssc_56 = $val % 56 + 1;
+            $_ssc_110 = $val % 110 + 1;
 
-    }
+            $_val_56    = 0;
+            $_val_110    = 0;
+            if ($_ssc_56 >28)
+                $_val_56    = 1;
+            if ($_ssc_110 >55)
+                $_val_110 = 1;
 
-    public function _dealBJSSC($_arrData){
-        if ($_arrData){
-            $_arrData   = json_decode($_arrData, true);
-            if ($_arrData && count($_arrData) > 0){
-                $term = date("Ymd") . "%03d";
-                $term   = sprintf($term, count($_arrData));
-                $ssc    = $_arrData[0]['drawNo'];
-                $date   = date("Y-m-d H:i:s", $_arrData[0]['createTime'] / 1000);
-                return array($term, $ssc, $date);
+            foreach ($_orders as $_order){
+                if ($_order['status'] == 0){
+                    $_unPayed[] = $_order['id'];
+                }
+                elseif($_order['status'] == 1){
+                    if ($_order['sscstatus'] == 0){     //物品的类型
+                        //根据选择的类型
+                        if ($_order['ssctype'] == 1){
+                            if ($_val_56 == $_order['buytype']){
+                                $_successOrders[]   = $_order['id'];
+                            }
+                            else{
+                                $_failedOrders[]  = $_order['id'];
+                            }
+                        }else{
+                            if ($_val_110 == $_order['buytype']){
+                                $_successOrders[]   = $_order['id'];
+                            }
+                            else{
+                                $_failedOrders[]  = $_order['id'];
+                            }
+                        }
+                    }
+                    else{
+                        $_errorIDs[]    = $_order['id'];
+                    }
+                }
+                else{
+                    $_errorIDs[]    = $_order['id'];
+                }
             }
         }
-        return array(false, false, false);
+
+
+
+        //修改过期的，成功的，失败的
+        error_log("过期：(" . implode(',', $_unPayed) . ")\n", 3, "/tmp/ssc.log");
+        if ($_unPayed)
+            $this->storage->updateOrder(-1, $ssc, $ssctime, -1, "id in (" . implode(',', $_unPayed). ")");
+
+        error_log("成功：(" . implode(',', $_successOrders) . ")\n", 3, "/tmp/ssc.log");
+        if ($_successOrders)
+            $this->storage->updateOrder(1, $ssc, $ssctime, 1, "id in (" . implode(',', $_successOrders). ")");
+
+
+        error_log("失败：(" . implode(',', $_failedOrders) . ")\n", 3, "/tmp/ssc.log");
+        if ($_failedOrders)
+            $this->storage->updateOrder(1, $ssc, $ssctime, -1, "id in (" . implode(',', $_failedOrders). ")");
+
+        error_log("异常ID：(" . implode(',', $_errorIDs) . ")\n", 3, "/tmp/ssc.log");
+
+        var_dump($_unPayed);
+        var_dump($_successOrders);
+        var_dump($_failedOrders);
+        var_dump($_errorIDs);
     }
-    public function _dealSSC($_arrData){
-        if ($_arrData && count($_arrData) > 0) {
-            $term = $_arrData[0][0];
-            $ssc = $_arrData[0][1];
-            $date = date("Y-m-d H:i:s");
-            return array($term, $ssc, $date);
-        }
-        return array(false, false, false);
-    }
+
     //开奖
     function _getCSSInMins($_currTime){
+        //取得本次开奖内容
+        list($_currTerm, $_currSSC, $_currDate)  = $this->_getRecursionSSC(5);
+        $p = sprintf(date("Ymd") . "%03d", $this->_curr_period);
+        if ($_currTerm === false || !$_currTerm && $p != $_currTerm){
+            $str = date('Y-m-d H:i:s', $_currTime) . "\t". "ERROR:未取得SSC" . "\t" . $_currTerm . "\t" . $_currSSC . "\t" . $_currDate .  "\n";
+            error_log($str, 3, "/log/ssc.log");
+            return false;
+        }
+        //存入数据库及Redis
+        $this->storage->addSSC($_currTerm, $_currSSC, $_currDate);
+        //将本次Period和下一次开奖时间存入MC
+        $this->storage->writeRedis('CURRENT_PERIOD', $_currTerm);
+        $this->storage->writeRedis('CURRENT_SSC', $_currSSC);
+        $this->storage->writeRedis('NEXT_OPEN_TIME', date("Y-m-d ") . $this->_ssc_times[$this->_curr_period + 1]);
+
+        $this->_openSSC($_currTerm, $_currSSC, strtotime($_currDate));   //开奖
+        return [$_currTerm, $_currSSC, $_currDate];
+//        $str = date('Y-m-d H:i:s', $_currTime) . "\t". "ERROR:未取得最新SSC" . "\t" . $_currTerm . "\t" . $_currSSC . "\t" . $_currDate .  "\n";
+//        error_log($str, 3, "log/ssc.log");
+//        return false;
+    }
+
+    //递归取得SSC内容
+    function _getRecursionSSC($num = 5){
+        if ($num == 0)
+            return [false, false, false];
         if ($this->_ssc_type == 'bj'){
             $_arrSsc    = $this->_getBjSSC();
             list($_currTerm, $_currSSC, $_currDate)  = $this->_dealBJSSC($_arrSsc);
@@ -153,22 +154,15 @@ class ServerSSC{
             $_arrSsc =$this->_getSSC();
             list($_currTerm, $_currSSC, $_currDate)  = $this->_dealSSC($_arrSsc);
         }
-        if ($_currTerm === false || !$_currTerm){
-            $str = date('Y-m-d H:i:s', $_currTime) . "\t". "ERROR:未取得SSC" . "\t" . $_currTerm . "\t" . $_currSSC . "\t" . $_currDate .  "\n";
-            error_log($str, 3, "log/ssc.log");
-            return false;
+        //如果没有取得内容，则递归调用或之前存入redis的当前Period为当前的
+        $_lastPeriod    = $this->storage->getRedis('CURRENT_PERIOD');
+        if ($_currTerm === false || !$_currTerm || $_lastPeriod == $_currTerm){
+            sleep(5);
+            $this->_getRecursionSSC($num--);
         }
-        //存入数据库及Redis
-        $this->storage->addSSC($_currTerm, $_currSSC, $_currDate);
-        //将本次Period和下一次开奖时间存入MC
-        $this->storage->writeRedis('CURRENT_PERIOD', $this->_curr_period);
-        $this->storage->writeRedis('NEXT_OPEN_TIME', date("Y-m-d ") . $this->_ssc_times[$this->_curr_period + 1]);
-
         return [$_currTerm, $_currSSC, $_currDate];
-//        $str = date('Y-m-d H:i:s', $_currTime) . "\t". "ERROR:未取得最新SSC" . "\t" . $_currTerm . "\t" . $_currSSC . "\t" . $_currDate .  "\n";
-//        error_log($str, 3, "log/ssc.log");
-//        return false;
     }
+
 
 
     //取得当前是第几期
@@ -197,10 +191,6 @@ class ServerSSC{
         if ($_old_period != $this->_curr_period && $_old_period != -1 && $this->_curr_period != 0){
             $this->_buyStatus   = 3;
             $_currSSC   = $this->_getCSSInMins($_currTime);
-            while ($_currSSC === false){
-                sleep(5);
-                $_currSSC   = $this->_getCSSInMins($_currTime);
-            }
             $str    = date("Y-m-d H:i:s") . "\t开奖:" . $_old_period . "\t" . $_currSSC[0] . "\t{$_currSSC[1]}\t$_currSSC[2]" . "\n";
             echo $str;
         }
@@ -223,124 +213,34 @@ class ServerSSC{
     }
     public function run(){
         $_currTime = time();
-//        $this->_curr_period = $this->_getCurrPeriod($this->_curr_period, $_currTime);
         $this->_ssc_status($_currTime);
-
-
-//        $str    = date("Y-m-d H:i:s") . "\t当前为:" . $this->_curr_period  . "\n";
-//        echo $str;
-
-
-
-//        $start = date("Y-m-d H:i:s") ;
-//        error_log($start. "\n", 3, "log/ssc.log");
-//        //取得当前时间段
-//        $curPeriod  = $this->_getCurPeriod();
-//        //如果为1 则10分钟开奖一次
-//        switch ($curPeriod) {
-//            case 1:
-//                $this->_chkSSCStatus(10);
-//                $this->_getCSSInMins(10);
-//                break;
-//            case 2:
-//                $this->_chkSSCStatus(5);
-//                $this->_getCSSInMins(5);
-//                break;
-//            case 3:
-//                $this->_chkSSCStatus(5);
-//                $this->_getCSSInMins(5);
-//                break;
-//            case 4:
-//                break;
-//        }
-//        $end = date("Y-m-d H:i:s") ;
-//        error_log($start . "\t" . $end . "\t"  . $curPeriod . "\n", 3, "log/ssc.log");
-
-
-//        $sec = date("s");
-//        if ($sec != 1)
-//            return ;
-//        if ($this->_ssc_type == 'bj'){
-//            $_arrSsc    = $this->_getBjSSC();
-//            list($_currTerm, $_currSSC, $_currDate)  = $this->_dealBJSSC($_arrSsc);
-//        }
-//        else
-//        {
-//            $_arrSsc =$this->_getSSC();
-//            list($_currTerm, $_currSSC, $_currDate)  = $this->_dealSSC($_arrSsc);
-//        }
-//        if ($_currTerm === false || !$_currTerm){
-//            $str = date('Y-m-d H:i:s', time()) . "\t". "ERROR:未取得SSC" . "\t" . $_currTerm . "\t" . $_currSSC . "\t" . $_currDate .  "\n";
-//            error_log($str, 3, "log/ssc.log");
-//            return false;
-//        }
-//        $this->_chkSSCStatus();
-//        if (!$this->redis_client->hExists("CQSSC", $_currTerm))
-//        {
-//            $arr = array(
-//                'term'  => $_currTerm,
-//                'ssc'   => $_currSSC,
-//                'time'  => date("Y-m-d H:i:s", time())
-//            );
-//            $this->redis_client->hSet("CQSSC", $_currTerm, json_encode($arr));
-//            //保存数据库
-//            $this->storage->addSSC($_currTerm, $_currSSC, $_currDate);
-//
-//            $str = date('Y-m-d H:i:s', time()) . "\t". "开奖" . "\t" . $_currTerm . "\t" . $_currSSC . "\n";
-//            error_log($str, 3, "log/ssc.log");
-//            echo $str;
-//
-//            $msg = array();
-//            $msg['cmd']= 'message';
-//            $msg['from'] = 0;
-//            $msg['channal'] = 0;
-//            $msg['data'] = $str;
-//            $msg['type'] = "text";
-//            $msg['status'] = 2;
-//            $this->_sendMsg($msg);
-//        }
-
-//        $str = date('Y-m-d H:i:s', time()) . "\t" . $_currTerm . "\t" .  . "\t" .  . "\n";
-
-
-
-//        var_dump(time() , strtotime(date('Y-m-d ') . $this->SSC_PERIOD_1['start']));
-//        var_dump((time() - strtotime(date('Y-m-d ') . $this->SSC_PERIOD_1['start'])));
-//
-        //取得当前期数
-        $_currTerm = '';
-//        $curPeriod  = $this->_getCurPeriod();
-//        if ($curPeriod == 1){
-//            $dura = (time() - strtotime(date('Y-m-d ') . $this->SSC_PERIOD_1['start'])) / $this->SSC_PERIOD_DURATION_1 + 24;
-//            $_currTerm  = date("ymd", time()) . sprintf("%03d", $dura);
-//        }
-//        elseif($curPeriod == 2){
-//
-//        }
-
-//        if ($this->_getCurPeriod() == 3){
-//            $_currTerm  = date('ymd120', strtotime("-1 day"));
-//            error_log("1" . "\n", 3, "log/scc.log");
-//        }elseif($this->_getCurPeriod() == 1){
-//            $dura = (time() - strtotime(date('Y-m-d ') . $this->SSC_PERIOD_1['start'])) / $this->SSC_PERIOD_DURATION_1 + 1;
-//            $_currTerm  = date("ymd", time()) . sprintf("%03d", $dura);
-//            error_log("2" . "\n", 3, "log/scc.log");
-//
-//        }
-//        elseif($this->_getCurPeriod() == 2){
-//            if (time() > $this->SSC_PERIOD_2['start']){
-//                $dura   = (time() -  strtotime(date('Y-m-d ') . $this->SSC_PERIOD_2['start'])) / $this->SSC_PERIOD_DURATION_2;
-//                $dura   = 72 + $dura;
-//                $_currTerm  = date("ymd", time()) . sprintf("%03d", $dura);
-//                error_log("3" . "\n", 3, "log/scc.log");
-//
-//            }
-//        }
-////        var_dump($_currTerm);
-//        $arrSsc =$this->_getSSC();
-//        $str = date('Y-m-d H:i:s', time()) . "\t" . $_currTerm . "\t" . $arrSsc[0][0] . "\t" . $arrSsc[0][1] . "\n";
-//        error_log($str, 3, "log/scc.log");
     }
+
+
+
+    public function _dealBJSSC($_arrData){
+        if ($_arrData){
+            $_arrData   = json_decode($_arrData, true);
+            if ($_arrData && count($_arrData) > 0){
+                $term = date("Ymd") . "%03d";
+                $term   = sprintf($term, count($_arrData));
+                $ssc    = $_arrData[0]['drawNo'];
+                $date   = date("Y-m-d H:i:s", $_arrData[0]['createTime'] / 1000);
+                return array($term, $ssc, $date);
+            }
+        }
+        return array(false, false, false);
+    }
+    public function _dealSSC($_arrData){
+        if ($_arrData && count($_arrData) > 0) {
+            $term = $_arrData[0][0];
+            $ssc = $_arrData[0][1];
+            $date = date("Y-m-d H:i:s");
+            return array($term, $ssc, $date);
+        }
+        return array(false, false, false);
+    }
+
 
     private function _getBjSSC(){
         $url = sprintf($this->BJSSC_URL, urlencode(date("Y-m-d")));
@@ -399,24 +299,6 @@ class ServerSSC{
         }
         return $result;
     }
-
-    //取得当前时间为第几期
-    private function _getCurPeriod(){
-        if (strtotime(date("Y-m-d ") . $this->SSC_PERIOD_1['start']) <= time() && strtotime(date("Y-m-d ") . $this->SSC_PERIOD_1['end']) >= time()){
-            return 1;
-        }elseif(strtotime(date("Y-m-d ") . $this->SSC_PERIOD_2['start']) <= time()){
-            return 2;
-        }elseif(strtotime(date("Y-m-d ") . $this->SSC_PERIOD_3['end']) >=time()){
-            return 3;
-        }
-        elseif(strtotime(date("Y-m-d ") . $this->SSC_PERIOD_4['start']) <= time() && strtotime(date("Y-m-d ") . $this->SSC_PERIOD_4['end']) >= time()){
-            return 4;
-        }
-        else{
-            return -1;
-        }
-    }
-
 
     public function requestUrlByGet($url, &$re, $timeout=30, $retry=1) {
         $ch = curl_init();

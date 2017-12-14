@@ -28,15 +28,27 @@ class Recharge extends \Swoole\Controller
     }
     //保存定单
     function barcodePay(){
+        //取得当前TERM
+        $_curr_period   = $this->storage->getRedis('CURRENT_PERIOD');
+        //取得物品信息
+        $_objGoods  = $this->storage->getGoods($_POST['goodId']);
+        if ($_objGoods && !empty($_objGoods[0]))
+            $_objGoods  = $_objGoods[0];
+
+
+
         $user_id    = $_SESSION['userid'];
         $goods_id   = $_POST['goodId'];
         $amount     = $_POST['amount'];
         $num        = $_POST['purchaseCounts'];
         $payway     = $_POST['payWay'];
         $buytype    = $_POST['sectionNo'];
+        $ssctype    = $_objGoods['type'];
+
+
         error_log(json_encode($_POST) . "\n", 3, "/tmp/ssc.log");
 //        $sscperiods;
-        $orderid    = $this->storage->addOrder($user_id, $goods_id, $amount, $num, $payway, 0, $buytype);
+        $orderid    = $this->storage->addOrder($user_id, $goods_id, $amount, $num, $payway, $_curr_period, $buytype, $ssctype);
         error_log($orderid . "\n", 3, "/tmp/ssc.log");
 
     }
