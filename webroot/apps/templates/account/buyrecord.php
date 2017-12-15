@@ -219,7 +219,7 @@
                             +'	<a style="position: relative;" class="buyList-w-right" href="/account/record/detail?id='+dates[i].id+'&userId='+dates[i].userId+'&srcFrom=SRDB-TEST-001" >'
                             +"		<h3>"+dates[i].name+"</h3>"
                             +'	<p>本期参与：<span style="color: #3b84dd;">'+nickName+'</span></p>'
-                            +'	<p style="top: -.03rem; width: .5rem;position: absolute; text-align: center; right: .05rem;color:#ff0033;border-radius:.04rem;background-color:#fff;border: 1px solid #FF0033;">查看</p>'
+                            +'	<p style="top: -.03rem; width: .5rem;position: absolute; text-align: center; right: .05rem;color:#ff0033;border-radius:.04rem;background-color:#fff;border: 1px solid #FF0033;">付款</p>'
                             +'		<p class=" ">参与时间：'+dates[i].showTime+'</p>'
                             +'		<p class="bl-wr-duan">参与号段：<span class="cr">'+dates[i].sectionNo+'</span><span class="bl-wr-ride cr"><img src="/images/ride.png" alt=""></span><span class="cr">'+dates[i].purchaseCounts+'</span><span class="cr">单</span></p>'
                             +'	</a>'
@@ -238,7 +238,7 @@
                             +'	<a style="position: relative;" class="buyList-w-right" href="/account/record/detail?id='+dates[i].id+'&userId='+dates[i].userId+'&srcFrom=SRDB-TEST-001" >'
                             +"		<h3>"+dates[i].name+"</h3>"
                             +'	<p>本期参与：<span style="color: #3b84dd;">'+nickName+'</span></p>'
-                            +'	<p style="top: -.03rem; width: .5rem;position: absolute; text-align: center; right: .05rem;color:#ff0033;border-radius:.04rem;background-color:#fff;border: 1px solid #FF0033;">付款</p>'
+                            +'	<p style="top: -.03rem; width: .5rem;position: absolute; text-align: center; right: .05rem;color:#ff0033;border-radius:.04rem;background-color:#fff;border: 1px solid #FF0033;">查看</p>'
                             +'		<p class=" ">参与时间：'+dates[i].showTime+'</p>'
                             +'		<p class="bl-wr-duan">参与号段：<span class="cr">'+dates[i].sectionNo+'</span><span class="bl-wr-ride cr"><img src="/images/ride.png" alt=""></span><span class="cr">'+dates[i].purchaseCounts+'</span><span class="cr">单</span></p>'
                             +'	</a>'
