@@ -131,6 +131,7 @@ class ServerSSC{
         $this->storage->addSSC($_currTerm, $_currSSC, $_currDate);
         //将本次Period和下一次开奖时间存入MC
         $this->storage->writeRedis('CURRENT_PERIOD', $_currTerm);
+        $this->storage->writeRedis('NEXT_CURRENT_PERIOD', ($_currTerm + 1) >=120 ? 1 : ($_currTerm + 1));
         $this->storage->writeRedis('CURRENT_SSC', $_currSSC);
         $this->storage->writeRedis('NEXT_OPEN_TIME', date("Y-m-d ") . $this->_ssc_times[$this->_curr_period + 1]);
 
@@ -143,6 +144,7 @@ class ServerSSC{
 
     //递归取得SSC内容
     function _getRecursionSSC($num = 5){
+        error_log('递归取得SSC内容:' . $num . "\n", 3, "/log/ssc.log");
         if ($num == 0)
             return [false, false, false];
         if ($this->_ssc_type == 'bj'){
