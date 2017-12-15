@@ -71,7 +71,7 @@ class Account extends \Swoole\Controller
                     }
                 }
                 $_order['nickname'] = $o['user']['name'];
-                $_order['path'] = $o['user']['pic'];
+                $_order['path'] = $o['goods']['small_image'];
                 $_order['id'] = $o['id'];
                 $_order['userId'] = $o['user']['id'];
                 $_order['name'] = $o['goods']['name'];

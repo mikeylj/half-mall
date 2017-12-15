@@ -188,7 +188,45 @@
 //                    if(dates[i].nickname.length>5){
 //                        nickName=dates[i].nickname.substr(0,5)+"...";
 //                    }
-                    if(dates[i].orderStatus=='0'){
+                    if(dates[i].orderStatus=='-1'){
+                        appendStr +='<li class="buyList" style="padding-bottom:0px; border-bottom:2px solid #f1f1f1;">'
+                            +'<div class="buyList-w" >'
+                            +'	<div style="z-index: 999;" class="buyList-w-left">'
+                            +'		<a class="bl-w-l-img" href="">'
+                            +'			<img src="/'+dates[i].path+'" alt="">'
+                            +'		</a>'
+                            +'		<p class="bl-w-l-txt cr">已过期</p>'
+                            +'	</div>'
+                            +'	<a style="position: relative;" class="buyList-w-right" href="/account/record/detail?id='+dates[i].id+'&userId='+dates[i].userId+'&srcFrom=SRDB-TEST-001" >'
+                            +"		<h3>"+dates[i].name+"</h3>"
+                            +'	<p>本期参与：<span style="color: #3b84dd;">'+nickName+'</span></p>'
+                            +'	<p style="top: -.03rem; width: .5rem;position: absolute; text-align: center; right: .05rem;color:#ff0033;border-radius:.04rem;background-color:#fff;border: 1px solid #FF0033;">查看</p>'
+                            +'		<p class=" ">参与时间：'+dates[i].showTime+'</p>'
+                            +'		<p class="bl-wr-duan">参与号段：<span class="cr">'+dates[i].sectionNo+'</span><span class="bl-wr-ride cr"><img src="/images/ride.png" alt=""></span><span class="cr">'+dates[i].purchaseCounts+'</span><span class="cr">单</span></p>'
+                            +'	</a>'
+                            +'</div>'
+                            +'</li>'
+                    }
+                    else if(dates[i].orderStatus=='0'){
+                        appendStr +='<li class="buyList" style="padding-bottom:0px; border-bottom:2px solid #f1f1f1;">'
+                            +'<div class="buyList-w" >'
+                            +'	<div style="z-index: 999;" class="buyList-w-left">'
+                            +'		<a class="bl-w-l-img" href="">'
+                            +'			<img src="/'+dates[i].path+'" alt="">'
+                            +'		</a>'
+                            +'		<p class="bl-w-l-txt cr">等待付款</p>'
+                            +'	</div>'
+                            +'	<a style="position: relative;" class="buyList-w-right" href="/account/record/detail?id='+dates[i].id+'&userId='+dates[i].userId+'&srcFrom=SRDB-TEST-001" >'
+                            +"		<h3>"+dates[i].name+"</h3>"
+                            +'	<p>本期参与：<span style="color: #3b84dd;">'+nickName+'</span></p>'
+                            +'	<p style="top: -.03rem; width: .5rem;position: absolute; text-align: center; right: .05rem;color:#ff0033;border-radius:.04rem;background-color:#fff;border: 1px solid #FF0033;">查看</p>'
+                            +'		<p class=" ">参与时间：'+dates[i].showTime+'</p>'
+                            +'		<p class="bl-wr-duan">参与号段：<span class="cr">'+dates[i].sectionNo+'</span><span class="bl-wr-ride cr"><img src="/images/ride.png" alt=""></span><span class="cr">'+dates[i].purchaseCounts+'</span><span class="cr">单</span></p>'
+                            +'	</a>'
+                            +'</div>'
+                            +'</li>'
+                    }
+                    else if(dates[i].orderStatus=='1'){
                         appendStr +='<li class="buyList" style="padding-bottom:0px; border-bottom:2px solid #f1f1f1;">'
                             +'<div class="buyList-w" >'
                             +'	<div style="z-index: 999;" class="buyList-w-left">'
@@ -206,7 +244,7 @@
                             +'	</a>'
                             +'</div>'
                             +'</li>'
-                    }else if(dates[i].orderStatus=='1'){
+                    }else if(dates[i].orderStatus=='2'){
                         appendStr +='<li class="buyList" style="padding-bottom:0px; border-bottom:2px solid #f1f1f1;">'
                             +'<div class="buyList-w"  >'
                             +'	<div style="z-index: 999;" class="buyList-w-left">'
@@ -226,7 +264,7 @@
                             +'</a>'
                             +'</div>'
                             +'</li>'
-                    }else if(dates[i].orderStatus=='2'){
+                    }else if(dates[i].orderStatus=='3'){
                         appendStr +='<li class="buyList" style="padding-bottom:0px; border-bottom:2px solid #f1f1f1;">'
                             +'<div class="buyList-w buyList-w-win" >'
                             +'	<div style="z-index: 999;" class="buyList-w-left">'
