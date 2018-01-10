@@ -129,359 +129,66 @@
                 </ul>
                 <div class="area-wNL">
                     <ul class="area-wNLItem">
-                        <a href="">
-                            <li class="area-wNLIlist">
-                                <div class="area-wnllImg">
-                                    <img src="http://wx.qlogo.cn/mmopen/vi_32/DVxgsQUfMS3f7d1oDWk55Dpv8ShUwibQl3ibc0kH1iacT73dEarDavBxVEliaAXX5pnqF19hURrUsibYZ0ZYngTtbNw/0" alt="">
-                                </div>
-                                <div class="area-wnllTxt">
-                                    <div>
-                                        <p class="ar-wnlltt"><span>苦中作乐</span></p>
-                                        <p class="ar-wnlltb-time">2017-12-08 17:09:48</p>
+                        <?php
+                        foreach ($arrWinOrders as $order) {
+                            ?>
+                            <a href="">
+                                <li class="area-wNLIlist">
+                                    <div class="area-wnllImg">
+                                        <img src="<?php echo $arrUsers[$order['userid']]['pic']?>"
+                                             alt="">
                                     </div>
-                                    <div class="ar-wnlltb">
-                                        <p class="ar-wnlltb-luckyN">刚刚获胜夺得商品<span>5</span>单;---</p>
-                                        <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[中国]223.104.108.199</p>
+                                    <div class="area-wnllTxt">
+                                        <div>
+                                            <p class="ar-wnlltt"><span><?php echo $arrUsers[$order['userid']]['name']?></span></p>
+                                            <p class="ar-wnlltb-time"><?php echo $order['ctime']?></p>
+                                        </div>
+                                        <div class="ar-wnlltb">
+                                            <p class="ar-wnlltb-luckyN">刚刚获胜夺得商品<span><?php echo $order['num']?></span>单;---</p>
+                                            <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">
+                                                [中国]<?php echo $order['ip']?></p>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                        </a>
-                        <a href="">
-                            <li class="area-wNLIlist">
-                                <div class="area-wnllImg">
-                                    <img src="http://wx.qlogo.cn/mmopen/vi_32/BNuWgnLWtRXe9Lf35BUNlxYZRWauMYeZApYPmib4ibmABKF90FPGo50fCRFMUSST4gOLy2NOJmHvfRibia3CfVbtJw/0" alt="">
-                                </div>
-                                <div class="area-wnllTxt">
-                                    <div>
-                                        <p class="ar-wnlltt"><span>运气</span></p>
-                                        <p class="ar-wnlltb-time">2017-12-08 17:09:28</p>
-                                    </div>
-                                    <div class="ar-wnlltb">
-                                        <p class="ar-wnlltb-luckyN">刚刚获胜夺得商品<span>3</span>单;---</p>
-                                        <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[浙江省宁波市宁海县]36.22.24.6</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </a>
-                        <a href="">
-                            <li class="area-wNLIlist">
-                                <div class="area-wnllImg">
-                                    <img src="http://www.zzgwsc.com/headImageUrl/2017-11-24/17112423290748580.png" alt="">
-                                </div>
-                                <div class="area-wnllTxt">
-                                    <div>
-                                        <p class="ar-wnlltt"><span>名字啊</span></p>
-                                        <p class="ar-wnlltb-time">2017-12-08 17:08:30</p>
-                                    </div>
-                                    <div class="ar-wnlltb">
-                                        <p class="ar-wnlltb-luckyN">刚刚获胜夺得商品<span>1</span>单;---</p>
-                                        <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[甘肃省武威市凉州区]27.226.146.122</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </a>
-                        <a href="">
-                            <li class="area-wNLIlist">
-                                <div class="area-wnllImg">
-                                    <img src="http://www.zzgwsc.com/headImageUrl/2017-10-15/17101513003919026.png" alt="">
-                                </div>
-                                <div class="area-wnllTxt">
-                                    <div>
-                                        <p class="ar-wnlltt"><span>8023</span></p>
-                                        <p class="ar-wnlltb-time">2017-12-08 17:07:14</p>
-                                    </div>
-                                    <div class="ar-wnlltb">
-                                        <p class="ar-wnlltb-luckyN">刚刚获胜夺得商品<span>1</span>单;---</p>
-                                        <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[河北省石家庄市]223.104.13.33</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </a>
-                        <a href="/account/record?userId=55266&srcFrom=SRDB-TEST-001">
-                            <li class="area-wNLIlist">
-                                <div class="area-wnllImg">
-                                    <img src="http://wx.qlogo.cn/mmopen/gHtet1U8y2KYGZAicBu9E4jX80fw0veH0ghomQKXOkWa0ST64hGnarjibibnxkZl3Kg8hw3TYvdlhy3Wz2A31CKhrjRIlqaAv8J/" alt="">
-                                </div>
-                                <div class="area-wnllTxt">
-                                    <div>
-                                        <p class="ar-wnlltt"><span>與世無爭</span></p>
-                                        <p class="ar-wnlltb-time">2017-12-08 17:07:02</p>
-                                    </div>
-                                    <div class="ar-wnlltb">
-                                        <p class="ar-wnlltb-luckyN">刚刚获胜夺得商品<span>10</span>单;---</p>
-                                        <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[陕西省西安市]117.136.25.75</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </a>
-                        <a href="">
-                            <li class="area-wNLIlist">
-                                <div class="area-wnllImg">
-                                    <img src="http://wx.qlogo.cn/mmopen/vi_32/Ljzwqyst2y507Bmzv5Uib032RkoFBm8PvouibhLZumqoSCLwaDnpBNB3tIP9j9UykCOs4LCyDpuOLeSKLESfCM8Q/0" alt="">
-                                </div>
-                                <div class="area-wnllTxt">
-                                    <div>
-                                        <p class="ar-wnlltt"><span>联创手机维...</span></p>
-                                        <p class="ar-wnlltb-time">2017-12-08 17:06:04</p>
-                                    </div>
-                                    <div class="ar-wnlltb">
-                                        <p class="ar-wnlltb-luckyN">刚刚获胜夺得商品<span>1</span>单;---</p>
-                                        <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[山东省临沂市沂水县]60.213.108.141</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </a>
-                        <a href="">
-                            <li class="area-wNLIlist">
-                                <div class="area-wnllImg">
-                                    <img src="http://www.zzgwsc.com/headImageUrl/2017-11-08/17110800434056613.png" alt="">
-                                </div>
-                                <div class="area-wnllTxt">
-                                    <div>
-                                        <p class="ar-wnlltt"><span>天天开心</span></p>
-                                        <p class="ar-wnlltb-time">2017-12-08 17:05:44</p>
-                                    </div>
-                                    <div class="ar-wnlltb">
-                                        <p class="ar-wnlltb-luckyN">刚刚获胜夺得商品<span>5</span>单;---</p>
-                                        <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[浙江省杭州市]112.17.235.145</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </a>
-                        <a href="">
-                            <li class="area-wNLIlist">
-                                <div class="area-wnllImg">
-                                    <img src="http://www.zzgwsc.com/headImageUrl/2017-11-12/17111221251555913.png" alt="">
-                                </div>
-                                <div class="area-wnllTxt">
-                                    <div>
-                                        <p class="ar-wnlltt"><span>向前看</span></p>
-                                        <p class="ar-wnlltb-time">2017-12-08 17:05:00</p>
-                                    </div>
-                                    <div class="ar-wnlltb">
-                                        <p class="ar-wnlltb-luckyN">刚刚获胜夺得商品<span>10</span>单;---</p>
-                                        <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[山东省青岛市]223.104.189.45</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </a>
-                        <a href="">
-                            <li class="area-wNLIlist">
-                                <div class="area-wnllImg">
-                                    <img src="http://wx.qlogo.cn/mmopen/6wvUaJ4PjUbBIgblvE907htEoMyTSJkQPrFAvPlPWtX7th3cFCFKrI86xSJkTxuAb50QgJ36E5R9dYDdoibDMa7cGlVd91Fps/" alt="">
-                                </div>
-                                <div class="area-wnllTxt">
-                                    <div>
-                                        <p class="ar-wnlltt"><span>Yang?...</span></p>
-                                        <p class="ar-wnlltb-time">2017-12-08 17:03:15</p>
-                                    </div>
-                                    <div class="ar-wnlltb">
-                                        <p class="ar-wnlltb-luckyN">刚刚获胜夺得商品<span>1</span>单;---</p>
-                                        <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[四川省成都市]117.172.26.43</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </a>
-                        <a href="">
-                            <li class="area-wNLIlist">
-                                <div class="area-wnllImg">
-                                    <img src="http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKmj2hibqrMD5R9y7I0n6v4qSCwcYwqiaNU82K2JX6zp3icLws6sqvg8aEhkYra4vO672c5pPnNbZ6wA/0" alt="">
-                                </div>
-                                <div class="area-wnllTxt">
-                                    <div>
-                                        <p class="ar-wnlltt"><span>小梁</span></p>
-                                        <p class="ar-wnlltb-time">2017-12-08 16:59:42</p>
-                                    </div>
-                                    <div class="ar-wnlltb">
-                                        <p class="ar-wnlltb-luckyN">刚刚获胜夺得商品<span>1</span>单;---</p>
-                                        <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[江西省上饶市]106.6.35.129</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </a>
-                        <a href="">
-                            <li class="area-wNLIlist">
-                                <div class="area-wnllImg">
-                                    <img src="http://wx.qlogo.cn/mmopen/bNqVZcia7iaBx2v5HmQm8JxoWhdHljY3UtjDWhLRyZaDtxVtHONdwibABNd4mxt7ktF0eAPbmu95R8bVicUMREEyc2ibDR3V2YZ1a2dEZ1x4uriaY/0" alt="">
-                                </div>
-                                <div class="area-wnllTxt">
-                                    <div>
-                                        <p class="ar-wnlltt"><span>奋斗的路人...</span></p>
-                                        <p class="ar-wnlltb-time">2017-12-08 16:59:15</p>
-                                    </div>
-                                    <div class="ar-wnlltb">
-                                        <p class="ar-wnlltb-luckyN">刚刚获胜夺得商品<span>1</span>单;---</p>
-                                        <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[广东省佛山市]116.5.2.75</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </a>
-                        <a href="">
-                            <li class="area-wNLIlist">
-                                <div class="area-wnllImg">
-                                    <img src="http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJUYHWnZz9BGfZeJmHo22qrMAJAaicsNqwA7CRDIvuVHR1914bFs2icocDsZ8pI4ibWyc3ukRJAkBXicw/0" alt="">
-                                </div>
-                                <div class="area-wnllTxt">
-                                    <div>
-                                        <p class="ar-wnlltt"><span>樱花草</span></p>
-                                        <p class="ar-wnlltb-time">2017-12-08 16:58:57</p>
-                                    </div>
-                                    <div class="ar-wnlltb">
-                                        <p class="ar-wnlltb-luckyN">刚刚获胜夺得商品<span>1</span>单;---</p>
-                                        <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[广东省清远市]116.16.90.137</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </a>
-                        <a href="">
-                            <li class="area-wNLIlist">
-                                <div class="area-wnllImg">
-                                    <img src="http://wx.qlogo.cn/mmopen/vi_32/n10YaOC5Gpe8qmx79icrPfxmvPHhRJrCZ9jwicjaWfztdullY8oj4NeA4MDAicJeoMLu3vzxasbMFjmRx55eWUQlQ/0" alt="">
-                                </div>
-                                <div class="area-wnllTxt">
-                                    <div>
-                                        <p class="ar-wnlltt"><span>日月明</span></p>
-                                        <p class="ar-wnlltb-time">2017-12-08 16:56:00</p>
-                                    </div>
-                                    <div class="ar-wnlltb">
-                                        <p class="ar-wnlltb-luckyN">刚刚获胜夺得商品<span>3</span>单;---</p>
-                                        <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[山西省太原市]117.136.90.153</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </a>
-                        <a href="">
-                            <li class="area-wNLIlist">
-                                <div class="area-wnllImg">
-                                    <img src="http://www.zzgwsc.com/headImageUrl/2017-10-11/17101118105166045.png" alt="">
-                                </div>
-                                <div class="area-wnllTxt">
-                                    <div>
-                                        <p class="ar-wnlltt"><span>高新</span></p>
-                                        <p class="ar-wnlltb-time">2017-12-08 16:55:15</p>
-                                    </div>
-                                    <div class="ar-wnlltb">
-                                        <p class="ar-wnlltb-luckyN">刚刚获胜夺得商品<span>1</span>单;---</p>
-                                        <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[湖北省武汉市]59.175.26.72</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </a>
-                        <a href="">
-                            <li class="area-wNLIlist">
-                                <div class="area-wnllImg">
-                                    <img src="http://wx.qlogo.cn/mmopen/6wvUaJ4PjUb2ZR1eqMJ9WiaLm1Z6zX7iaKS3jEdlyIngshHibysOlrRviaGbYdIdEsKyOqLR50PSWg2pEAgedHiaNtQ5R4WJ7SicMK/0" alt="">
-                                </div>
-                                <div class="area-wnllTxt">
-                                    <div>
-                                        <p class="ar-wnlltt"><span>SH</span></p>
-                                        <p class="ar-wnlltb-time">2017-12-08 16:54:21</p>
-                                    </div>
-                                    <div class="ar-wnlltb">
-                                        <p class="ar-wnlltb-luckyN">刚刚获胜夺得商品<span>3</span>单;---</p>
-                                        <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[四川成都]118.114.77.47</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </a>
-                        <a href="">
-                            <li class="area-wNLIlist">
-                                <div class="area-wnllImg">
-                                    <img src="http://wx.qlogo.cn/mmopen/vi_32/Ljzwqyst2y507Bmzv5Uib032RkoFBm8PvouibhLZumqoSCLwaDnpBNB3tIP9j9UykCOs4LCyDpuOLeSKLESfCM8Q/0" alt="">
-                                </div>
-                                <div class="area-wnllTxt">
-                                    <div>
-                                        <p class="ar-wnlltt"><span>联创手机维...</span></p>
-                                        <p class="ar-wnlltb-time">2017-12-08 16:53:34</p>
-                                    </div>
-                                    <div class="ar-wnlltb">
-                                        <p class="ar-wnlltb-luckyN">刚刚获胜夺得商品<span>1</span>单;---</p>
-                                        <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[山东省临沂市沂水县]60.213.108.141</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </a>
-                        <a href="">
-                            <li class="area-wNLIlist">
-                                <div class="area-wnllImg">
-                                    <img src="http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIllOQsNSuLe0icbvhWFrsAq7paWJHJHsAzKedUJJZ8RXhBic7nS8TQMNcjr1fwyAwfHqJlTHBVqKLQ/0" alt="">
-                                </div>
-                                <div class="area-wnllTxt">
-                                    <div>
-                                        <p class="ar-wnlltt"><span>阳光</span></p>
-                                        <p class="ar-wnlltb-time">2017-12-08 16:53:00</p>
-                                    </div>
-                                    <div class="ar-wnlltb">
-                                        <p class="ar-wnlltb-luckyN">刚刚获胜夺得商品<span>2</span>单;---</p>
-                                        <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[贵州省毕节地区]58.16.178.50</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </a>
-                        <a href="">
-                            <li class="area-wNLIlist">
-                                <div class="area-wnllImg">
-                                    <img src="http://wx.qlogo.cn/mmopen/vi_32/QYibzxIXVY5qFQrFxq5gA0oHAxpDgKhG5ibQPUZ9TlunRbM2cOaTAGph8yrRrpE4ArIAHpC0hk5zXCpudgBev68g/0" alt="">
-                                </div>
-                                <div class="area-wnllTxt">
-                                    <div>
-                                        <p class="ar-wnlltt"><span>Beatl...</span></p>
-                                        <p class="ar-wnlltb-time">2017-12-08 16:51:02</p>
-                                    </div>
-                                    <div class="ar-wnlltb">
-                                        <p class="ar-wnlltb-luckyN">刚刚获胜夺得商品<span>2</span>单;---</p>
-                                        <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[四川省成都市]110.184.73.66</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </a>
-                        <a href="">
-                            <li class="area-wNLIlist">
-                                <div class="area-wnllImg">
-                                    <img src="http://www.zzgwsc.com/headImageUrl/2017-11-25/171125110840415.png" alt="">
-                                </div>
-                                <div class="area-wnllTxt">
-                                    <div>
-                                        <p class="ar-wnlltt"><span>阿西吧</span></p>
-                                        <p class="ar-wnlltb-time">2017-12-08 16:49:46</p>
-                                    </div>
-                                    <div class="ar-wnlltb">
-                                        <p class="ar-wnlltb-luckyN">刚刚获胜夺得商品<span>1</span>单;---</p>
-                                        <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[北京市]106.121.63.60</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </a>
-                        <a href="">
-                            <li class="area-wNLIlist">
-                                <div class="area-wnllImg">
-                                    <img src="http://wx.qlogo.cn/mmopen/vi_32/s9wWLIB6vWgCdqkyYrFOIJMAhXHzyyjI8gr6ibpcfbXia274zP2HWUftg9xmKQx4EJFU0x4ic57JicFQSdO0qHytXA/0" alt="">
-                                </div>
-                                <div class="area-wnllTxt">
-                                    <div>
-                                        <p class="ar-wnlltt"><span>东北虎</span></p>
-                                        <p class="ar-wnlltb-time">2017-12-08 16:49:39</p>
-                                    </div>
-                                    <div class="ar-wnlltb">
-                                        <p class="ar-wnlltb-luckyN">刚刚获胜夺得商品<span>1</span>单;---</p>
-                                        <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[广东省东莞市]14.222.45.118</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </a>
+                                </li>
+                            </a>
+                            <?php
+                        }
+                        ?>
+
                     </ul>
                 </div>
             </div>
             <div style="overflow:hidden; background-color:#db3652;height: .26rem; padding:.04rem .05rem 0;">
                 <div style="float:left; width:48%;">
-                    <span style="color: white;">上期幸运号段:</span>
+                    <span style="color: white;">上期幸运号段:<?php echo $current_ssc;?></span>
                     <span style="display: inline-block;">
 <!--                        type3s.png
 type3b.png
 type4s.png
 
 -->
-	            			<img src="/images/type4b.png" style="width:.6rem; vertical-align: middle;">
+                        <?php
+                        $_img   = '';
+                        if ($goods['type'] == 1){
+                            if ($current_ssc_val > 55){
+                                $_img   =  "/images/type4b.png";
+                            }
+                            else{
+                                $_img   =  "/images/type4s.png";
+                            }
+                        }
+                        else{
+                            if ($current_ssc_val > 55){
+                                $_img   =  "/images/type3b.png";
+                            }
+                            else{
+                                $_img   =  "/images/type3s.png";
+                            }
+                        }
+                        ?>
+
+                        <img src="<?php echo $_img;?>" style="width:.6rem; vertical-align: middle;">
+
 	   					</span>
                 </div>
                 <div class="mannounced-lt-time" style="float: right; width:52%; text-align:left; color:#fff; ">
@@ -515,329 +222,30 @@ type4s.png
 
         <!-- 参与记录的列表 -->
         <ul class="area-partlist" style="padding-bottom:.42rem;">
-            <a href="">
-                <li class="area-pL-Item">
-                    <div class="area-pLI-img">
-                        <img src="http://wx.qlogo.cn/mmopen/vi_32/r6JxpG3pB7l7kcRREz0FFqDO1YCrwGtDqy81jAAexddpcXiadJBolErRskfLgQibrupw9sribWyFxZAktyWGEVSzQ/0" >
-                    </div>
-                    <div class="area-pLI-txt">
-                        <div>
-                            <p class="area-pLITxtT"><span>ddrsx...</span></p>
-                            <p class="area-pLITxtBTime">2017-12-08 17:15:02</p>
+            <?php
+            foreach ($arrTakePartInOrders as $order) {
+                ?>
+                <a href="">
+                    <li class="area-pL-Item">
+                        <div class="area-pLI-img">
+                            <img src="<?php echo $arrUsers[$order['userid']]['pic']?>">
                         </div>
-                        <div class="area-pLITxtB">
-                            <p class="area-pLITxtB-pTime">刚刚参与了<span>1</span>单;---</p>
-                            <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[浙江省杭州市]112.17.241.175</p>
+                        <div class="area-pLI-txt">
+                            <div>
+                                <p class="area-pLITxtT"><span><?php echo $arrUsers[$order['userid']]['name']?></span></p>
+                                <p class="area-pLITxtBTime"><?php echo $order['ctime']?></p>
+                            </div>
+                            <div class="area-pLITxtB">
+                                <p class="area-pLITxtB-pTime">刚刚参与了<span><?php echo $order['num']?></span>单;---</p>
+                                <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[浙江省杭州市]<?php echo $order['ip']?></p>
+                            </div>
                         </div>
-                    </div>
-                </li>
-            </a>
-            <a href="">
-                <li class="area-pL-Item">
-                    <div class="area-pLI-img">
-                        <img src="http://wx.qlogo.cn/mmopen/cPCyHQyGWMF65ZUjvqABicrGLnQ1dPdSLI4quLczAjHBXU5THVblMcGsedgQwEnORA1knESfU6hNNib1HOG3YJB5HIU1AYsOmz/0" >
-                    </div>
-                    <div class="area-pLI-txt">
-                        <div>
-                            <p class="area-pLITxtT"><span>AA 小云...</span></p>
-                            <p class="area-pLITxtBTime">2017-12-08 17:14:13</p>
-                        </div>
-                        <div class="area-pLITxtB">
-                            <p class="area-pLITxtB-pTime">刚刚参与了<span>20</span>单;---</p>
-                            <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[北京市]114.255.188.79</p>
-                        </div>
-                    </div>
-                </li>
-            </a>
-            <a href="">
-                <li class="area-pL-Item">
-                    <div class="area-pLI-img">
-                        <img src="http://wx.qlogo.cn/mmopen/cPCyHQyGWMGW3Mu3iaPWc4S8ZUhHSW7hBqFh6GgXLlQonGfHehu2ibzwAvEdEIiapZcx8gDibMJbmwWJlFLWyHqDWwKjlh7FqbZv/0" >
-                    </div>
-                    <div class="area-pLI-txt">
-                        <div>
-                            <p class="area-pLITxtT"><span>无可替代</span></p>
-                            <p class="area-pLITxtBTime">2017-12-08 17:13:45</p>
-                        </div>
-                        <div class="area-pLITxtB">
-                            <p class="area-pLITxtB-pTime">刚刚参与了<span>5</span>单;---</p>
-                            <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[江苏省淮安市]180.125.42.162</p>
-                        </div>
-                    </div>
-                </li>
-            </a>
-            <a href="">
-                <li class="area-pL-Item">
-                    <div class="area-pLI-img">
-                        <img src="http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLARmiaaNmegW9Cul7MjK1EcFArGpNqwtJ2IEwWskaWxqtYWpA52OxGwOlGWibEIRMT6oWicwEDEb6icw/0" >
-                    </div>
-                    <div class="area-pLI-txt">
-                        <div>
-                            <p class="area-pLITxtT"><span>Forge...</span></p>
-                            <p class="area-pLITxtBTime">2017-12-08 17:13:33</p>
-                        </div>
-                        <div class="area-pLITxtB">
-                            <p class="area-pLITxtB-pTime">刚刚参与了<span>5</span>单;---</p>
-                            <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[北京市通州区]114.242.248.215</p>
-                        </div>
-                    </div>
-                </li>
-            </a>
-            <a href="">
-                <li class="area-pL-Item">
-                    <div class="area-pLI-img">
-                        <img src="http://wx.qlogo.cn/mmopen/Q3auHgzwzM7FicWl5Aa1cdPeZyGnmc26of8BymaPRo8vg3BJCckwo2KET103QUHnOzvanuXjPWXv6tk0ibK6PD0icPR2Hz2LCU7oeM9EnYibWC0/0" >
-                    </div>
-                    <div class="area-pLI-txt">
-                        <div>
-                            <p class="area-pLITxtT"><span>天才下小雨</span></p>
-                            <p class="area-pLITxtBTime">2017-12-08 17:13:07</p>
-                        </div>
-                        <div class="area-pLITxtB">
-                            <p class="area-pLITxtB-pTime">刚刚参与了<span>5</span>单;---</p>
-                            <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[河北省廊坊市]60.10.193.2</p>
-                        </div>
-                    </div>
-                </li>
-            </a>
-            <a href="">
-                <li class="area-pL-Item">
-                    <div class="area-pLI-img">
-                        <img src="http://www.zzgwsc.com/headImageUrl/2017-11-23/17112315074071385.png" >
-                    </div>
-                    <div class="area-pLI-txt">
-                        <div>
-                            <p class="area-pLITxtT"><span>人心不足蛇...</span></p>
-                            <p class="area-pLITxtBTime">2017-12-08 17:12:00</p>
-                        </div>
-                        <div class="area-pLITxtB">
-                            <p class="area-pLITxtB-pTime">刚刚参与了<span>5</span>单;---</p>
-                            <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[四川省成都市]171.217.98.134</p>
-                        </div>
-                    </div>
-                </li>
-            </a>
-            <a href="">
-                <li class="area-pL-Item">
-                    <div class="area-pLI-img">
-                        <img src="http://wx.qlogo.cn/mmopen/vi_32/DVxgsQUfMS3f7d1oDWk55Dpv8ShUwibQl3ibc0kH1iacT73dEarDavBxVEliaAXX5pnqF19hURrUsibYZ0ZYngTtbNw/0" >
-                    </div>
-                    <div class="area-pLI-txt">
-                        <div>
-                            <p class="area-pLITxtT"><span>苦中作乐</span></p>
-                            <p class="area-pLITxtBTime">2017-12-08 17:11:42</p>
-                        </div>
-                        <div class="area-pLITxtB">
-                            <p class="area-pLITxtB-pTime">刚刚参与了<span>20</span>单;---</p>
-                            <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[中国]223.104.108.199</p>
-                        </div>
-                    </div>
-                </li>
-            </a>
-            <a href="">
-                <li class="area-pL-Item">
-                    <div class="area-pLI-img">
-                        <img src="http://www.zzgwsc.com/headImageUrl/2017-11-08/17110817222946895.png" >
-                    </div>
-                    <div class="area-pLI-txt">
-                        <div>
-                            <p class="area-pLITxtT"><span>HKC</span></p>
-                            <p class="area-pLITxtBTime">2017-12-08 17:09:57</p>
-                        </div>
-                        <div class="area-pLITxtB">
-                            <p class="area-pLITxtB-pTime">刚刚参与了<span>2</span>单;---</p>
-                            <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[北京市]59.109.114.205</p>
-                        </div>
-                    </div>
-                </li>
-            </a>
-            <a href="">
-                <li class="area-pL-Item">
-                    <div class="area-pLI-img">
-                        <img src="http://wx.qlogo.cn/mmopen/gHtet1U8y2KYGZAicBu9E4vJrlm6LHXbiaU09FBHyabttLp2Biaia8ID6YiaLdCytUZttkFn4nuIJdCZJTVbgIYtEckboscQ7hEia3/" >
-                    </div>
-                    <div class="area-pLI-txt">
-                        <div>
-                            <p class="area-pLITxtT"><span>凉博.</span></p>
-                            <p class="area-pLITxtBTime">2017-12-08 17:09:48</p>
-                        </div>
-                        <div class="area-pLITxtB">
-                            <p class="area-pLITxtB-pTime">刚刚参与了<span>1</span>单;---</p>
-                            <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[北京市]120.239.12.33</p>
-                        </div>
-                    </div>
-                </li>
-            </a>
-            <a href="">
-                <li class="area-pL-Item">
-                    <div class="area-pLI-img">
-                        <img src="http://wx.qlogo.cn/mmopen/vi_32/DVxgsQUfMS3f7d1oDWk55Dpv8ShUwibQl3ibc0kH1iacT73dEarDavBxVEliaAXX5pnqF19hURrUsibYZ0ZYngTtbNw/0" >
-                    </div>
-                    <div class="area-pLI-txt">
-                        <div>
-                            <p class="area-pLITxtT"><span>苦中作乐</span></p>
-                            <p class="area-pLITxtBTime">2017-12-08 17:09:48</p>
-                        </div>
-                        <div class="area-pLITxtB">
-                            <p class="area-pLITxtB-pTime">刚刚参与了<span>5</span>单;---</p>
-                            <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[中国]223.104.108.199</p>
-                        </div>
-                    </div>
-                </li>
-            </a>
-            <a href="">
-                <li class="area-pL-Item">
-                    <div class="area-pLI-img">
-                        <img src="http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKmj2hibqrMD5R9y7I0n6v4qSCwcYwqiaNU82K2JX6zp3icLws6sqvg8aEhkYra4vO672c5pPnNbZ6wA/0" >
-                    </div>
-                    <div class="area-pLI-txt">
-                        <div>
-                            <p class="area-pLITxtT"><span>小梁</span></p>
-                            <p class="area-pLITxtBTime">2017-12-08 17:09:46</p>
-                        </div>
-                        <div class="area-pLITxtB">
-                            <p class="area-pLITxtB-pTime">刚刚参与了<span>1</span>单;---</p>
-                            <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[江西省上饶市]106.6.35.129</p>
-                        </div>
-                    </div>
-                </li>
-            </a>
-            <a href="/account/record?userId=179786&srcFrom=SRDB-TEST-001">
-                <li class="area-pL-Item">
-                    <div class="area-pLI-img">
-                        <img src="http://wx.qlogo.cn/mmopen/vi_32/BNuWgnLWtRXe9Lf35BUNlxYZRWauMYeZApYPmib4ibmABKF90FPGo50fCRFMUSST4gOLy2NOJmHvfRibia3CfVbtJw/0" >
-                    </div>
-                    <div class="area-pLI-txt">
-                        <div>
-                            <p class="area-pLITxtT"><span>运气</span></p>
-                            <p class="area-pLITxtBTime">2017-12-08 17:09:28</p>
-                        </div>
-                        <div class="area-pLITxtB">
-                            <p class="area-pLITxtB-pTime">刚刚参与了<span>3</span>单;---</p>
-                            <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[浙江省宁波市宁海县]36.22.24.6</p>
-                        </div>
-                    </div>
-                </li>
-            </a>
-            <a href="">
-                <li class="area-pL-Item">
-                    <div class="area-pLI-img">
-                        <img src="http://wx.qlogo.cn/mmopen/cPCyHQyGWMHVcHCQk9U90vKwcvK1poLYEOhC2oZQHDOwxsz2DgLiaVHzehBxYplaYBp427v59kPN6udlFr6o56N2vlST2BeUV/" >
-                    </div>
-                    <div class="area-pLI-txt">
-                        <div>
-                            <p class="area-pLITxtT"><span>hala</span></p>
-                            <p class="area-pLITxtBTime">2017-12-08 17:09:24</p>
-                        </div>
-                        <div class="area-pLITxtB">
-                            <p class="area-pLITxtB-pTime">刚刚参与了<span>3</span>单;---</p>
-                            <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[湖南省长沙市]220.202.153.34</p>
-                        </div>
-                    </div>
-                </li>
-            </a>
-            <a href="">
-                <li class="area-pL-Item">
-                    <div class="area-pLI-img">
-                        <img src="http://www.zzgwsc.com/headImageUrl/2017-11-24/17112423290748580.png" >
-                    </div>
-                    <div class="area-pLI-txt">
-                        <div>
-                            <p class="area-pLITxtT"><span>名字啊</span></p>
-                            <p class="area-pLITxtBTime">2017-12-08 17:08:30</p>
-                        </div>
-                        <div class="area-pLITxtB">
-                            <p class="area-pLITxtB-pTime">刚刚参与了<span>1</span>单;---</p>
-                            <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[甘肃省武威市凉州区]27.226.146.122</p>
-                        </div>
-                    </div>
-                </li>
-            </a>
-            <a href="">
-                <li class="area-pL-Item">
-                    <div class="area-pLI-img">
-                        <img src="http://wx.qlogo.cn/mmopen/UPe93KGaRQLzAt8z1vhACXgFd1kVXzmFcNyIhVmqK6s9CpW4Z6GAfRhr9lvoicLOzF00BModgW17805UAzeicic9RqNtSNqyhwP/" >
-                    </div>
-                    <div class="area-pLI-txt">
-                        <div>
-                            <p class="area-pLITxtT"><span>9?</span></p>
-                            <p class="area-pLITxtBTime">2017-12-08 17:08:20</p>
-                        </div>
-                        <div class="area-pLITxtB">
-                            <p class="area-pLITxtB-pTime">刚刚参与了<span>1</span>单;---</p>
-                            <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[北京市]39.176.199.126</p>
-                        </div>
-                    </div>
-                </li>
-            </a>
-            <a href="">
-                <li class="area-pL-Item">
-                    <div class="area-pLI-img">
-                        <img src="http://wx.qlogo.cn/mmopen/gHtet1U8y2KYGZAicBu9E4iaCasnvQFNiaywmDDJyvNialoeiaQGYBxribSDPn10tzMFrOSYicHtapAoGYVLOItyc0uQZbbcZaVw7wy/" >
-                    </div>
-                    <div class="area-pLI-txt">
-                        <div>
-                            <p class="area-pLITxtT"><span>颜值课倒数...</span></p>
-                            <p class="area-pLITxtBTime">2017-12-08 17:07:59</p>
-                        </div>
-                        <div class="area-pLITxtB">
-                            <p class="area-pLITxtB-pTime">刚刚参与了<span>1</span>单;---</p>
-                            <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[江苏省南京市]117.136.45.227</p>
-                        </div>
-                    </div>
-                </li>
-            </a>
-            <a href="">
-                <li class="area-pL-Item">
-                    <div class="area-pLI-img">
-                        <img src="http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIsWXJj9xYnYaicT1icIicqAlTcUJnSjnsPibu6gRxulLBKpP6viaf9NwtjEVlQf10W1CXPTXlgp2I9rGA/0" >
-                    </div>
-                    <div class="area-pLI-txt">
-                        <div>
-                            <p class="area-pLITxtT"><span>巧克力</span></p>
-                            <p class="area-pLITxtBTime">2017-12-08 17:07:43</p>
-                        </div>
-                        <div class="area-pLITxtB">
-                            <p class="area-pLITxtB-pTime">刚刚参与了<span>2</span>单;---</p>
-                            <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[北京市]106.121.65.53</p>
-                        </div>
-                    </div>
-                </li>
-            </a>
-            <a href="">
-                <li class="area-pL-Item">
-                    <div class="area-pLI-img">
-                        <img src="http://wx.qlogo.cn/mmopen/6wvUaJ4PjUbBIgblvE907htEoMyTSJkQPrFAvPlPWtX7th3cFCFKrI86xSJkTxuAb50QgJ36E5R9dYDdoibDMa7cGlVd91Fps/" >
-                    </div>
-                    <div class="area-pLI-txt">
-                        <div>
-                            <p class="area-pLITxtT"><span>Yang?...</span></p>
-                            <p class="area-pLITxtBTime">2017-12-08 17:07:24</p>
-                        </div>
-                        <div class="area-pLITxtB">
-                            <p class="area-pLITxtB-pTime">刚刚参与了<span>10</span>单;---</p>
-                            <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[四川省成都市]117.172.26.43</p>
-                        </div>
-                    </div>
-                </li>
-            </a>
-            <a href="">
-                <li class="area-pL-Item">
-                    <div class="area-pLI-img">
-                        <img src="http://www.zzgwsc.com/headImageUrl/2017-10-15/17101513003919026.png" >
-                    </div>
-                    <div class="area-pLI-txt">
-                        <div>
-                            <p class="area-pLITxtT"><span>8023</span></p>
-                            <p class="area-pLITxtBTime">2017-12-08 17:07:14</p>
-                        </div>
-                        <div class="area-pLITxtB">
-                            <p class="area-pLITxtB-pTime">刚刚参与了<span>1</span>单;---</p>
-                            <p class="rcd-annoce-totle cb" style="padding:.01rem 0;">[河北省石家庄市]223.104.13.33</p>
-                        </div>
-                    </div>
-                </li>
-            </a>
+                    </li>
+                </a>
+                <?php
+            }
+            ?>
+
             <div style="height: 0.42rem"></div>
         </ul>
     </div>
@@ -869,10 +277,13 @@ type4s.png
         <div class="fx_cen">
             <ul class="huaqian" style="height:1rem;">
                 <li style="width: 48%;text-align: left;">消费总额：<span style="color:#f30;" class="qian">0</span></li>
-                <li style="width: 52%;text-align: left;">积分奖励：<span style="color:#f30;" class="qian jfjl">0</span></li>
+                <li style="width: 52%;text-align: left;display: none;">积分奖励：<span style="color:#f30;" class="qian jfjl">0</span></li>
                 <li style="width:48%;text-align: left;">还需支付：<span style="color:#f30;" class="qian hxzf">0</span></li>
-                <li style="width: 52%;text-align: left;">积分余额：<span style="color:#f30;" class="qian1">0</span><input type="checkbox" id="isCheck" /></li>
-                <li style="width: 100%;text-align: left;font-size:.12rem;height: .4rem;"><span style="color:#f30;" class="qianw">积分说明：</span>该笔消费完成可获得<span class="xfjf">0.00</span>消费积分，积分可用于抵扣现金支付。</li>
+                <li style="width: 52%;text-align: left;display: none;">积分余额：<span style="color:#f30;" class="qian1">0</span><input type="checkbox" id="isCheck" /></li>
+                <li style="width: 100%;text-align: left;font-size:.12rem;height: .4rem;display: none;"><span style="color:#f30;" class="qianw">积分说明：</span>该笔消费完成可获得<span class="xfjf">0.00</span>消费积分，积分可用于抵扣现金支付。</li>
+
+                <li style="width: 52%;text-align: left;">自动匹配玩家：<input type="checkbox" id="playWith" /></li>
+                <li style="width: 100%;text-align: left;font-size:.12rem;height: .4rem;"><span style="color:#f30;" class="qianw">自动匹配说明：</span>系统自动匹配玩家。</li>
             </ul>
             <p class="shangp">参与单数</p>
             <div class="zeng">
@@ -1158,10 +569,15 @@ type4s.png
                 if($('input:checkbox:checked').val()){
                     isCheck=1;
                 }
+                var playWith=0;
+                if ($('#playWith').is(':checked')){
+                    playWith=1;
+                }
+                alert(playWith);
                 $.post('/recharge/barcodePay',
-                    {amount:totalAmount,channelType:'SRDB-TEST-001',goodId:<?php echo $goods['id']?>,purchaseCounts:purchaseCounts,sectionNo:sectionNo,userId:'<?php echo $userid;?>',payWay:payWay,useBalance:isCheck,balance:balance},
+                    {amount:totalAmount,channelType:'SRDB-TEST-001',goodId:<?php echo $goods['id']?>,purchaseCounts:purchaseCounts,sectionNo:sectionNo,userId:'<?php echo $userid;?>',payWay:payWay,useBalance:isCheck,balance:balance,playwith:playWith},
                     function(response) {
-                        if(response.code == 1){
+                        if(response.code == -1){
                             $(".fuc1").html('<p>'+response.message+'</p>');
                             $(".fuc1").show();
                         }else{

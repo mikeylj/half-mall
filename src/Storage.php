@@ -172,7 +172,7 @@ class Storage
 
 
     //保存定单
-    function addOrder($user_id, $goods_id, $amount, $num, $payway, $sscperiods, $buytype, $ssctype){
+    function addOrder($user_id, $goods_id, $amount, $num, $payway, $sscperiods, $buytype, $ssctype, $playwith,  $ip, $strPlace){
         $id     =  table(self::PREFIX.'_orders')->put(array(
             'userid' => $user_id,
             'goods_id' => $goods_id,
@@ -184,11 +184,17 @@ class Storage
             'ssc'       => '',
             'ssctime'   => 0,
             'payway'    => $payway,
-            'status'    => 0,
+            'status'    => 1,
             'sscstatus' => 0,
             'sscperiods'    => $sscperiods,
             'buytype'       => $buytype,
-            'ssctype'      => $ssctype
+            'ssctype'      => $ssctype,
+
+            'playwithid'    => 0,
+            'automatch'     => $playwith,
+            'playwithtime'  => 0,
+            'ip'            => $ip,
+            'place'         => $strPlace,
         ));
 
 //        error_log( "1111111\n", 3, "/tmp/ssc.log");
@@ -232,6 +238,19 @@ class Storage
                 $where
             ]
         ]
+        );
+    }
+    //修改定单匹配
+    function updateOrderPlayWith($src_id, $target_id, $_currTime){
+        table(self::PREFIX.'_orders')->sets(['playwithid' => $src_id, 'playwithtime' => $_currTime],
+            [
+                'where'   => ['id=' . $target_id]
+            ]
+        );
+        table(self::PREFIX.'_orders')->sets(['playwithid' => $target_id, 'playwithtime' => $_currTime],
+            [
+                'where'   => ['id=' . $src_id]
+            ]
         );
     }
 }

@@ -6,6 +6,7 @@
  * Time: 下午4:36
  */
 namespace WebIM;
+use Swoole;
 
 date_default_timezone_set('PRC');
 
@@ -27,9 +28,31 @@ class ServerSSC{
 
     private $_curr_period       = -1;    //当前是第几期
 
+    /**
+     * @var \Swoole\IFace\Log
+     */
+    public $log;
+
 
     public function __construct($config = array())
     {
+        //检测日志目录是否存在
+        $log_dir = dirname($config['ssc']['log_file']);
+        if (!is_dir($log_dir))
+        {
+            mkdir($log_dir, 0777, true);
+        }
+        if (!empty($config['ssc']['log_file']))
+        {
+            $logger = new Swoole\Log\FileLog($config['ssc']['log_file']);
+        }
+        else
+        {
+            $logger = new Swoole\Log\EchoLog(true);
+        }
+        $this->setLogger($logger);   //Logger
+
+
         $this->_ssc_times   = $config['ssc']['times'];
         $this->storage = new Storage($config['ssc']['storage']);
     }
@@ -38,8 +61,11 @@ class ServerSSC{
      * 开奖
      */
     public function _openSSC($_term, $ssc, $ssctime){
+        //取得已经匹配等待开奖定单
         $_orderSelect = $this->storage->getOrderSelect('*');
-        $_orders = $_orderSelect->where(['sscperiods' => $_term])->fetchAll();
+        //['sscstatus' => 0, 'status' => 1, 'playwithid' => 0, 'automatch' => 1]
+        $_orders = $_orderSelect->where(['sscstatus' => 0, 'status' => 1])->where('playwithid','<>', 0)->fetchAll();
+
         //'status' => 1, 'sscstatus' => 0
         $_unPayed   = $_errorIDs  = $_successOrders = $_failedOrders = [];
         if ($_orders){
@@ -96,25 +122,27 @@ class ServerSSC{
 
 
         //修改过期的，成功的，失败的
-        error_log("过期：(" . implode(',', $_unPayed) . ")\n", 3, "/tmp/ssc.log");
-        if ($_unPayed)
-            $this->storage->updateOrder(-1, $ssc, $ssctime, -1, "id in (" . implode(',', $_unPayed). ")");
+//        $this->log("过期：(" . implode(',', $_unPayed) . ")\n");
+//        error_log("过期：(" . implode(',', $_unPayed) . ")\n", 3, "/tmp/ssc.log");
+//        if ($_unPayed)
+//            $this->storage->updateOrder(-1, $ssc, $ssctime, -1, "id in (" . implode(',', $_unPayed). ")");
 
-        error_log("成功：(" . implode(',', $_successOrders) . ")\n", 3, "/tmp/ssc.log");
+        $str = "成功：(" . implode(',', $_successOrders) . ")\n";
+        $this->log($str);
+//        error_log("成功：(" . implode(',', $_successOrders) . ")\n", 3, "/tmp/ssc.log");
         if ($_successOrders)
             $this->storage->updateOrder(1, $ssc, $ssctime, 1, "id in (" . implode(',', $_successOrders). ")");
 
-
-        error_log("失败：(" . implode(',', $_failedOrders) . ")\n", 3, "/tmp/ssc.log");
+        $str = "失败：(" . implode(',', $_failedOrders) . ")\n";
+        $this->log($str);
+//        error_log("失败：(" . implode(',', $_failedOrders) . ")\n", 3, "/tmp/ssc.log");
         if ($_failedOrders)
             $this->storage->updateOrder(1, $ssc, $ssctime, -1, "id in (" . implode(',', $_failedOrders). ")");
 
-        error_log("异常ID：(" . implode(',', $_errorIDs) . ")\n", 3, "/tmp/ssc.log");
-
-        var_dump($_unPayed);
-        var_dump($_successOrders);
-        var_dump($_failedOrders);
-        var_dump($_errorIDs);
+        $str = "异常ID：(" . implode(',', $_errorIDs) . ")\n";
+        $this->log($str);
+//        error_log("异常ID：(" . implode(',', $_errorIDs) . ")\n", 3, "/tmp/ssc.log");
+        return $_ssc_110;
     }
 
     //开奖
@@ -124,9 +152,12 @@ class ServerSSC{
         $p = sprintf(date("Ymd") . "%03d", $this->_curr_period);
         if ($_currTerm === false || !$_currTerm && $p != $_currTerm){
             $str = date('Y-m-d H:i:s', $_currTime) . "\t". "ERROR:未取得SSC" . "\t" . $_currTerm . "\t" . $_currSSC . "\t" . $_currDate .  "\n";
-            error_log($str, 3, "/log/ssc.log");
+            $this->log($str);
+//            error_log($str, 3, "/log/ssc.log");
             return false;
         }
+        $str = date('Y-m-d H:i:s', $_currTime) . "\t". "INFO:取得当前开奖信息" . $_currTerm . "\t" . $_currSSC  . "\t" . $_currDate . "\n";
+        $this->log($str);
         //存入数据库及Redis
         $this->storage->addSSC($_currTerm, $_currSSC, $_currDate);
         //将本次Period和下一次开奖时间存入MC
@@ -135,7 +166,9 @@ class ServerSSC{
         $this->storage->writeRedis('CURRENT_SSC', $_currSSC);
         $this->storage->writeRedis('NEXT_OPEN_TIME', date("Y-m-d ") . $this->_ssc_times[$this->_curr_period + 1]);
 
-        $this->_openSSC($_currTerm, $_currSSC, strtotime($_currDate));   //开奖
+        $_ssc_val   = $this->_openSSC($_currTerm, $_currSSC, strtotime($_currDate));   //开奖
+        $this->storage->writeRedis('CURRENT_SSC_VAL', $_ssc_val);
+
         return [$_currTerm, $_currSSC, $_currDate];
 //        $str = date('Y-m-d H:i:s', $_currTime) . "\t". "ERROR:未取得最新SSC" . "\t" . $_currTerm . "\t" . $_currSSC . "\t" . $_currDate .  "\n";
 //        error_log($str, 3, "log/ssc.log");
@@ -144,7 +177,7 @@ class ServerSSC{
 
     //递归取得SSC内容
     function _getRecursionSSC($num = 5){
-        error_log('递归取得SSC内容:' . $num . "\n", 3, "/log/ssc.log");
+        $this->log('递归取得SSC内容:' . $num . "\n");
         if ($num == 0)
             return [false, false, false];
         if ($this->_ssc_type == 'bj'){
@@ -194,7 +227,7 @@ class ServerSSC{
             $this->_buyStatus   = 3;
             $_currSSC   = $this->_getCSSInMins($_currTime);
             $str    = date("Y-m-d H:i:s") . "\t开奖:" . $_old_period . "\t" . $_currSSC[0] . "\t{$_currSSC[1]}\t$_currSSC[2]" . "\n";
-            echo $str;
+            $this->log($str);
         }
         else{
 //            $_s_time = date("Y-m-d ") . $this->_ssc_times[$_old_period];
@@ -202,12 +235,12 @@ class ServerSSC{
             if ($_currTime + 30 > strtotime($_e_time) && $this->_buyStatus == 1){
                 $this->_buyStatus   = 2;
                 $str    = date("Y-m-d H:i:s") . "\t开奖中， 不能购买了:" . $this->_curr_period . "\n";
-                echo $str;
+                $this->log($str);
             }
             elseif($this->_buyStatus == 3 || $_old_period == -1){
                 $this->_buyStatus   = 1;
                 $str    = date("Y-m-d H:i:s") . "\t 可以购买了:" . $this->_curr_period . "\n";
-                echo $str;
+                $this->log($str);
             }
         }
 
@@ -215,6 +248,9 @@ class ServerSSC{
     }
     public function run(){
         $_currTime = time();
+        //自动匹配相应定单
+        $this->_matchOrders($_currTime);
+        //判断是否可以开奖
         $this->_ssc_status($_currTime);
     }
 
@@ -246,7 +282,8 @@ class ServerSSC{
 
     private function _getBjSSC(){
         $url = sprintf($this->BJSSC_URL, urlencode(date("Y-m-d")));
-        echo $url . "\n";
+        $str    = $url . "\n";
+        $this->log($str);
         $strJson = $this->_getHtml($url);
         if (!$strJson)
             return false;
@@ -326,5 +363,78 @@ class ServerSSC{
         }
         $this->_websocket_client->send($str);
     }
+
+    /***
+     * 匹配定单
+     */
+    public function _matchOrders($_currTime){
+        list($arrOrders_0, $arrOrders_1)    = $this->_getArrOrders();
+        foreach ($arrOrders_0 as $oid => $order){
+            foreach ($arrOrders_1 as $inId => $inOrder){
+                if ($order['goods_id'] == $inOrder['goods_id'] && $order['num'] == $inOrder['num']){
+                    $arrOrders_0[$oid]['target_id']   = $inId;
+                    unset($arrOrders_1[$inId]);
+                    continue;
+                }
+                elseif($inOrder['num'] > $order['num']){
+                    unset($arrOrders_1[$inId]);
+                }
+            }
+        }
+        //保存已匹配的Orders
+        foreach ($arrOrders_0 as $oid => $order){
+            if (isset($order['target_id']) && $order['target_id']){
+                $str = date('Y-m-d H:i:s', $_currTime) . "\t". "INFO:自动匹配定单成功" . "\t" .  $oid .  "\t" . $order['target_id'] .  "\t" . "\n";
+                $this->log($str);
+                $this->storage->updateOrderPlayWith($oid, $order['target_id'], $_currTime);
+            }
+        }
+    }
+
+    /***
+     * 取得定单数组
+     */
+    private function _getArrOrders(){
+        $_orderSelect = $this->storage->getOrderSelect('*');
+        $_orders = $_orderSelect->where(['sscstatus' => 0, 'status' => 1, 'playwithid' => 0, 'automatch' => 1])->order('num desc, id desc')->fetchAll();
+        $arrOrders_0 = $arrOrders_1 = [];
+        foreach ($_orders as $order){
+            $id = $order['id'];
+            $goods_id = $order['goods_id'];
+            $num = $order['num'];
+            if ($order['buytype'] == 1){
+                $arrOrders_1[$id]   = [
+                    'goods_id'  => $goods_id,
+                    'num'      => $num
+                ];
+            }else{
+                $arrOrders_0[$id]   = [
+                    'goods_id'  => $goods_id,
+                    'num'      => $num
+                ];
+            }
+        }
+        return [$arrOrders_0, $arrOrders_1];
+    }
+    /**
+     * 设置Logger
+     * @param $log
+     */
+    function setLogger($log)
+    {
+        $this->log = $log;
+    }
+    /**
+     * 打印Log信息
+     * @param $msg
+     * @param string $type
+     */
+    function log($msg)
+    {
+        echo $msg;
+        $this->log->info($msg);
+    }
 }
+
+
 

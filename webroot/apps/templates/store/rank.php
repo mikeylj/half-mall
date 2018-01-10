@@ -111,333 +111,57 @@
 <input type="hidden" id="goodId" name="goodId" value='' />
 <ul class="panking-next">
 
-    <li class="pnt-list"><a
-            href=""
-            style="display: box; display: -webkit-box; display: flex;">
-            <span style="margin:0px .15rem;" class="pnt-l-num"><img style="width: .3rem;margin-top:.15rem ;margin-right: .1rem;" src="/images/pai_1.png"/></span>
-            <div class="pnt-l-img dai1">
-                <img class="waipi" src="http://wx.qlogo.cn/mmhead/rqvn1hjHyte6T40HBUUB0mbZeUYaicJ5Wu5YiciaP0xFibyAdK5Am49Q0g/0" alt="">
-            </div>
-            <div class="pnt-l-con">
-                <p style="margin-top: .08rem;" class="pnt-lc-id"><span  style="font-size: .16rem; color: #000;">民</p>
-                <p style="color: #999;height: .4rem;line-height: .4rem;" class="pnt-lc-prize">已获胜：<span class="cr">229</span>单</p>
-            </div>
-        </a></li>
+    <?php
+    foreach ($topUsers as $i => $topUser) {
+        if ($i < 3) {
+            ?>
 
-    <li class="pnt-list"><a
-            href=""
-            style="display: box; display: -webkit-box; display: flex;">
-            <span style="margin:0px .15rem;" class="pnt-l-num"><img style="width: .3rem;margin-top:.15rem ;margin-right: .1rem;" src="/images/pai_2.png"/></span>
-            <div class="pnt-l-img dai2">
-                <img class="waipi" src="http://www.zzgwsc.com/headImageUrl/2017-11-24/1711241435416953.png" alt="">
-            </div>
-            <div class="pnt-l-con">
-                <p style="margin-top: .08rem;width: 2rem;overflow: hidden;" class="pnt-lc-id"><span  style="font-size: .16rem; color: #000;"></p>
-                <p style="color: #999;height: .4rem;line-height: .4rem;" class="pnt-lc-prize">已获胜：<span class="cr">164</span>单</p>
-            </div>
-        </a></li>
+            <li class="pnt-list"><a
+                        href=""
+                        style="display: box; display: -webkit-box; display: flex;">
+                <span style="margin:0px .15rem;" class="pnt-l-num"><img
+                            style="width: .3rem;margin-top:.15rem ;margin-right: .1rem;"
+                            src="/images/pai_<?php echo $i + 1?>.png"/></span>
+                    <div class="pnt-l-img dai1">
+                        <img class="waipi"
+                             src="<?php echo $arrUsers[$topUser['userid']]['pic']?>"
+                             alt="">
+                    </div>
+                    <div class="pnt-l-con">
+                        <p style="margin-top: .08rem;" class="pnt-lc-id"><span style="font-size: .16rem; color: #000;"><?php echo $arrUsers[$topUser['userid']]['name']?>
+                        </p>
+                        <p style="color: #999;height: .4rem;line-height: .4rem;" class="pnt-lc-prize">已获胜：<span
+                                    class="cr"><?php echo $topUser['sum_num']?></span>单
+                        </p>
+                    </div>
+                </a></li>
+            <?php
+        }
+        else{
+            ?>
+            <li class="pnt-list"><a
+                        href=""
+                        style="display: box; display: -webkit-box; display: flex;"> <span
+                            style="color: #000;margin: .14rem .22rem; font-size: .25rem " class="pnt-l-num"><?php echo $i + 1?></span>
+                    <div style="margin:.06rem .15rem;" class="pnt-l-img">
+                        <img class="waipi" src="<?php echo $arrUsers[$topUser['userid']]['pic']?>" alt="">
+                    </div>
+                    <div class="pnt-l-con">
+                        <p  style="margin-top: .08rem;width: 2rem;overflow: hidden;" class="pnt-lc-id">
+						<span style="font-size: .16rem; color: #000;"><?php echo $arrUsers[$topUser['userid']]['name']?>
+                        </p>
+                        <p style="color: #999;height: .4rem;line-height: .4rem;" class="pnt-lc-prize">
+                            获胜：<span class="cr"><?php echo $topUser['sum_num']?></span>单
+                        </p>
+                    </div>
+                </a></li>
 
-    <li class="pnt-list"><a
-            href=""
-            style="display: box; display: -webkit-box; display: flex;">
-            <span style="margin:0px .15rem;" class="pnt-l-num"><img style="width: .3rem;margin-top:.15rem ;margin-right: .1rem;" src="/images/pai_3.png"/></span>
-            <div class="pnt-l-img dai3">
-                <img class="waipi" src="http://www.zzgwsc.com/headImageUrl/2017-11-09/17110915541340320.png" alt="">
-            </div>
-            <div class="pnt-l-con">
-                <p style="margin-top: .08rem;width: 2rem;overflow: hidden;" class="pnt-lc-id"><span  style="font-size: .16rem; color: #000;">来钱了</p>
-                <p style="color: #999;height: .4rem;line-height: .4rem;" class="pnt-lc-prize">已获胜：<span class="cr">160</span>单</p>
-            </div>
-        </a></li>
+            <?php
+        }
+    }
+    ?>
 
-    <li class="pnt-list"><a
-            href=""
-            style="display: box; display: -webkit-box; display: flex;"> <span
-                style="color: #000;margin: .14rem .22rem; font-size: .25rem " class="pnt-l-num">4</span>
-            <div style="margin:.06rem .15rem;" class="pnt-l-img">
-                <img class="waipi" src="http://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqHqw9gU7QzTlagAw3HUwUNs0gp9trPgnLVWfhZDgggwN38w6mR0gvcgL9rTialHl76mwrxoCDYyibw/0" alt="">
-            </div>
-            <div class="pnt-l-con">
-                <p  style="margin-top: .08rem;width: 2rem;overflow: hidden;" class="pnt-lc-id">
-						<span style="font-size: .16rem; color: #000;">老刘135...
-                </p>
-                <p style="color: #999;height: .4rem;line-height: .4rem;" class="pnt-lc-prize">
-                    获胜：<span class="cr">156</span>单
-                </p>
-            </div>
-        </a></li>
 
-    <li class="pnt-list"><a
-            href=""
-            style="display: box; display: -webkit-box; display: flex;"> <span
-                style="color: #000;margin: .14rem .22rem; font-size: .25rem " class="pnt-l-num">5</span>
-            <div style="margin:.06rem .15rem;" class="pnt-l-img">
-                <img class="waipi" src="http://wx.qlogo.cn/mmopen/vi_32/FD9b1uZ2UsPOD4xWDZTo4owERn7Wh6lmstXwRriagw7ZyUvRZUSIaCVicic8DoNib8h9zqD4icqb7H7CsvQdI6FjEvA/0" alt="">
-            </div>
-            <div class="pnt-l-con">
-                <p  style="margin-top: .08rem;width: 2rem;overflow: hidden;" class="pnt-lc-id">
-						<span style="font-size: .16rem; color: #000;">加
-                </p>
-                <p style="color: #999;height: .4rem;line-height: .4rem;" class="pnt-lc-prize">
-                    获胜：<span class="cr">101</span>单
-                </p>
-            </div>
-        </a></li>
-
-    <li class="pnt-list"><a
-            href=""
-            style="display: box; display: -webkit-box; display: flex;"> <span
-                style="color: #000;margin: .14rem .22rem; font-size: .25rem " class="pnt-l-num">6</span>
-            <div style="margin:.06rem .15rem;" class="pnt-l-img">
-                <img class="waipi" src="http://www.zzgwsc.com/headImageUrl/2017-10-27/17102723065517976.png" alt="">
-            </div>
-            <div class="pnt-l-con">
-                <p  style="margin-top: .08rem;width: 2rem;overflow: hidden;" class="pnt-lc-id">
-						<span style="font-size: .16rem; color: #000;">情
-                </p>
-                <p style="color: #999;height: .4rem;line-height: .4rem;" class="pnt-lc-prize">
-                    获胜：<span class="cr">92</span>单
-                </p>
-            </div>
-        </a></li>
-
-    <li class="pnt-list"><a
-            href=""
-            style="display: box; display: -webkit-box; display: flex;"> <span
-                style="color: #000;margin: .14rem .22rem; font-size: .25rem " class="pnt-l-num">7</span>
-            <div style="margin:.06rem .15rem;" class="pnt-l-img">
-                <img class="waipi" src="http://wx.qlogo.cn/mmopen/vi_32/AR6UTBhqOpPcgEeHOXzVck0za8tH3qJmchlEouH4BXmHoULfd7hMtgTia0FzbD6DEdmiaDXSoh3ujTrdWHLRPdpA/0" alt="">
-            </div>
-            <div class="pnt-l-con">
-                <p  style="margin-top: .08rem;width: 2rem;overflow: hidden;" class="pnt-lc-id">
-						<span style="font-size: .16rem; color: #000;">FBI
-                </p>
-                <p style="color: #999;height: .4rem;line-height: .4rem;" class="pnt-lc-prize">
-                    获胜：<span class="cr">91</span>单
-                </p>
-            </div>
-        </a></li>
-
-    <li class="pnt-list"><a
-            href=""
-            style="display: box; display: -webkit-box; display: flex;"> <span
-                style="color: #000;margin: .14rem .22rem; font-size: .25rem " class="pnt-l-num">8</span>
-            <div style="margin:.06rem .15rem;" class="pnt-l-img">
-                <img class="waipi" src="http://www.zzgwsc.com/headImageUrl/2017-11-27/17112712472789664.png" alt="">
-            </div>
-            <div class="pnt-l-con">
-                <p  style="margin-top: .08rem;width: 2rem;overflow: hidden;" class="pnt-lc-id">
-						<span style="font-size: .16rem; color: #000;">死胖子
-                </p>
-                <p style="color: #999;height: .4rem;line-height: .4rem;" class="pnt-lc-prize">
-                    获胜：<span class="cr">83</span>单
-                </p>
-            </div>
-        </a></li>
-
-    <li class="pnt-list"><a
-            href=""
-            style="display: box; display: -webkit-box; display: flex;"> <span
-                style="color: #000;margin: .14rem .22rem; font-size: .25rem " class="pnt-l-num">9</span>
-            <div style="margin:.06rem .15rem;" class="pnt-l-img">
-                <img class="waipi" src="http://www.zzgwsc.com/headImageUrl/2017-11-24/1711241435416953.png" alt="">
-            </div>
-            <div class="pnt-l-con">
-                <p  style="margin-top: .08rem;width: 2rem;overflow: hidden;" class="pnt-lc-id">
-						<span style="font-size: .16rem; color: #000;">
-                </p>
-                <p style="color: #999;height: .4rem;line-height: .4rem;" class="pnt-lc-prize">
-                    获胜：<span class="cr">81</span>单
-                </p>
-            </div>
-        </a></li>
-
-    <li class="pnt-list"><a
-            href=""
-            style="display: box; display: -webkit-box; display: flex;"> <span
-                style="color: #000;margin: .14rem;font-size: .25rem;" class="pnt-l-num">10</span>
-            <div style="margin:.06rem .15rem;" class="pnt-l-img">
-                <img class="waipi" src="http://wx.qlogo.cn/mmopen/vi_32/WsCLibPkG78aOuwdW33Ah6ZsD8tkVWQ7Ces5ic8PBoc4yUq0PUXMWTYIxnkjcLlWMfHZ60tKgE7UJKk68f0YCxvg/0" alt="">
-            </div>
-            <div class="pnt-l-con">
-                <p  style="margin-top: .08rem;width: 2rem;overflow: hidden;" class="pnt-lc-id">
-						<span style="font-size: .16rem; color: #000;">东跃
-                </p>
-                <p style="color: #999;height: .4rem;line-height: .4rem;" class="pnt-lc-prize">
-                    获胜：<span class="cr">69</span>单
-                </p>
-            </div>
-        </a></li>
-
-    <li class="pnt-list"><a
-            href=""
-            style="display: box; display: -webkit-box; display: flex;"> <span
-                style="color: #000;margin: .14rem;font-size: .25rem;" class="pnt-l-num">11</span>
-            <div style="margin:.06rem .15rem;" class="pnt-l-img">
-                <img class="waipi" src="http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIllOQsNSuLe0icbvhWFrsAq7paWJHJHsAzKedUJJZ8RXhBic7nS8TQMNcjr1fwyAwfHqJlTHBVqKLQ/0" alt="">
-            </div>
-            <div class="pnt-l-con">
-                <p  style="margin-top: .08rem;width: 2rem;overflow: hidden;" class="pnt-lc-id">
-						<span style="font-size: .16rem; color: #000;">阳光
-                </p>
-                <p style="color: #999;height: .4rem;line-height: .4rem;" class="pnt-lc-prize">
-                    获胜：<span class="cr">58</span>单
-                </p>
-            </div>
-        </a></li>
-
-    <li class="pnt-list"><a
-            href=""
-            style="display: box; display: -webkit-box; display: flex;"> <span
-                style="color: #000;margin: .14rem;font-size: .25rem;" class="pnt-l-num">12</span>
-            <div style="margin:.06rem .15rem;" class="pnt-l-img">
-                <img class="waipi" src="http://www.zzgwsc.com/headImageUrl/2017-11-08/17110814553538718.png" alt="">
-            </div>
-            <div class="pnt-l-con">
-                <p  style="margin-top: .08rem;width: 2rem;overflow: hidden;" class="pnt-lc-id">
-						<span style="font-size: .16rem; color: #000;">仄
-                </p>
-                <p style="color: #999;height: .4rem;line-height: .4rem;" class="pnt-lc-prize">
-                    获胜：<span class="cr">55</span>单
-                </p>
-            </div>
-        </a></li>
-
-    <li class="pnt-list"><a
-            href=""
-            style="display: box; display: -webkit-box; display: flex;"> <span
-                style="color: #000;margin: .14rem;font-size: .25rem;" class="pnt-l-num">13</span>
-            <div style="margin:.06rem .15rem;" class="pnt-l-img">
-                <img class="waipi" src="http://www.zzgwsc.com/headImageUrl/2017-10-19/17101916092319403.png" alt="">
-            </div>
-            <div class="pnt-l-con">
-                <p  style="margin-top: .08rem;width: 2rem;overflow: hidden;" class="pnt-lc-id">
-						<span style="font-size: .16rem; color: #000;">划愣划愣
-                </p>
-                <p style="color: #999;height: .4rem;line-height: .4rem;" class="pnt-lc-prize">
-                    获胜：<span class="cr">54</span>单
-                </p>
-            </div>
-        </a></li>
-
-    <li class="pnt-list"><a
-            href=""
-            style="display: box; display: -webkit-box; display: flex;"> <span
-                style="color: #000;margin: .14rem;font-size: .25rem;" class="pnt-l-num">14</span>
-            <div style="margin:.06rem .15rem;" class="pnt-l-img">
-                <img class="waipi" src="http://wx.qlogo.cn/mmopen/ajNVdqHZLLDrgmXVic3fvDeBk8c0Fkvfyg8iaGVMjDVKVk0c4bpcg5MHGiaPOBXcXwdt60ezDYyaXOFGrklZpgAIBMJcGIhx15LSH2cHOtJMhY/0" alt="">
-            </div>
-            <div class="pnt-l-con">
-                <p  style="margin-top: .08rem;width: 2rem;overflow: hidden;" class="pnt-lc-id">
-						<span style="font-size: .16rem; color: #000;">方言
-                </p>
-                <p style="color: #999;height: .4rem;line-height: .4rem;" class="pnt-lc-prize">
-                    获胜：<span class="cr">53</span>单
-                </p>
-            </div>
-        </a></li>
-
-    <li class="pnt-list"><a
-            href=""
-            style="display: box; display: -webkit-box; display: flex;"> <span
-                style="color: #000;margin: .14rem;font-size: .25rem;" class="pnt-l-num">15</span>
-            <div style="margin:.06rem .15rem;" class="pnt-l-img">
-                <img class="waipi" src="http://wx.qlogo.cn/mmopen/UPe93KGaRQLzAt8z1vhACeaeLyU8VticpsNTUCorFPseZQHt4f6FCKfLTMYfg05Z2uGeDyia4mDqsa1F9qgzQF40I1NS0fhZRb/0" alt="">
-            </div>
-            <div class="pnt-l-con">
-                <p  style="margin-top: .08rem;width: 2rem;overflow: hidden;" class="pnt-lc-id">
-						<span style="font-size: .16rem; color: #000;">峰回夕阳
-                </p>
-                <p style="color: #999;height: .4rem;line-height: .4rem;" class="pnt-lc-prize">
-                    获胜：<span class="cr">52</span>单
-                </p>
-            </div>
-        </a></li>
-
-    <li class="pnt-list"><a
-            href=""
-            style="display: box; display: -webkit-box; display: flex;"> <span
-                style="color: #000;margin: .14rem;font-size: .25rem;" class="pnt-l-num">16</span>
-            <div style="margin:.06rem .15rem;" class="pnt-l-img">
-                <img class="waipi" src="http://www.zzgwsc.com/headImageUrl/2017-11-23/17112315074071385.png" alt="">
-            </div>
-            <div class="pnt-l-con">
-                <p  style="margin-top: .08rem;width: 2rem;overflow: hidden;" class="pnt-lc-id">
-						<span style="font-size: .16rem; color: #000;">人心不足蛇...
-                </p>
-                <p style="color: #999;height: .4rem;line-height: .4rem;" class="pnt-lc-prize">
-                    获胜：<span class="cr">51</span>单
-                </p>
-            </div>
-        </a></li>
-
-    <li class="pnt-list"><a
-            href=""
-            style="display: box; display: -webkit-box; display: flex;"> <span
-                style="color: #000;margin: .14rem;font-size: .25rem;" class="pnt-l-num">17</span>
-            <div style="margin:.06rem .15rem;" class="pnt-l-img">
-                <img class="waipi" src="http://wx.qlogo.cn/mmopen/gHtet1U8y2KFVTnSZYfLUruBO9IZenwxHjVMwh8tkuu71EoZjMoJlvGYqbI8SlLYtOcP4m7ZZ6zk6Melz6Np8cVcNuCrxHna/" alt="">
-            </div>
-            <div class="pnt-l-con">
-                <p  style="margin-top: .08rem;width: 2rem;overflow: hidden;" class="pnt-lc-id">
-						<span style="font-size: .16rem; color: #000;">低调
-                </p>
-                <p style="color: #999;height: .4rem;line-height: .4rem;" class="pnt-lc-prize">
-                    获胜：<span class="cr">50</span>单
-                </p>
-            </div>
-        </a></li>
-
-    <li class="pnt-list"><a
-            href=""
-            style="display: box; display: -webkit-box; display: flex;"> <span
-                style="color: #000;margin: .14rem;font-size: .25rem;" class="pnt-l-num">18</span>
-            <div style="margin:.06rem .15rem;" class="pnt-l-img">
-                <img class="waipi" src="http://wx.qlogo.cn/mmopen/gHtet1U8y2LeuxIL9HRsAiaCOYydpD2yxB2An1JLsGEMGmE9TczzzODoOjtGZ14B0m2GhJ947SZBriaTctqVCyBplgano5hE4G/0" alt="">
-            </div>
-            <div class="pnt-l-con">
-                <p  style="margin-top: .08rem;width: 2rem;overflow: hidden;" class="pnt-lc-id">
-						<span style="font-size: .16rem; color: #000;">只看见
-                </p>
-                <p style="color: #999;height: .4rem;line-height: .4rem;" class="pnt-lc-prize">
-                    获胜：<span class="cr">50</span>单
-                </p>
-            </div>
-        </a></li>
-
-    <li class="pnt-list"><a
-            href=""
-            style="display: box; display: -webkit-box; display: flex;"> <span
-                style="color: #000;margin: .14rem;font-size: .25rem;" class="pnt-l-num">19</span>
-            <div style="margin:.06rem .15rem;" class="pnt-l-img">
-                <img class="waipi" src="http://wx.qlogo.cn/mmopen/vi_32/Ljzwqyst2y507Bmzv5Uib032RkoFBm8PvouibhLZumqoSCLwaDnpBNB3tIP9j9UykCOs4LCyDpuOLeSKLESfCM8Q/0" alt="">
-            </div>
-            <div class="pnt-l-con">
-                <p  style="margin-top: .08rem;width: 2rem;overflow: hidden;" class="pnt-lc-id">
-						<span style="font-size: .16rem; color: #000;">联创手机维...
-                </p>
-                <p style="color: #999;height: .4rem;line-height: .4rem;" class="pnt-lc-prize">
-                    获胜：<span class="cr">42</span>单
-                </p>
-            </div>
-        </a></li>
-
-    <li class="pnt-list"><a
-            href=""
-            style="display: box; display: -webkit-box; display: flex;"> <span
-                style="color: #000;margin: .14rem;font-size: .25rem;" class="pnt-l-num">20</span>
-            <div style="margin:.06rem .15rem;" class="pnt-l-img">
-                <img class="waipi" src="http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJ5SU3r6reMth7FH3MHnb8tdQYz51oib9tkdYb6tY8aulo9pF5XCnlxpQiczupgNRCLibN3LVk8RZ9pA/0" alt="">
-            </div>
-            <div class="pnt-l-con">
-                <p  style="margin-top: .08rem;width: 2rem;overflow: hidden;" class="pnt-lc-id">
-						<span style="font-size: .16rem; color: #000;">晴天
-                </p>
-                <p style="color: #999;height: .4rem;line-height: .4rem;" class="pnt-lc-prize">
-                    获胜：<span class="cr">41</span>单
-                </p>
-            </div>
-        </a></li>
 </ul>
 <?php
 require_once (dirname(__DIR__) . "/menu.php");

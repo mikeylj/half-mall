@@ -8,6 +8,8 @@ define('ROOT_PATH', dirname(__DIR__));
  */
 require dirname(__DIR__) . '/vendor/autoload.php';
 require ROOT_PATH . "/src/Storage.php";
+require ROOT_PATH . "/src/StoreController.php";
+
 /**
  * Swoole框架自动载入器初始化
  */
