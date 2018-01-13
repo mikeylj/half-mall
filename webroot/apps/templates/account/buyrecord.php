@@ -176,149 +176,179 @@
     var sum = 1;
     function runs(userId){
         $("#mores").html("正在加载中...");
-        $.post('/account/recordMore',{page:sum,userId:userId,srcFrom:'SRDB-TEST-001'}, function(dates) {
-            console.log(dates);
-            if (dates.length>0) {
-                if(dates.length<5){
-                    $("#mores").hide();
-                }
-                var appendStr ="";
-                for(var i=0;i<dates.length;i++){
-                    var nickName=dates[i].nickname;
+        $.post('/account/recordMore',{page:sum,userId:userId,srcFrom:'SRDB-TEST-001'}, function(response) {
+            if (response.code == -1){
+                $(".fuc1").html('<p>'+response.message+'</p>');
+                $(".fuc1").show();
+            }
+            else {
+                var dates = response.data;
+//                console.log(dates);
+                if (dates.length > 0) {
+                    if (dates.length < 5) {
+                        $("#mores").hide();
+                    }
+                    var appendStr = "";
+                    for (var i = 0; i < dates.length; i++) {
+                        var nickName = dates[i].nickname;
 //                    if(dates[i].nickname.length>5){
 //                        nickName=dates[i].nickname.substr(0,5)+"...";
 //                    }
-                    if(dates[i].orderStatus=='-1'){
-                        appendStr +='<li class="buyList" style="padding-bottom:0px; border-bottom:2px solid #f1f1f1;">'
-                            +'<div class="buyList-w" >'
-                            +'	<div style="z-index: 999;" class="buyList-w-left">'
-                            +'		<a class="bl-w-l-img" href="">'
-                            +'			<img src="'+dates[i].path+'" alt="">'
-                            +'		</a>'
-                            +'		<p class="bl-w-l-txt cr">已过期</p>'
-                            +'	</div>'
-                            +'	<a style="position: relative;" class="buyList-w-right" href="/account/record/detail?id='+dates[i].id+'&userId='+dates[i].userId+'&srcFrom=SRDB-TEST-001" >'
-                            +"		<h3>"+dates[i].name+"</h3>"
-                            +'	<p>本期参与：<span style="color: #3b84dd;">'+nickName+'</span></p>'
-                            +'	<p style="top: -.03rem; width: .5rem;position: absolute; text-align: center; right: .05rem;color:#ff0033;border-radius:.04rem;background-color:#fff;border: 1px solid #FF0033;">查看</p>'
-                            +'		<p class=" ">参与时间：'+dates[i].showTime+'</p>'
-                            +'		<p class="bl-wr-duan">参与号段：<span class="cr">'+dates[i].sectionNo+'</span><span class="bl-wr-ride cr"><img src="/images/ride.png" alt=""></span><span class="cr">'+dates[i].purchaseCounts+'</span><span class="cr">单</span></p>'
-                            +'	</a>'
-                            +'</div>'
-                            +'</li>'
+                        for (var i = 0; i < dates.length; i++) {
+                            var nickName = dates[i].nickname;
+//
+                            if(dates[i].orderStatus=='-1'){
+                                appendStr +='<li class="buyList" style="padding-bottom:0px; border-bottom:2px solid #f1f1f1;">'
+                                    +'<div class="buyList-w" >'
+                                    +'	<div style="z-index: 999;" class="buyList-w-left">'
+                                    +'		<a class="bl-w-l-img" href="">'
+                                    +'			<img src="'+dates[i].path+'" alt="">'
+                                    +'		</a>'
+                                    +'		<p class="bl-w-l-txt cr">已过期</p>'
+                                    +'	</div>'
+                                    +'	<a style="position: relative;" class="buyList-w-right" href="/order/detail?id='+dates[i].id+'&userId='+dates[i].userId+'&srcFrom=SRDB-TEST-001" >'
+                                    +"		<h3>"+dates[i].name+"</h3>"
+                                    +'	<p>本期参与：<span style="color: #3b84dd;">'+nickName+'</span></p>'
+                                    +'	<p style="top: -.03rem; width: .5rem;position: absolute; text-align: center; right: .05rem;color:#ff0033;border-radius:.04rem;background-color:#fff;border: 1px solid #FF0033;">查看</p>'
+                                    +'		<p class=" ">参与时间：'+dates[i].showTime+'</p>'
+                                    +'		<p class="bl-wr-duan">参与号段：<span class="cr">'+dates[i].sectionNo+'</span><span class="bl-wr-ride cr"><img src="/images/ride.png" alt=""></span><span class="cr">'+dates[i].purchaseCounts+'</span><span class="cr">单</span></p>'
+                                    +'	</a>'
+                                    +'</div>'
+                                    +'</li>'
+                            }
+                            else if(dates[i].orderStatus=='0'){
+                                appendStr +='<li class="buyList" style="padding-bottom:0px; border-bottom:2px solid #f1f1f1;">'
+                                    +'<div class="buyList-w" >'
+                                    +'	<div style="z-index: 999;" class="buyList-w-left">'
+                                    +'		<a class="bl-w-l-img" href="">'
+                                    +'			<img src="'+dates[i].path+'" alt="">'
+                                    +'		</a>'
+                                    +'		<p class="bl-w-l-txt cr">等待付款</p>'
+                                    +'	</div>'
+                                    +'	<a style="position: relative;" class="buyList-w-right" href="/order/detail?id='+dates[i].id+'&userId='+dates[i].userId+'&srcFrom=SRDB-TEST-001" >'
+                                    +"		<h3>"+dates[i].name+"</h3>"
+                                    +'	<p>本期参与：<span style="color: #3b84dd;">'+nickName+'</span></p>'
+                                    +'	<p style="top: -.03rem; width: .5rem;position: absolute; text-align: center; right: .05rem;color:#ff0033;border-radius:.04rem;background-color:#fff;border: 1px solid #FF0033;">查看</p>'
+                                    +'		<p class=" ">参与时间：'+dates[i].showTime+'</p>'
+                                    +'		<p class="bl-wr-duan">参与号段：<span class="cr">'+dates[i].sectionNo+'</span><span class="bl-wr-ride cr"><img src="/images/ride.png" alt=""></span><span class="cr">'+dates[i].purchaseCounts+'</span><span class="cr">单</span></p>'
+                                    +'	</a>'
+                                    +'</div>'
+                                    +'</li>'
+                            }
+                            else if(dates[i].orderStatus=='1'){
+                                appendStr +='<li class="buyList" style="padding-bottom:0px; border-bottom:2px solid #f1f1f1;">'
+                                    +'<div class="buyList-w" >'
+                                    +'	<div style="z-index: 999;" class="buyList-w-left">'
+                                    +'		<a class="bl-w-l-img" href="">'
+                                    +'			<img src="'+dates[i].path+'" alt="">'
+                                    +'		</a>'
+                                    +'		<p class="bl-w-l-txt cr">正在匹配中...</p>'
+                                    +'	</div>'
+                                    +'	<a style="position: relative;" class="buyList-w-right" href="/order/playto?id='+dates[i].id+'&userId='+dates[i].userId+'&srcFrom=SRDB-TEST-001" >'
+                                    +"		<h3>"+dates[i].name+"</h3>"
+                                    +'	<p>本期参与：<span style="color: #3b84dd;">'+nickName+'</span></p>'
+                                    +'	<p style="top: -.03rem; width: .5rem;position: absolute; text-align: center; right: .05rem;color:#ff0033;border-radius:.04rem;background-color:#fff;border: 1px solid #FF0033;">跟Ta玩</p>'
+                                    +'		<p class=" ">参与时间：'+dates[i].showTime+'</p>'
+                                    +'		<p class="bl-wr-duan">参与号段：<span class="cr">'+dates[i].sectionNo+'</span><span class="bl-wr-ride cr"><img src="/images/ride.png" alt=""></span><span class="cr">'+dates[i].purchaseCounts+'</span><span class="cr">单</span></p>'
+                                    +'	</a>'
+                                    +'</div>'
+                                    +'</li>'
+                            }
+                            else if(dates[i].orderStatus=='2'){
+                                appendStr +='<li class="buyList" style="padding-bottom:0px; border-bottom:2px solid #f1f1f1;">'
+                                    +'<div class="buyList-w" >'
+                                    +'	<div style="z-index: 999;" class="buyList-w-left">'
+                                    +'		<a class="bl-w-l-img" href="">'
+                                    +'			<img src="'+dates[i].path+'" alt="">'
+                                    +'		</a>'
+                                    +'		<p class="bl-w-l-txt cr">等待开战</p>'
+                                    +'	</div>'
+                                    +'	<a style="position: relative;" class="buyList-w-right" href="/order/detail?id='+dates[i].id+'&userId='+dates[i].userId+'&srcFrom=SRDB-TEST-001" >'
+                                    +"		<h3>"+dates[i].name+"</h3>"
+                                    +'	<p>本期参与：<span style="color: #3b84dd;">'+nickName+'</span></p>'
+                                    +'	<p style="top: -.03rem; width: .5rem;position: absolute; text-align: center; right: .05rem;color:#ff0033;border-radius:.04rem;background-color:#fff;border: 1px solid #FF0033;">查看</p>'
+                                    +'		<p class=" ">参与时间：'+dates[i].showTime+'</p>'
+                                    +'		<p class="bl-wr-duan">参与号段：<span class="cr">'+dates[i].sectionNo+'</span><span class="bl-wr-ride cr"><img src="/images/ride.png" alt=""></span><span class="cr">'+dates[i].purchaseCounts+'</span><span class="cr">单</span></p>'
+                                    +'	</a>'
+                                    +'</div>'
+                                    +'</li>'
+                            }
+                            else if(dates[i].orderStatus=='4'){
+                                appendStr +='<li class="buyList" style="padding-bottom:0px; border-bottom:2px solid #f1f1f1;">'
+                                    +'<div class="buyList-w"  >'
+                                    +'	<div style="z-index: 999;" class="buyList-w-left">'
+                                    +'		<a class="bl-w-l-img" href="">'
+                                    +'			<img src="'+dates[i].path+'" alt="">'
+                                    +'</a>'
+                                    +'		<p class="bl-w-l-txt">已失败</p>'
+                                    +'	</div>'
+                                    +'	<a style="position: relative;" class="buyList-w-right" href="/order/detail?id='+dates[i].id+'&userId='+dates[i].userId+'&srcFrom=SRDB-TEST-001" >'
+                                    +"		<h3>"+dates[i].name+"</h3>"
+                                    +'	<p>本期参与：<span style="color: #3b84dd;">'+nickName+'</span></p>'
+                                    +'	<p style="top: -.03rem; width: .5rem;position: absolute; text-align: center; right: .05rem;color:#ff0033;border-radius:.04rem;background-color:#fff;border: 1px solid #FF0033;">查看</p>'
+                                    +'		<p class=" ">参与时间：'+dates[i].showTime+'</p>'
+                                    +'	<p class="bl-wr-duan">参与号段：<span class="cr">'+dates[i].sectionNo+'</span><span class="bl-wr-ride cr"><img src="/images/ride.png" alt=""></span><span class="cr">'+dates[i].purchaseCounts+'</span><span class="cr">单</span></p>'
+                                    +'	<p class=" ">开战时间：'+dates[i].drawTime+'</p>'
+                                    +'	<p>获胜号码：<span class="cr">'+dates[i].result+'</span></p>'
+                                    +'</a>'
+                                    +'</div>'
+                                    +'</li>'
+                            }else if(dates[i].orderStatus=='3'){
+                                appendStr +='<li class="buyList" style="padding-bottom:0px; border-bottom:2px solid #f1f1f1;">'
+                                    +'<div class="buyList-w buyList-w-win" >'
+                                    +'	<div style="z-index: 999;" class="buyList-w-left">'
+                                    +'		<a class="bl-w-l-img" href="">'
+                                    +'			<img src="'+dates[i].path+'" alt="">'
+                                    +'		</a>'
+                                    +'		<p class="bl-w-l-txt">恭喜获胜</p>'
+                                    +'	</div>'
+                                    +'	<a style="overflow: hidden; position: relative;z-index: 10; display:inline-block;width:100%;height: 1.65rem;" class="buyList-w-right" href="/order/detail?id='+dates[i].id+'&userId='+dates[i].userId+'&srcFrom=SRDB-TEST-001" >'
+                                    +'<div class="fangw1" style="width:100%;width: 2rem;">'
+                                    +'<p class="leftx1">双</p>'
+                                    +'<p class="rightx1">人</p>'
+                                    +'<p class="leftx1">夺</p>'
+                                    +'<p class="rightx1">宝</p>'
+                                    +'<p class="leftx1">双</p>'
+                                    +'<p class="rightx1">人</p>'
+                                    +'<p class="leftx1">夺</p>'
+                                    +'<p class="rightx1">宝</p>'
+                                    +'<p class="leftx1">双</p>'
+                                    +'<p class="rightx1">人</p>'
+                                    +'<p class="leftx1">夺</p>'
+                                    +'<p class="rightx1">宝</p>'
+                                    +'<p class="leftx1">双</p>'
+                                    +'<p class="rightx1">人</p>'
+                                    +'<p class="leftx1">夺</p>'
+                                    +'<p class="rightx1">宝</p>'
+                                    +'<p class="leftx1">双</p>'
+                                    +'<p class="rightx1">人</p>'
+                                    +'<p class="rightx1">宝</p>'
+                                    +'<p class="leftx1">双</p>'
+                                    +'<p class="rightx1">人</p>'
+                                    +'</div>'
+                                    +'<div class="widw" style="position: absolute;top: 0rem;">'
+                                    +"		<h3>"+dates[i].name+"</h3>"
+                                    +'	<p>本期参与：<span style="color: #3b84dd;">'+nickName+'</span></p>'
+                                    +'	<p style="top: 0rem; width: .5rem;position: absolute; text-align: center; right: 1.11rem;color:#ff0033;border-radius:.04rem;background-color:#fff;border: 1px solid #FF0033;">查看</p>'
+                                    +'		<p class=" ">参与时间：'+dates[i].showTime+'</p>'
+                                    +'	<p class="bl-wr-duan">参与号段：<span class="cr">'+dates[i].sectionNo+'</span><span class="bl-wr-ride cr"><img  src="/images/ride.png" alt=""></span><span class="cr">'+dates[i].purchaseCounts+'</span><span class="cr">单</span></p>'
+                                    +'	<p class=" ">开战时间：'+dates[i].drawTime+'</p>'
+                                    +'	<p>获胜号码：<span class="cr">'+dates[i].result+'</span></p>'
+                                    +'</div>'
+                                    +'</a>'
+//                                +'<a style="z-index: 20;" class="buyList-getBtn"  href="/PswCheck/toPwLogin?srcFrom=SRDB-TEST-001">点击领取</a>'
+                                    +'</li>'
+                                    +'</div>'
+                            }
+                        }
                     }
-                    else if(dates[i].orderStatus=='0'){
-                        appendStr +='<li class="buyList" style="padding-bottom:0px; border-bottom:2px solid #f1f1f1;">'
-                            +'<div class="buyList-w" >'
-                            +'	<div style="z-index: 999;" class="buyList-w-left">'
-                            +'		<a class="bl-w-l-img" href="">'
-                            +'			<img src="'+dates[i].path+'" alt="">'
-                            +'		</a>'
-                            +'		<p class="bl-w-l-txt cr">等待付款</p>'
-                            +'	</div>'
-                            +'	<a style="position: relative;" class="buyList-w-right" href="/account/record/detail?id='+dates[i].id+'&userId='+dates[i].userId+'&srcFrom=SRDB-TEST-001" >'
-                            +"		<h3>"+dates[i].name+"</h3>"
-                            +'	<p>本期参与：<span style="color: #3b84dd;">'+nickName+'</span></p>'
-                            +'	<p style="top: -.03rem; width: .5rem;position: absolute; text-align: center; right: .05rem;color:#ff0033;border-radius:.04rem;background-color:#fff;border: 1px solid #FF0033;">付款</p>'
-                            +'		<p class=" ">参与时间：'+dates[i].showTime+'</p>'
-                            +'		<p class="bl-wr-duan">参与号段：<span class="cr">'+dates[i].sectionNo+'</span><span class="bl-wr-ride cr"><img src="/images/ride.png" alt=""></span><span class="cr">'+dates[i].purchaseCounts+'</span><span class="cr">单</span></p>'
-                            +'	</a>'
-                            +'</div>'
-                            +'</li>'
-                    }
-                    else if(dates[i].orderStatus=='1'){
-                        appendStr +='<li class="buyList" style="padding-bottom:0px; border-bottom:2px solid #f1f1f1;">'
-                            +'<div class="buyList-w" >'
-                            +'	<div style="z-index: 999;" class="buyList-w-left">'
-                            +'		<a class="bl-w-l-img" href="">'
-                            +'			<img src="'+dates[i].path+'" alt="">'
-                            +'		</a>'
-                            +'		<p class="bl-w-l-txt cr">等待开战</p>'
-                            +'	</div>'
-                            +'	<a style="position: relative;" class="buyList-w-right" href="/account/record/detail?id='+dates[i].id+'&userId='+dates[i].userId+'&srcFrom=SRDB-TEST-001" >'
-                            +"		<h3>"+dates[i].name+"</h3>"
-                            +'	<p>本期参与：<span style="color: #3b84dd;">'+nickName+'</span></p>'
-                            +'	<p style="top: -.03rem; width: .5rem;position: absolute; text-align: center; right: .05rem;color:#ff0033;border-radius:.04rem;background-color:#fff;border: 1px solid #FF0033;">查看</p>'
-                            +'		<p class=" ">参与时间：'+dates[i].showTime+'</p>'
-                            +'		<p class="bl-wr-duan">参与号段：<span class="cr">'+dates[i].sectionNo+'</span><span class="bl-wr-ride cr"><img src="/images/ride.png" alt=""></span><span class="cr">'+dates[i].purchaseCounts+'</span><span class="cr">单</span></p>'
-                            +'	</a>'
-                            +'</div>'
-                            +'</li>'
-                    }else if(dates[i].orderStatus=='2'){
-                        appendStr +='<li class="buyList" style="padding-bottom:0px; border-bottom:2px solid #f1f1f1;">'
-                            +'<div class="buyList-w"  >'
-                            +'	<div style="z-index: 999;" class="buyList-w-left">'
-                            +'		<a class="bl-w-l-img" href="">'
-                            +'			<img src="'+dates[i].path+'" alt="">'
-                            +'</a>'
-                            +'		<p class="bl-w-l-txt">已失败</p>'
-                            +'	</div>'
-                            +'	<a style="position: relative;" class="buyList-w-right" href="/account/record/detail?id='+dates[i].id+'&userId='+dates[i].userId+'&srcFrom=SRDB-TEST-001" >'
-                            +"		<h3>"+dates[i].name+"</h3>"
-                            +'	<p>本期参与：<span style="color: #3b84dd;">'+nickName+'</span></p>'
-                            +'	<p style="top: -.03rem; width: .5rem;position: absolute; text-align: center; right: .05rem;color:#ff0033;border-radius:.04rem;background-color:#fff;border: 1px solid #FF0033;">查看</p>'
-                            +'		<p class=" ">参与时间：'+dates[i].showTime+'</p>'
-                            +'	<p class="bl-wr-duan">参与号段：<span class="cr">'+dates[i].sectionNo+'</span><span class="bl-wr-ride cr"><img src="/images/ride.png" alt=""></span><span class="cr">'+dates[i].purchaseCounts+'</span><span class="cr">单</span></p>'
-                            +'	<p class=" ">开战时间：'+dates[i].drawTime+'</p>'
-                            +'	<p>获胜号码：<span class="cr">'+dates[i].result+'</span></p>'
-                            +'</a>'
-                            +'</div>'
-                            +'</li>'
-                    }else if(dates[i].orderStatus=='3'){
-                        appendStr +='<li class="buyList" style="padding-bottom:0px; border-bottom:2px solid #f1f1f1;">'
-                            +'<div class="buyList-w buyList-w-win" >'
-                            +'	<div style="z-index: 999;" class="buyList-w-left">'
-                            +'		<a class="bl-w-l-img" href="">'
-                            +'			<img src="'+dates[i].path+'" alt="">'
-                            +'		</a>'
-                            +'		<p class="bl-w-l-txt">恭喜获胜</p>'
-                            +'	</div>'
-                            +'	<a style="overflow: hidden; position: relative;z-index: 10; display:inline-block;width:100%;height: 1.65rem;" class="buyList-w-right" href="/account/record/detail?id='+dates[i].id+'&userId='+dates[i].userId+'&srcFrom=SRDB-TEST-001" >'
-                            +'<div class="fangw1" style="width:100%;width: 2rem;">'
-                            +'<p class="leftx1">双</p>'
-                            +'<p class="rightx1">人</p>'
-                            +'<p class="leftx1">夺</p>'
-                            +'<p class="rightx1">宝</p>'
-                            +'<p class="leftx1">双</p>'
-                            +'<p class="rightx1">人</p>'
-                            +'<p class="leftx1">夺</p>'
-                            +'<p class="rightx1">宝</p>'
-                            +'<p class="leftx1">双</p>'
-                            +'<p class="rightx1">人</p>'
-                            +'<p class="leftx1">夺</p>'
-                            +'<p class="rightx1">宝</p>'
-                            +'<p class="leftx1">双</p>'
-                            +'<p class="rightx1">人</p>'
-                            +'<p class="leftx1">夺</p>'
-                            +'<p class="rightx1">宝</p>'
-                            +'<p class="leftx1">双</p>'
-                            +'<p class="rightx1">人</p>'
-                            +'<p class="rightx1">宝</p>'
-                            +'<p class="leftx1">双</p>'
-                            +'<p class="rightx1">人</p>'
-                            +'</div>'
-                            +'<div class="widw" style="position: absolute;top: 0rem;">'
-                            +"		<h3>"+dates[i].name+"</h3>"
-                            +'	<p>本期参与：<span style="color: #3b84dd;">'+nickName+'</span></p>'
-                            +'	<p style="top: 0rem; width: .5rem;position: absolute; text-align: center; right: 1.11rem;color:#ff0033;border-radius:.04rem;background-color:#fff;border: 1px solid #FF0033;">查看</p>'
-                            +'		<p class=" ">参与时间：'+dates[i].showTime+'</p>'
-                            +'	<p class="bl-wr-duan">参与号段：<span class="cr">'+dates[i].sectionNo+'</span><span class="bl-wr-ride cr"><img  src="/images/ride.png" alt=""></span><span class="cr">'+dates[i].purchaseCounts+'</span><span class="cr">单</span></p>'
-                            +'	<p class=" ">开战时间：'+dates[i].drawTime+'</p>'
-                            +'	<p>获胜号码：<span class="cr">'+dates[i].result+'</span></p>'
-                            +'</div>'
-                            +'</a>'
-                            +'<a style="z-index: 20;" class="buyList-getBtn"  href="/PswCheck/toPwLogin?srcFrom=SRDB-TEST-001">点击领取</a>'
-                            +'</li>'
-                            +'</div>'
-                    }
-
+//                    console.log(appendStr);
+                    sum = sum + 1;
+                    $(".buyItem").append(appendStr);
+                    $("#mores").html('<a onclick="runs(174398)">点击加载更多...</a>');
+                } else {
+                    $("#mores").hide();
                 }
-                console.log(appendStr);
-                sum = sum+1;
-                $(".buyItem").append(appendStr);
-                $("#mores").html('<a onclick="runs(174398)">点击加载更多...</a>');
-            } else{
-                $("#mores").hide();
             }
         }, "json");
 

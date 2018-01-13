@@ -163,7 +163,7 @@
                     <?php
                     foreach ($arrTakePartInOrders as $order) {
                         ?>
-                        <a href="">
+                        <a href="/users/orderlist?id=<?php echo $order['userid'];?>">
                             <li class="mArea-cli">
                                 <div class="mArea-cli-img">
                                     <img src="<?php echo $arrUserIds[$order['userid']]['pic']?>"
@@ -186,7 +186,7 @@
                     <?php
                     foreach ($arrWinOrders as $order) {
                         ?>
-                        <a href="">
+                        <a href="/users/orderlist?id=<?php echo $order['userid'];?>">
                             <li class="mArea-cli">
                                 <div class="mArea-cli-img">
                                     <img src="<?php echo $arrUserIds[$order['userid']]['pic']?>"

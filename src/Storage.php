@@ -171,8 +171,20 @@ class Storage
     }
 
 
+    //保存Access Token
+    function addWxAC($access_token, $expired_time){
+        $id     =  table(self::PREFIX.'_wxactoken')->put(array(
+            'access_token'  => $access_token,
+            'expired_time'  => $expired_time,
+            'ctime'         => time(),
+        ));
+
+//        error_log( "1111111\n", 3, "/tmp/ssc.log");
+        return $id;
+
+    }
     //保存定单
-    function addOrder($user_id, $goods_id, $amount, $num, $payway, $sscperiods, $buytype, $ssctype, $playwith,  $ip, $strPlace){
+    function addOrder($user_id, $goods_id, $amount, $num, $payway, $sscperiods, $buytype, $ssctype, $playwith,  $ip, $strPlace, $playwithid = 0){
         $id     =  table(self::PREFIX.'_orders')->put(array(
             'userid' => $user_id,
             'goods_id' => $goods_id,
@@ -190,7 +202,7 @@ class Storage
             'buytype'       => $buytype,
             'ssctype'      => $ssctype,
 
-            'playwithid'    => 0,
+            'playwithid'    => $playwithid,
             'automatch'     => $playwith,
             'playwithtime'  => 0,
             'ip'            => $ip,
@@ -220,6 +232,18 @@ class Storage
         $list = table(self::PREFIX.'_orders')->gets(array('userid'  => $userid, 'page'  => $page, 'pagesize' => $pagesize, 'order' => $orderby), $pager);
         return [$list, $pager];
     }
+    //取得单条定单
+    function getOrder($id){
+        $list = table(self::PREFIX.'_orders')->gets(array('id' => $id));
+        return $list;
+    }
+
+    //取得单个用户
+    function getSSCUserByID($id){
+        $list = table(self::PREFIX.'_users')->gets(array('id' => $id));
+        return $list;
+    }
+
 
     function getGoodsSelect($fields = '*'){
         return table(self::PREFIX.'_goods')->select($fields);
@@ -231,8 +255,8 @@ class Storage
         return table(self::PREFIX.'_orders')->select($fields);
     }
     //修改定单状态
-    function updateOrder($status, $ssc, $ssctime,  $sscstatus, $where){
-        table(self::PREFIX.'_orders')->sets(['status' => $status, 'ssc' => $ssc, 'sscstatus' => $sscstatus, 'ssctime' => $ssctime],
+    function updateOrder($status, $_term, $ssc, $ssctime,  $sscstatus, $where){
+        table(self::PREFIX.'_orders')->sets(['status' => $status, 'sscperiods' => $_term, 'ssc' => $ssc, 'sscstatus' => $sscstatus, 'ssctime' => $ssctime],
         [
             'where'   => [
                 $where

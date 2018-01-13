@@ -4,53 +4,36 @@ namespace App\Controller;
 use Swoole\Client\CURL;
 use Zhuzhichao\IpLocationZh\Ip;
 
-class Store extends \Swoole\Controller
+class Store extends StoreController
 {
 
-    private $pagesize = 30;
-    private $storage_config;
-    private $storage;
-    private $next_open_time;
-    private $current_ssc;
-    private $current_ssc_val;
+    protected $pagesize = 30;
 
     function __construct(\Swoole $swoole)
     {
         parent::__construct($swoole);
-        $this->session->start();
-        $this->storage_config   = \Swoole::getInstance()->config['ssc'];
-        $this->storage = new \WebIM\Storage($this->storage_config['ssc_web']['storage']);
-
-        $this->next_open_time = $this->storage->getRedis('NEXT_OPEN_TIME');
-        $this->assign('next_open_time', $this->next_open_time);
-
-        $this->current_ssc = $this->storage->getRedis('CURRENT_SSC');
-        $this->assign('current_ssc', $this->current_ssc);
-
-        $this->current_ssc_val = $this->storage->getRedis('CURRENT_SSC_VAL');
-        $this->assign('current_ssc_val', $this->current_ssc_val);
 
     }
 
     function index()
     {
-        $openid = rand(100000000000, 999999999999);
-        $user   = $this->storage->getSSCUser($openid);
-        if (!$user || !isset($user[0])){
-            $_SESSION['openid']    = $openid;
-            $_SESSION['username']  = '天天_' . $openid;
-            $_SESSION['pic']       = 'http://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83erNaYn0tEWiac65GIlqdR7T2un2KKxq5uULRibWzvgCIVl2UmyXpxibrdummQTibnNRrAaXxutRNk5fyw/0';
-
-            $userid = $this->storage->addSSCUser($_SESSION['openid'], $_SESSION['username'], $_SESSION['pic']);
-            $_SESSION['userid'] =   $userid;
-        }
-        else{
-            $user   = $user[0];
-            $_SESSION['openid']    = $user['openid'];
-            $_SESSION['username']  = $user['name'];
-            $_SESSION['pic']       = $user['pic'];
-            $_SESSION['userid'] =   $user['id'];
-        }
+//        $openid = rand(100000000000, 999999999999);
+//        $user   = $this->storage->getSSCUser($openid);
+//        if (!$user || !isset($user[0])){
+//            $_SESSION['openid']    = $openid;
+//            $_SESSION['username']  = '天天_' . $openid;
+//            $_SESSION['pic']       = 'http://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83erNaYn0tEWiac65GIlqdR7T2un2KKxq5uULRibWzvgCIVl2UmyXpxibrdummQTibnNRrAaXxutRNk5fyw/0';
+//
+//            $userid = $this->storage->addSSCUser($_SESSION['openid'], $_SESSION['username'], $_SESSION['pic']);
+//            $_SESSION['userid'] =   $userid;
+//        }
+//        else{
+//            $user   = $user[0];
+//            $_SESSION['openid']    = $user['openid'];
+//            $_SESSION['username']  = $user['name'];
+//            $_SESSION['pic']       = $user['pic'];
+//            $_SESSION['userid'] =   $user['id'];
+//        }
         //取得产品
         $list = $this->storage->getGoodsList();
         $goods_1 = $goods_2 = $_arrGoods = [];

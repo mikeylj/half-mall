@@ -13,15 +13,9 @@ use Zhuzhichao\IpLocationZh\Ip;
 
 class Recharge extends StoreController
 {
-    private $storage_config;
-    private $storage;
-
     function __construct(\Swoole $swoole)
     {
         parent::__construct($swoole);
-        $this->session->start();
-        $this->storage_config   = \Swoole::getInstance()->config['ssc'];
-        $this->storage = new \WebIM\Storage($this->storage_config['ssc_web']['storage']);
     }
 
     function getBalance()
@@ -40,44 +34,24 @@ class Recharge extends StoreController
         ];
         $_arrPostVal    = $this->_getParams($_arrParams);
         //判读产品和数量不能为空
-        if (!$_arrPostVal['goodId'] || empty($_arrPostVal['goodId'])){
-            return $this->json(
-                [
-                    'code'  => -1,
-                    'message'   => '请选择购买的产品'
-                ]
-            );
+        if (!isset($_arrPostVal['goodId']) || empty($_arrPostVal['goodId'])){
+            return $this->json([], -1, '请选择购买的产品');
         }
-        if (!$_arrPostVal['purchaseCounts'] || empty($_arrPostVal['purchaseCounts'])){
-            return $this->json(
-                [
-                    'code'  => -1,
-                    'message'   => '请输入购买数量'
-                ]
-            );
+        if (!isset($_arrPostVal['purchaseCounts']) || empty($_arrPostVal['purchaseCounts'])){
+            return $this->json([], -1, '请输入购买数量');
         }
         //取得当前TERM
         $_next_period   = $this->storage->getRedis('NEXT_CURRENT_PERIOD');
         //取得物品信息
         $_objGoods  = $this->storage->getGoods($_arrPostVal['goodId']);
-        if ($_objGoods && !empty($_objGoods[0]))
+        if (isset($_objGoods) && isset($_objGoods[0]))
             $_objGoods  = $_objGoods[0];
         else{
-            return $this->json(
-                [
-                    'code'  => -1,
-                    'message'   => '请选择购买的产品'
-                ]
-            );
+            return $this->json([], -1, '请选择购买的产品');
         }
-        $user_id    = $_SESSION['userid'];
-        if (!$user_id){
-            return $this->json(
-                [
-                    'code'  => -1,
-                    'message'   => '定单已超过，请登录后重新下单'
-                ]
-            );
+        $user_id    = isset($_SESSION['userid']) ? $_SESSION['userid'] : 0;
+        if (!isset($user_id)|| empty($user_id)){
+            return $this->json([], -1, '定单已超过，请登录后重新下单');
         }
         $goods_id   = $_arrPostVal['goodId'];
         $amount     = $_arrPostVal['amount'];
@@ -102,12 +76,7 @@ class Recharge extends StoreController
 //        $sscperiods;
         $orderid    = $this->storage->addOrder($user_id, $goods_id, $amount, $num, $payway, $_next_period, $buytype, $ssctype,$playwith, $ip, $strPlace);
         error_log($orderid . "\n", 3, "/tmp/ssc.log");
-        return $this->json(
-            [
-                'code'  => 0,
-                'message'   => '定单成功'
-            ]
-        );
+        return $this->json([], '定单成功', 0);
     }
     function zjy(){
         echo "下单成功，跳到ALI支持";

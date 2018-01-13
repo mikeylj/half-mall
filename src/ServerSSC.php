@@ -68,6 +68,8 @@ class ServerSSC{
 
         //'status' => 1, 'sscstatus' => 0
         $_unPayed   = $_errorIDs  = $_successOrders = $_failedOrders = [];
+        $_ssc_110   = 0;
+        $_ssc_56    = 0;
         if ($_orders){
             //取得当前中奖余额
             $_strSSC    = $this->storage->getRedis('CURRENT_SSC');

@@ -9,34 +9,39 @@
 namespace App\Controller;
 
 use Swoole\Client\CURL;
+use Zhuzhichao\IpLocationZh\Ip;
 
-class Account  extends StoreController
+class Users extends StoreController
 {
     function __construct(\Swoole $swoole)
     {
         parent::__construct($swoole);
     }
-    function index(){
 
-        $this->display('account/index.php');
-    }
-    //购买记录
-    function buyrecord(){
-        $this->display('account/buyrecord.php');
-    }
-
-    function recordMore(){
+    //定单列表
+    function orderlist(){
+        //取得取数
         $_arrParams = [
+            ['name' => 'id', 'method' => 'get', 'type' => 'int',  'val' => 0],
+        ];
+        $_arrPostVal    = $this->_getParams($_arrParams);
+        if (!isset($_arrPostVal['id']) || empty($_arrPostVal['id'])){
+            $this->getBack();
+        }
+        $this->assign('id', $_arrPostVal['id']);
+        $this->display('user/orderlist.php');
+    }
+    //定单列详情
+    function aj_orderlist(){
+        $_arrParams = [
+            ['name' => 'id', 'method' => 'post', 'type' => 'int',  'val' => 0],
             ['name' => 'page', 'method' => 'post', 'type' => 'int',  'val' => 1],
         ];
         $_arrPostVal    = $this->_getParams($_arrParams);
-        $page   = $_arrPostVal['page'];
-        $user_id    = $_SESSION['userid'];
-
-        if (!isset($user_id) || empty($user_id)){
-            return $this->json([], -1, '请重新登录');
+        if (!isset($_arrPostVal['id']) || empty($_arrPostVal['id'])){
+            return $this->json([], -1, '请选择您要查看的朋友');
         }
-        $_arrOrders = $this->_getOrders($user_id, $page, $this->pagesize);
+        $_arrOrders = $this->_getOrders($_arrPostVal['id'], $_arrPostVal['page'], $this->pagesize);
         $_arrRetOrders  = [];
         if ($_arrOrders){
             foreach ($_arrOrders as $o){
@@ -100,8 +105,10 @@ class Account  extends StoreController
                 }
                 $_order['purchaseCounts'] = $o['num'];
                 if ($o['ssctime']) {
-                    $_order['drawTime'] = date("Y-m-d H:i:s", $o['ssctime']);
-                    $_order['result'] = $o['ssc']; //date("Y-m-d H:i:s", $o['ssc']);
+//                    $_order['drawTime'] = date("Y-m-d H:i:s", $o['ssctime']);
+//                    $_order['result'] = date("Y-m-d H:i:s", $o['ssc']);
+                    $_order['drawTime'] = $o['ssctime'];
+                    $_order['result'] = $o['ssc'];
                 }
                 $_arrRetOrders[]    = $_order;
             }
@@ -130,7 +137,6 @@ class Account  extends StoreController
         }
         return $_arrOrders;
     }
-
     function _getUserListByIds($_arrIds){
         $_arrUsers  =[];
         $_users = $this->storage->getUserSelect("*")->in("id", $_arrIds)->fetchAll();

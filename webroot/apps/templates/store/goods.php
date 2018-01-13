@@ -573,7 +573,6 @@ type4s.png
                 if ($('#playWith').is(':checked')){
                     playWith=1;
                 }
-                alert(playWith);
                 $.post('/recharge/barcodePay',
                     {amount:totalAmount,channelType:'SRDB-TEST-001',goodId:<?php echo $goods['id']?>,purchaseCounts:purchaseCounts,sectionNo:sectionNo,userId:'<?php echo $userid;?>',payWay:payWay,useBalance:isCheck,balance:balance,playwith:playWith},
                     function(response) {
