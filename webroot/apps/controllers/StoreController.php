@@ -25,7 +25,7 @@ class StoreController extends \Swoole\Controller
     //购买失败
     const ORDER_STATUS_FAILED       = 4;
 
-    const OAUTH2_URL    = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=%s&redirect_uri=%s&response_type=code&scope=snsapi_base&state=ssc_001#wechat_redirect';
+    const OAUTH2_URL    = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=%s&redirect_uri=%s&response_type=code&scope=snsapi_userinfo&state=ssc_001#wechat_redirect';
     const AC_URL= 'https://api.weixin.qq.com/sns/oauth2/access_token?appid=%s&secret=%s&code=%s&grant_type=authorization_code';
     const USERINFO_URL= 'https://api.weixin.qq.com/sns/userinfo?access_token=%s&openid=%s&lang=zh_CN';
 
