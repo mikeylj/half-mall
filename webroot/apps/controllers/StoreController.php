@@ -44,8 +44,6 @@ class StoreController extends \Swoole\Controller
     function __construct(\Swoole $swoole)
     {
         parent::__construct($swoole);
-        $this->init();
-
         $this->storage_config   = \Swoole::getInstance()->config['ssc'];
         $this->storage = new \WebIM\Storage($this->storage_config['ssc_web']['storage']);
 
@@ -57,6 +55,8 @@ class StoreController extends \Swoole\Controller
 
         $this->current_ssc_val = $this->storage->getRedis('CURRENT_SSC_VAL');
         $this->assign('current_ssc_val', $this->current_ssc_val);
+        
+        $this->init();
 
     }
     //构造用户信息
@@ -163,7 +163,7 @@ class StoreController extends \Swoole\Controller
     //取得用户授权信息OPENID
     function oauth2(){
         $_arrParams = [
-            ['name' => 'code', 'method' => 'get', 'type' => 'int',  'val' => 0],
+            ['name' => 'code', 'method' => 'get', 'type' => 'string',  'val' => ''],
             ['name' => 'state', 'method' => 'get', 'type' => 'string',  'val' => ''],
         ];
         $_arrPostVal    = $this->_getParams($_arrParams);
@@ -228,7 +228,7 @@ class StoreController extends \Swoole\Controller
     {
         $pageURL = 'http';
 
-        $pageURL = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
+        $pageURL = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https' : 'http';
 
         $pageURL .= "://";
 
