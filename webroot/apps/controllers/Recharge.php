@@ -79,6 +79,18 @@ class Recharge extends StoreController
         return $this->json([], '定单成功', 0);
     }
     function zjy(){
-        echo "下单成功，跳到ALI支持";
+
+        $appid = '2018011401849411';  //https://open.alipay.com 账户中心->密钥管理->开放平台密钥，填写添加了电脑网站支付的应用的APPID
+        $returnUrl = 'http://banjia-mall.com/recharge/return';     //付款成功后的同步回调地址
+        $notifyUrl = 'http://banjia-mall.com/recharge/notify';     //付款成功后的异步回调地址
+        $outTradeNo = date('YmdHis').rand(100,999);     //你自己的商品订单号
+        $payAmount = 9999;          //付款金额，单位:元
+        $orderName = '支付测试';    //订单标题
+        $signType = 'RSA2';       //签名算法类型，支持RSA2和RSA，推荐使用RSA2
+//商户私钥，填写对应签名算法类型的私钥，如何生成密钥参考：https://docs.open.alipay.com/291/105971和https://docs.open.alipay.com/200/105310
+        $saPrivateKey='';
+        $aliPay = new AlipayService($appid,$returnUrl,$notifyUrl,$saPrivateKey);
+        $sHtml = $aliPay->doPay($payAmount,$outTradeNo,$orderName,$returnUrl,$notifyUrl);
+        echo $sHtml;
     }
 }
