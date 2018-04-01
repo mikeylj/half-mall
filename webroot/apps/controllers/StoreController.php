@@ -55,7 +55,7 @@ class StoreController extends \Swoole\Controller
 
         $this->current_ssc_val = $this->storage->getRedis('CURRENT_SSC_VAL');
         $this->assign('current_ssc_val', $this->current_ssc_val);
-        
+
         $this->init();
 
     }
@@ -184,7 +184,14 @@ class StoreController extends \Swoole\Controller
                 $openid = $_arrAccessToken['openid'];
                 $access_token   = $_arrAccessToken['access_token'];
                 $user   = $this->storage->getSSCUser($openid);
-                if (!$user || !isset($user[0])){
+                if ($user && isset($user[0])){
+                    $user   = $user[0];
+                    $_SESSION['openid']    = $openid;
+                    $_SESSION['username']  = $user['name'];
+                    $_SESSION['pic']       = $user['pic'];
+                    $_SESSION['userid'] =   $user['id'];
+                }
+                else{
                     $_arrUserInfo   = $this->get_weixin_userinfo($access_token, $openid);
                     if ($_arrUserInfo === false){
                         $str = date("Y-m-d H:i:s") . "\tERROR:获取USERINFO失败!!" . "\n";;
@@ -205,13 +212,6 @@ class StoreController extends \Swoole\Controller
 
                     $str = date("Y-m-d H:i:s") . "\tINFO:获取USERINFO成功!!" . "\n";;
                     $this->log($str);
-                }
-                else{
-                    $user   = $user[0];
-                    $_SESSION['openid']    = $openid;
-                    $_SESSION['username']  = $user['name'];
-                    $_SESSION['pic']       = $user['pic'];
-                    $_SESSION['userid'] =   $user['id'];
                 }
 
             }
