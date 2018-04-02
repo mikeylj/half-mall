@@ -50,7 +50,7 @@ class Page extends \Swoole\Controller
         $this->assign('arrUserIds', $_arrUserIds);
         $this->assign('arrGoods', $_arrGoods);
 
-        $this->display('store/index.php');
+        $this->display('page/index.php');
     }
     //取得定单信息
     private function _getOrders($goods_id = 0){
