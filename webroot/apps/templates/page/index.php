@@ -12,13 +12,6 @@
 </head>
 <body>
 <div id="index-content" avalonctrl="main" style="visibility: visible;">
-    <div class="mpdd-top-wrapper">
-        <div class="mpdd-top-logo">
-            <img src="//mcdn.pinduoduo.com/assets/img/mpdd_logo.png" alt="logo">
-        </div>
-        <span>0.1元包邮抢16包清风面巾纸</span>
-        <div class="mpdd-top-btn">前往购买</div>
-    </div>
     <div class="mpdd-head-wrapper">
         <ul class="mph-tab">
             <li>
