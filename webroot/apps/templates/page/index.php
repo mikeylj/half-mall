@@ -7,11 +7,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <meta name="keywords" content="9.9 半价商城 9块9 团购 团购app 购物 零食 划算 好货">
     <meta name="description" content="9.9半价商城作为创新电商开创者，致力于将娱乐社交的元素融入电商运营中，通过“社交+电商”的模式，让更多的用户带着乐趣分享实惠，享受全新的共享式购物体验。">
-    <link rel="stylesheet" href="//mcdn.pinduoduo.com/assets/css/boot_8cc2fbad24cd42ad4aed51b5dfaf1792.css">
-    <link rel="stylesheet" href="//mcdn.pinduoduo.com/assets/css/index_7b5aeb0b5fd978f8386c271ec3dcbd64.css">
+    <link rel="stylesheet" href="/css/page/boot_8cc2fbad24cd42ad4aed51b5dfaf1792.css">
+    <link rel="stylesheet" href="/css/page/index_7b5aeb0b5fd978f8386c271ec3dcbd64.css">
 </head>
 <body>
-<script src="//mcdn.pinduoduo.com/assets/js/boot_57de96900745f4de5bc0.js"></script>
 <div id="index-content" avalonctrl="main" style="visibility: visible;">
     <div class="mpdd-top-wrapper">
         <div class="mpdd-top-logo">
@@ -308,9 +307,6 @@
         <p>版权所有：上海寻梦信息技术有限公司</p>
     </div>
 </div>
-<script src="//mcdn.pinduoduo.com/assets/js/vender_bd656400a6c72ff4c471.js"></script>
-<script src="//mcdn.pinduoduo.com/assets/js/common_1753f2fb4d3eedbd5a22.js"></script>
-<script src="//mcdn.pinduoduo.com/assets/js/index_0b1d0b9cff9c6c09394f.js"></script>
 
 
 </body></html>
