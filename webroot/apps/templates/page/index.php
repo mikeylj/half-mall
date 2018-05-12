@@ -302,9 +302,8 @@
                     </ul>
                 </div></li></ul>
     </div>
-    <div class="mpdd-load-all">查看更多优惠 请下载拼多多App</div>
     <div class="mpdd-cr">
-        <p>版权所有：上海寻梦信息技术有限公司</p>
+        <p>版权所有：</p>
     </div>
 </div>
 
