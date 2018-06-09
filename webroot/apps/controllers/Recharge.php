@@ -98,7 +98,4 @@ class Recharge extends StoreController
 
 //        echo $sHtml;
     }
-    function pay(){
-        $this->display('recharge/pay.htm');
-    }
 }
