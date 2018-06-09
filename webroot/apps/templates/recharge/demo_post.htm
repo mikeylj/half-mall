@@ -622,11 +622,11 @@
 
         <div id="pay-methods-panel" class="pay-methods-panel">
             <form id="pay_form" method="POST" action="https://openapi.alipay.com/gateway.do"> 
-                <input type="hidden" name="sign" value="OQm1I810NgyEk9Ir1GohH9a3o9EhfzS7FI9p+lsOLKfoQHjOZ80l/SvTJcXxCpbL0LRswZUT6YydDHW7qCiT/vncvR1VGjs6e9KITshA4oBDT13XArut6h0LTe5Osy0rIxxSp7o1mm/JKDFBYYHfVD117jq0twX+QB60kzyW7ms="
+                <input type="hidden" name="sign" value="<?php echo $Configs['sign'];?>"
                 />
-                <input type="hidden" name="sign_type" value="RSA" />
+                <input type="hidden" name="sign_type" value="<?php echo $Configs['sign_type'];?>" />
                 <input type="hidden" name="charset" value="utf-8" />
-                <input type="hidden" name="app_id" value="2014060600164699" />
+                <input type="hidden" name="app_id" value="<?php echo $Configs['app_id'];?>" />
                 <input type="hidden" name="method" value="alipay.trade.wap.pay" />
                 <input type="hidden" name="version" value="1.0" />
                 <div class="wrapper buy-wrapper">
