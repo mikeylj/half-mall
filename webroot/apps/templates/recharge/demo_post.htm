@@ -629,6 +629,7 @@
                 <input type="hidden" name="app_id" value="<?php echo $Configs['app_id'];?>" />
                 <input type="hidden" name="method" value="alipay.trade.wap.pay" />
                 <input type="hidden" name="version" value="1.0" />
+                <input type="hidden" name="timestamp" value="<?php echo date('Y-m-d H:i:s'); ?>" />
                 <div class="wrapper buy-wrapper">
                     <a href="javascript:void(0);" class="J-btn-submit btn mj-submit btn-strong btn-larger btn-block">确认支付</a>
                 </div>
@@ -649,8 +650,7 @@
                 "product_code":"QUICK_WAP_PAY",
                 "seller_id":"2088102147948060",
                 "subject":"商品名",
-                "total_amount":9.00,
-                "timestamp":"<?php echo date('Y-m-d H:i:s'); ?>"
+                "total_amount":9.00
             };
             var bizStr = JSON.stringify(bizMap);
 
