@@ -57,7 +57,8 @@ class AlipayService
             'biz_content'=>json_encode($requestConfigs),
         );
         $commonConfigs["sign"] = $this->generateSign($commonConfigs, $commonConfigs['sign_type']);
-        return $this->buildRequestForm($commonConfigs);
+        return $commonConfigs;
+//        return $this->buildRequestForm($commonConfigs);
     }
     /**
      * 建立请求，以表单HTML形式构造（默认）

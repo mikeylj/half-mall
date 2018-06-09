@@ -223,7 +223,7 @@ class Storage
     }
     //取得用户
     function getSSCUser($openid){
-        $list = table(self::PREFIX.'_users');//->gets(array('openid' => $openid));
+        $list = table(self::PREFIX.'_users')->gets(array('openid' => $openid));
         return $list;
     }
     //取得定单信息
