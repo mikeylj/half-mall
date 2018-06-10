@@ -78,7 +78,7 @@ class Recharge extends StoreController
 //        $sscperiods;
         $orderid    = $this->storage->addOrder($user_id, $goods_id, $amount, $num, $payway, $_next_period, $buytype, $ssctype,$playwith, $ip, $strPlace);
         error_log($orderid . "\n", 3, "/tmp/ssc.log");
-        echo  $this->json(["goodid" => $goods_id, "orderid" => $orderid], '定单成功', 0);
+        return $this->json(["goodid" => $goods_id, "orderid" => $orderid], '定单成功', $orderid);
     }
     function zjy(){
 
