@@ -123,8 +123,7 @@ class Order  extends StoreController
 //        $sscperiods;
         $orderid    = $this->storage->addOrder($user_id, $goods_id, $amount, $num, $payway, 0, $buytype, $ssctype,$playwith, $ip, $strPlace, $playwithid);
         error_log($orderid . "\n", 3, "/tmp/ssc.log");
-
-        $url = "/recharge/zjy?id=" . $orderid . "&goodId=$goods_id";
+        $url = "/recharge/zjy?orderid=" . $orderid . "&goodId=$goods_id";
         $this->http->redirect($url);
     }
 
