@@ -619,7 +619,7 @@ type4s.png
                                 $(".fuc1").show();
                                 $(".fx").hide();
                             }else{
-                                window.location.href='/recharge/zjy?srcFrom=SRDB-TEST-001&url='+response.message+"&goodId=<?php echo $goods['id']?>";
+                                window.location.href='/recharge/zjy?orderid='+response.message+"&goodId=<?php echo $goods['id']?>";
                             }
 
                         }
