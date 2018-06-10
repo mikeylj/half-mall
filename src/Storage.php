@@ -196,7 +196,7 @@ class Storage
             'ssc'       => '',
             'ssctime'   => 0,
             'payway'    => $payway,
-            'status'    => 1,
+            'status'    => 0,
             'sscstatus' => 0,
             'sscperiods'    => $sscperiods,
             'buytype'       => $buytype,
