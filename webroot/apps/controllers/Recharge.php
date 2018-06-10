@@ -101,7 +101,7 @@ class Recharge extends StoreController
         if ($_SESSION['userid'] != $objOrder['userid'] || $_arrGetVal['goodId'] != $objOrder['goods_id']){
             echo "定单错误";
         }
-        if ($objOrder['paytime']){
+        if ($objOrder['status'] != 0 || !$objOrder['trade_no']){
             echo "定单已支付";
         }
         //取得商品
