@@ -82,12 +82,40 @@ class Recharge extends StoreController
     }
     function zjy(){
 
+        //取得取数
+        $_arrParams = [
+            ['name' => 'goodId', 'method' => 'get', 'type' => 'int',  'val' => 0],
+            ['name' => 'orderid', 'method' => 'get', 'type' => 'int',  'val' => 0]
+        ];
+        $_arrGetVal    = $this->_getParams($_arrParams);
+        if (!$_arrGetVal['orderid']){
+            echo "请选择支付定单";
+        }
+        //取得定单信息
+        $objOrder   = $this->storage->getOrder($_arrGetVal['orderid']);
+        if (!$objOrder || !$objOrder[0]){
+            echo "未找到支付定单";
+        }
+        $objOrder   = $objOrder[0];
+        //判断用户和产品是否想同
+        if ($_SESSION['userid'] != $objOrder['userid'] || $_arrGetVal['goodId'] != $objOrder['goods_id']){
+            echo "定单错误";
+        }
+        if ($objOrder['paytime']){
+            echo "定单已支付";
+        }
+        //取得商品
+        $objGoods = $this->storage->getGoods($_arrGetVal['goodId']);
+        if (!$objGoods || !$objGoods[0]){
+            echo "定单错误";
+        }
+        $objGoods   = $objGoods[0];
         $appid = '2018011401849411';  //https://open.alipay.com 账户中心->密钥管理->开放平台密钥，填写添加了电脑网站支付的应用的APPID
         $returnUrl = 'http://banjia-mall.com/pay/payback';     //付款成功后的同步回调地址
         $notifyUrl = 'http://banjia-mall.com/pay/notify';     //付款成功后的异步回调地址
-        $outTradeNo = date('YmdHis').rand(100,999);     //你自己的商品订单号
+        $outTradeNo = $_arrGetVal['orderid'];     //你自己的商品订单号
         $payAmount = 0.01;          //付款金额，单位:元
-        $orderName = '支付测试';    //订单标题
+        $orderName = $objGoods['name'];    //订单标题
         $signType = 'RSA2';       //签名算法类型，支持RSA2和RSA，推荐使用RSA2
 //商户私钥，填写对应签名算法类型的私钥，如何生成密钥参考：https://docs.open.alipay.com/291/105971和https://docs.open.alipay.com/200/105310
         $saPrivateKey='MIIEpAIBAAKCAQEApVSV7WIxY0ZYpZrHu88gYeSetbRmPblcO9zkxf6VbaeUR1PO4n1zJwUBrkW86hjeMRT4u8u9Fj6UgAYc+0rAWZf9JRDEW3uoKccpPjx5Q5u+nxhct09S0UC9nWYgEiu1o6RE3BXmbrlBkXZv3VeEgvR0gS5SzTgxEAZ2fcAm8ipVqpHo9DXP6NoWIDANHTwNUdpK79NPs/EcSAZ4XlKLFkzYXUTf+br2nqA6qL/e3FRKs9gZsxXqR9PR4MOZ13ZB8oHCw/7LDKS7SqtwoHnC9nuZz4DMA+cqVk6loOM1J6Ng/j8ovoYkWIvcYAVWlEKg9nxKTIHtX3eq7xcJunkf4QIDAQABAoIBAA93eUsq23nxE8vyTeso9luSGrLe/I2bsKA9Cv3m0i3e9oUxtvIDUGl/E2gtR/4Sc37d+mL/LWJOWnAbokxz8siu6lS0W9o/GD1IT3huCd4kTNHvYoUXm6TNzK9T5X4trqFvda2tMtB67kJgdRic3l2t5tRK9B4UuqpIIH+lIT+YRbQqAAx1oieRxR3rtNU2G0njEzS07TWfgkXJyuS8jg7gZxMJrQ0Lln8oEu+AZS55hOgwLeMlqZ5xErpS8AcGLMWgBqOB4zaAsU8CbXcwNVwwpuRRewleBnb6mG6lvIBickvM34hcjYnYqICt89Nglibeiy3JdeEQOxKJgJ2CAA0CgYEA3E1zoIhbAWFAO9RLWciOOL0HFrkf9qVXtwirzPOI94UJrCqFwOd9Q+J0jlCy45UqsSZxIBOd/Yy6lNmnYVOVeheyrIvnTzt719UVd6ARnfYVa6pI7xaS98DhiqtpJndC6LXu3fy2oVEqDZGHK4ZcY6v+W8UlHet3Pp4Pg8197w8CgYEAwB7KWK/C+xLmHEhEn0ADSDOFSQRL90kcF9I+38F+bQ0hWmcTdnnkXJA4ckfLUGwAv1pVDxz2CN6Pu2dT6EN7vfeWKee7rRJX3uujZd95yLTScpVF62wi5FWp7NnpVAn8Ormr43yz1Ro/QwnZdx5ACEjq/mxyE94jaHwYuEgmAg8CgYEAnh8dUejs4PWrhAXhO4Uex4ytjNq9HWwZpC8eGJHoCji7843lyMqed14P6KH1dDH5nYMJCUvrRzR+Kx556/pxPFvMC9qy4ITCY+z2ZpFGc8lQIKHtjWX3gMo5WC2l4E0TgjIrS7v6XZkDBRAiI9RhdczaWYYMGQiL4y7R1fllXXMCgYAcl/iRvocMi0GIUBE2inZyloht15/ezBjMStRkxQ2l+WBPbivtZDLiu+xKxfiynYB2+mDSgQL1Svqlb7mDRhfyrBjDX+QE3EgLu5J0JRChGJiByUnAwjVnOoCx6bTadyn9K4kzsGmre96SgbLGEdCB6yheeZF494TZli6vrr1JbQKBgQCqDukWBOWf65hqCM2+LfX9odipsXD37g8aqTwKiy2b6DlmkYURq/qvj4nc7/Sep/8q1ld4jPZ0tGu08WLKULWTZdGdLPvjbThKRJLH088snXJivFdErRdGDkJWF/ahSHl97beTTQEO4ZMMxWWDshi9zZL8IE60t/xXOv5TZ4jjwg==';

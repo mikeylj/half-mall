@@ -254,6 +254,17 @@ class Storage
     function getOrderSelect($fields = '*'){
         return table(self::PREFIX.'_orders')->select($fields);
     }
+    //支付定单
+    function updateOrderPayStatus($trade_no, $id){
+        table(self::PREFIX.'_orders')->sets(['status' => 1, 'paytime' => date("Y-m-d H:i:s",time()), 'trade_no' => $trade_no],
+            [
+                'where'   => [
+                    " id= $id"
+                ]
+            ]
+        );
+
+    }
     //修改定单状态
     function updateOrder($status, $_term, $ssc, $ssctime,  $sscstatus, $where){
         table(self::PREFIX.'_orders')->sets(['status' => $status, 'sscperiods' => $_term, 'ssc' => $ssc, 'sscstatus' => $sscstatus, 'ssctime' => $ssctime],
