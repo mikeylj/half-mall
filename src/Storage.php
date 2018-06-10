@@ -256,7 +256,7 @@ class Storage
     }
     //支付定单
     function updateOrderPayStatus($trade_no, $id){
-        table(self::PREFIX.'_orders')->sets(['status' => 1, 'paytime' => date("Y-m-d H:i:s",time()), 'trade_no' => $trade_no],
+        table(self::PREFIX.'_orders')->sets(['status' => 1, 'paytime' => time(), 'trade_no' => $trade_no],
             [
                 'where'   => [
                     " id= $id"
