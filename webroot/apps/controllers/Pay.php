@@ -49,10 +49,9 @@ class Pay extends \Swoole\Controller
         $this->storage->updateOrderPayStatus($_arrGetVal['trade_no'], $_arrGetVal['out_trade_no']);
 
         error_log(json_encode($_arrGetVal) . "\n", 3, "/tmp/ssc.log");
-        echo "支付成功";
 
-        var_dump($_GET);
-        var_dump($_POST);
+        $this->http->redirect("/account/buyrecord");
+        exit;
     }
     function notify(){
         error_log(json_encode($_GET), 3, '/tmp/notify.log');
