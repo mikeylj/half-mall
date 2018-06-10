@@ -206,7 +206,7 @@
                                     +'		</a>'
                                     +'		<p class="bl-w-l-txt cr">已过期</p>'
                                     +'	</div>'
-                                    +'	<a style="position: relative;" class="buyList-w-right" href="/order/detail?id='+dates[i].id+'&userId='+dates[i].goods_id+'" >'
+                                    +'	<a style="position: relative;" class="buyList-w-right" href="/order/detail?id='+dates[i].id+'&userId='+dates[i].userId+'" >'
                                     +"		<h3>"+dates[i].name+"</h3>"
                                     +'	<p>本期参与：<span style="color: #3b84dd;">'+nickName+'</span></p>'
                                     +'	<p style="top: -.03rem; width: .5rem;position: absolute; text-align: center; right: .05rem;color:#ff0033;border-radius:.04rem;background-color:#fff;border: 1px solid #FF0033;">查看</p>'
@@ -225,7 +225,7 @@
                                     +'		</a>'
                                     +'		<p class="bl-w-l-txt cr">等待付款</p>'
                                     +'	</div>'
-                                    +'	<a style="position: relative;" class="buyList-w-right" href="/recharge/zjy?orderid='+dates[i].id+'&goodId='+dates[i].id+'" >'
+                                    +'	<a style="position: relative;" class="buyList-w-right" href="/recharge/zjy?orderid='+dates[i].id+'&goodId='+dates[i].goods_id+'" >'
                                     +"		<h3>"+dates[i].name+"</h3>"
                                     +'	<p>本期参与：<span style="color: #3b84dd;">'+nickName+'</span></p>'
                                     +'	<p style="top: -.03rem; width: .5rem;position: absolute; text-align: center; right: .05rem;color:#ff0033;border-radius:.04rem;background-color:#fff;border: 1px solid #FF0033;">付款</p>'
