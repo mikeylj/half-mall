@@ -83,8 +83,8 @@ class Recharge extends StoreController
     function zjy(){
 
         $appid = '2018011401849411';  //https://open.alipay.com 账户中心->密钥管理->开放平台密钥，填写添加了电脑网站支付的应用的APPID
-        $returnUrl = 'http://banjia-mall.com/recharge/return';     //付款成功后的同步回调地址
-        $notifyUrl = 'http://banjia-mall.com/recharge/notify';     //付款成功后的异步回调地址
+        $returnUrl = 'http://banjia-mall.com/pay/payback';     //付款成功后的同步回调地址
+        $notifyUrl = 'http://banjia-mall.com/pay/notify';     //付款成功后的异步回调地址
         $outTradeNo = date('YmdHis').rand(100,999);     //你自己的商品订单号
         $payAmount = 0.01;          //付款金额，单位:元
         $orderName = '支付测试';    //订单标题
@@ -94,7 +94,7 @@ class Recharge extends StoreController
         $aliPay = new \WebIM\AlipayService($appid,$returnUrl,$notifyUrl,$saPrivateKey);
         $commonConfigs = $aliPay->doPay($payAmount,$outTradeNo,$orderName,$returnUrl,$notifyUrl);
         $this->assign('Configs', $commonConfigs);
-        $this->display('recharge/demo_post.htm');
+        $this->display('recharge/zjy.php');
 
 //        echo $sHtml;
     }
