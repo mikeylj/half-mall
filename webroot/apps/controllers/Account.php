@@ -78,6 +78,7 @@ class Account  extends StoreController
                 $_order['nickname'] = $o['user']['name'];
                 $_order['path'] = $o['goods']['small_image'];
                 $_order['id'] = $o['id'];
+                $_order['goods_id'] = $o['goods_id'];
                 $_order['userId'] = $o['user']['id'];
                 $_order['name'] = $o['goods']['name'];
                 $_order['showTime'] = $o['ctime'];
