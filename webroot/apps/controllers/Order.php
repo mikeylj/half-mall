@@ -128,17 +128,18 @@ class Order  extends StoreController
     }
 
     private function _getSCCVal($ssc, $ssctype){
-        $arr = explode(',', $ssc);
-        $val = 0;
-        foreach ($arr as $v){
-            $val = $val * 10 + $v;
-        }
-        $_sscVal    = 0;
-        if ($ssctype == 1){
-            $_sscVal    = $val % 110 + 1;
-        }
-        else{
-            $_sscVal    = $val % 56 + 1;
+        $_sscVal = -1;
+        if ($ssc) {
+            $arr = explode(',', $ssc);
+            $val = 0;
+            foreach ($arr as $v) {
+                $val = $val * 10 + $v;
+            }
+            if ($ssctype == 1) {
+                $_sscVal = $val % 110 + 1;
+            } else {
+                $_sscVal = $val % 56 + 1;
+            }
         }
         return $_sscVal;
     }
