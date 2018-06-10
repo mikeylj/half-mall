@@ -21,7 +21,7 @@
     ?>
     <script>
             var queryParam = '<?php echo $str;?>';
-            var gotoUrl = document.querySelector("#pay_form").getAttribute('action') + '?' + queryParam;
+            var gotoUrl = 'https://openapi.alipay.com/gateway.do?' + queryParam;
             _AP.pay(gotoUrl);
     </script>
 </body>
