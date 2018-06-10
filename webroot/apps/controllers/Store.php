@@ -159,10 +159,12 @@ class Store extends StoreController
         }
         //根据用户ID，取得用户数组
         $_arrUserIds    = array_unique($_arrUserIds);
-        $_userSelect = $this->storage->getUserSelect('*');
-        $_users = $_userSelect->in('id', $_arrUserIds)->fetchAll();
-        foreach ($_users as $_user){
-            $_arrUsers[$_user['id']]  = $_user;
+        if ($_arrUserIds) {
+            $_userSelect = $this->storage->getUserSelect('*');
+            $_users = $_userSelect->in('id', $_arrUserIds)->fetchAll();
+            foreach ($_users as $_user) {
+                $_arrUsers[$_user['id']] = $_user;
+            }
         }
         $this->assign('topUsers', $_topUsers);
         $this->assign('arrUsers', $_arrUsers);
