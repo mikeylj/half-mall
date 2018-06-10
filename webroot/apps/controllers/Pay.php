@@ -16,6 +16,7 @@ class Pay extends \Swoole\Controller
         $this->display('pay/index.php');
     }
     function payback(){
+
         var_dump($_GET);
         var_dump($_POST);
     }
